@@ -7,19 +7,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto 1</title>
+    <title>Proyect 1</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
     integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
     crossorigin=""/>
+    <style>
+        #myMap {position: relative;
+        }
+    </style>
 </head>
 <body onload="table();">
+
+    <center><h1>Proyect 1</h1></center>
+    <center><h3>GPS coordinates</h3></center>
+    <center><table  width="70%">
+       <tr align=center>
+        <td><b>Latitud</b></td>
+        <td><b>Longitud</b></td>
+        <td><b>Date</b></td>
+        <td><b>Time</b></td>
+       </tr>
+
     <script type="text/javascript">
         function table(){
             const xhttp=new XMLHttpRequest();
             xhttp.onload=function(){
                 document.getElementById("table").innerHTML=this.responseText;
             }
-            xhttp.open("GET", "tabladatos.php");
+            xhttp.open("GET", "tabledata2.php");
             xhttp.send();
         }
         setInterval(function() {
@@ -30,6 +45,8 @@
 
     </div>
 
+    <div id="myMap" style="height: 300px"></div>
+
     <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
      integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
      crossorigin=""></script>
@@ -37,3 +54,5 @@
 
     </body>
     </html>
+
+  
