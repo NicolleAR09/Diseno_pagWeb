@@ -9,7 +9,8 @@ app.listen(8000, ()=>console.log('Mi servidor está corriendo sobre el puerto 80
 // Contenido estático
 //app.use(express.static(__dirname+'/index2.html'));
 
-app.get('/', (req, res) => res.send('Hello World from Express!'))
+app.get('/', (req, res) => res.send(index2.html))
+
 
 
 
