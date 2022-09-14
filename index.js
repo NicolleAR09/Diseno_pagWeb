@@ -15,7 +15,7 @@ app.get('/', (req, res) => res.send('Hello World from Express!'))
 
 //Llamado HTML
 app.get('/index2',(req,res)=>{    
-    res.sendFile(__dirname,'/index2.html')
+    res.sendFile(__dirname+'/index2.html')
 })
 
 //app.listen(8000);
