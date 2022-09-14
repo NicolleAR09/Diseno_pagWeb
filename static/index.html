@@ -32,7 +32,9 @@
         function table(){
             const xhttp=new XMLHttpRequest();
             xhttp.onload=function(){
+                const data = JSON.parse(this.responseText);
                 document.getElementById("table").innerHTML=this.responseText;
+                marker.setLatLng([data.Latitud, data.Longitud]);
             }
             xhttp.open("GET", "/data");
             xhttp.send();
