@@ -40,10 +40,14 @@ const insertData = (info) => {
     data.Longitud = info[1];
     data.Date = info[2];
     data.Time = info[3];
+
+    console.log("Received: ", data);
 };
 
 app.use(express.static(__dirname+'/static'));
-app.listen(8000, ()=>console.log('Mi servidor está corriendo sobre el puerto 8000'))
+app.listen(8000, ()=>console.log('Mi servidor está corriendo sobre el puerto 8000'));
+socket.bind(8050);
+
 // Contenido estático
 
  /*
