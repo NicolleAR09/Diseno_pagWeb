@@ -9,10 +9,6 @@ const express = require('express');
     Time: "00:00:00"
  };
 
-app.listen(8000, ()=>console.log('Mi servidor está corriendo sobre el puerto 8000'))
-// Contenido estático
-app.use(express.static(__dirname+'/index2.html'));
-
 app.get('/', (req, res) =>{    
     res.sendFile(__dirname+'/index2.html')
 })
@@ -63,4 +59,7 @@ app.get("/data", (req, res) => {
 //app.listen(8000);
 //console.log('Server on port 8000')
 
+app.listen(8000, ()=>console.log('Mi servidor está corriendo sobre el puerto 8000'))
+// Contenido estático
+app.use(express.static(__dirname+'/index2.html'));
 
