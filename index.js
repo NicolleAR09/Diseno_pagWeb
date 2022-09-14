@@ -11,11 +11,14 @@ app.listen(8000, ()=>console.log('Mi servidor está corriendo sobre el puerto 80
 
 app.get('/', (req, res) => res.send('Hello World from Express!'))
 
+
+
 //Llamado HTML
-app.get('/',(req,res)=>{    
-    res.sendFile(__dirname+'/index2.html')
+app.get('/index2',(req,res)=>{    
+    res.sendFile(__dirname,'/index2.html')
 })
 
 //app.listen(8000);
 //console.log('Server on port 8000')
+
 
