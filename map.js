@@ -9,7 +9,7 @@
 
     let marker = L.marker([10.9886091, -74.7922088]).addTo(myMap)
 
-    marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+    marker.bindPopup("<b>Latitud: 10.9886091 Longitud: -74.7922088</b>").openPopup();
 
     const popup = L.popup();
 
