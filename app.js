@@ -26,7 +26,7 @@ app.get('/api/get-uuid', function (req, res) {
     res.send(uuidv4());
 });
 
-//Llamado HTML
+//Llamado HTML yes
 //app.get('/',(req,res)=>{    
   //  res.sendFile(__dirname+'/indexint.html')
 //})
