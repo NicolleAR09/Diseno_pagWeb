@@ -37,3 +37,10 @@ jobs:
           REMOTE_HOST: ${{ secrets.HOST_JAVIER }}
           REMOTE_USER: ${{ secrets.USER }}
           TARGET: ${{ secrets.DIRECTORIO }}
+      - name: Deploy to Server 4
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.KEY_SEBASTIAN }}
+          REMOTE_HOST: ${{ secrets.HOST_SEBASTIAN }}
+          REMOTE_USER: ${{ secrets.USER }}
+          TARGET: ${{ secrets.DIRECTORIO }}
