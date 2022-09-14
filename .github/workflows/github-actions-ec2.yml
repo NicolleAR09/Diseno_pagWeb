@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - developN
-      - DeveloperLeo
+      
 
 jobs:
   deploy:
