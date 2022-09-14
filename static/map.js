@@ -22,4 +22,4 @@ function onMapClick(e) {
         .openOn(myMap);
 }
 
-map.on('click', onMapClick);
+myMap.on('click', onMapClick);
