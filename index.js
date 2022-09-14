@@ -16,10 +16,12 @@ const express = require('express');
 
 const dgram = require('dgram');
 const socket = dgram.createSocket('udp4');
+
 socket.on('error', (err) => {
   console.log(`server error:\n${err.stack}`);
   socket.close();
 });
+
 socket.on('message', async (msg, senderInfo) => {
   console.log('Messages received ' + msg)
   const infoMensaje = String(msg).split(" ")
