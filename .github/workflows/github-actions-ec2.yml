@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - developN
+      
 
 jobs:
   deploy:
@@ -20,5 +21,26 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.KEY_NIC }}
           REMOTE_HOST: ${{ secrets.HOST_NIC }}
+          REMOTE_USER: ${{ secrets.USER }}
+          TARGET: ${{ secrets.DIRECTORIO }}
+      - name: Deploy to Server 2
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.KEY_LEO }}
+          REMOTE_HOST: ${{ secrets.HOST_LEO }}
+          REMOTE_USER: ${{ secrets.USER }}
+          TARGET: ${{ secrets.DIRECTORIO }}
+      - name: Deploy to Server 3
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.KEY_JAVIER }}
+          REMOTE_HOST: ${{ secrets.HOST_JAVIER }}
+          REMOTE_USER: ${{ secrets.USER }}
+          TARGET: ${{ secrets.DIRECTORIO }}
+      - name: Deploy to Server 4
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.KEY_SEBASTIAN }}
+          REMOTE_HOST: ${{ secrets.HOST_SEBASTIAN }}
           REMOTE_USER: ${{ secrets.USER }}
           TARGET: ${{ secrets.DIRECTORIO }}
