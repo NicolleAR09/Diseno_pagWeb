@@ -34,7 +34,7 @@
             xhttp.onload=function(){
                 const data = JSON.parse(this.responseText);
                 document.getElementById("table").innerHTML=this.responseText;
-                marker.setLatLng([data.Latitud, data.Longitud]);
+                marker.setLatLng([data.Longitud, data.Latitud]);
             }
             xhttp.open("GET", "/data");
             xhttp.send();
