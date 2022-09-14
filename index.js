@@ -14,18 +14,6 @@ const express = require('express');
     return res.status(200).send(json);
 });
 
-//app.listen(8000);
-//console.log('Server on port 8000')
-
-app.use(express.static(__dirname+'/static'));
-app.listen(8000, ()=>console.log('Mi servidor está corriendo sobre el puerto 8000'))
-// Contenido estático
-
- /*
-app.get('/', (req, res) =>{    
-    res.sendFile(__dirname+'/index2.html')
-})
-
 const dgram = require('dgram');
 const socket = dgram.createSocket('udp4');
 socket.on('error', (err) => {
@@ -44,6 +32,26 @@ socket.on('listening', (req, res) => {
   const address =   socket.address();
   console.log(`UDP server listening on: ${address.address}:${address.port}`);
 });
+
+//app.listen(8000);
+//console.log('Server on port 8000')
+const insertData = (info) => {
+    data.Latitud = info[0];
+    data.Longitud = info[1];
+    data.Date = info[2];
+    data.Time = info[3];
+};
+
+app.use(express.static(__dirname+'/static'));
+app.listen(8000, ()=>console.log('Mi servidor está corriendo sobre el puerto 8000'))
+// Contenido estático
+
+ /*
+app.get('/', (req, res) =>{    
+    res.sendFile(__dirname+'/index2.html')
+})
+
+
 
 //----------------------------------------------------------------
 
