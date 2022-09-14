@@ -11,15 +11,15 @@ app.use(compression());
 app.use(cors());
 
 // Servidor HTTP
-//const serverHttp = http.createServer(app);
-//serverHttp.listen(process.env.HTTP_PORT, process.env.IP);
-//serverHttp.on('listening', () => console.info(`Notes App running at http://${process.env.IP}:${process.env.HTTP_PORT}`));
+const serverHttp = http.createServer(app);
+serverHttp.listen(process.env.HTTP_PORT, process.env.IP);
+serverHttp.on('listening', () => console.info(`Notes App running at http://${process.env.IP}:${process.env.HTTP_PORT}`));
 
 // Contenido estático
 app.use(express.static(__dirname));
 
 //Comprobar estado del puerto
-app.listen(80, ()=>console.log('Mi servidor está corriendo sobre el puerto 80'))
+//app.listen(80, ()=>console.log('Mi servidor está corriendo sobre el puerto 80'))
 
 // API
 app.get('/api/get-uuid', function (req, res) {
@@ -27,9 +27,9 @@ app.get('/api/get-uuid', function (req, res) {
 });
 
 //Llamado HTML
-app.get('/',(req,res)=>{    
-    res.sendFile(__dirname+'/indexint.html')
-})
+//app.get('/',(req,res)=>{    
+  //  res.sendFile(__dirname+'/indexint.html')
+//})
 
 // 404
 app.get('*', function (req, res) {
