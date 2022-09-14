@@ -34,9 +34,10 @@
             xhttp.onload=function(){
                 document.getElementById("table").innerHTML=this.responseText;
             }
-            xhttp.open("GET", "tabledata2.php");
+            xhttp.open("GET", "/tabledata2.php");
             xhttp.send();
         }
+        
         setInterval(function() {
             table();
         }, 500);
