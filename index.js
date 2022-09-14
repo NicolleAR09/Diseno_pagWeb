@@ -2,8 +2,12 @@ const express = require('express');
 
  const app = express();
 
-
-
+ const data = {
+    Latitud: 0,
+    Longitud: 0,
+    Date: "00/00/00",
+    Time: "00:00:00"
+ };
 
 app.listen(8000, ()=>console.log('Mi servidor está corriendo sobre el puerto 8000'))
 // Contenido estático
@@ -49,6 +53,11 @@ const insertData = async (info) => {
 //Llamado HTML
 app.get('/index2',(req,res)=>{    
     res.sendFile(__dirname+'/index2.html')
+})
+
+app.get("/data", (req, res) => {
+    const json = JSON.stringify(data)
+    return res.status(200).send(json);
 })
 
 //app.listen(8000);
