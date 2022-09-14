@@ -4,9 +4,12 @@ const express = require('express');
 
 app.get('/', (req, res) => res.send('Hello World from Express!'))
 
+// Contenido estático
+app.use(express.static(__dirname));
+
 //Llamado HTML
 app.get('/',(req,res)=>{    
-    res.sendFile('/index2.html')
+    res.sendFile(__dirname+'/index2.html')
 })
 
 app.listen(8000);
