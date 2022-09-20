@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Proyect 1</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+
+    <!--Integration of the map-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin=""/>
+    <!--Position of the map-->
+    <style>
+        #myMap {position: relative;
+        }
+    </style>
+</head>
+<body onload="table();">
+
+    <center><h1>Proyect 1</h1></center>
+    <center><h3>GPS coordinates</h3></center>
+    <center><table  width="70%">
+       <tr align=center>
+        
+        <td><b>Longitud</b></td>
+        <td><b>Date</b></td>
+        <td><b>Time</b></td>
+       </tr>
+
+    <script type="text/javascript">
+        function table(){
+            const xhttp=new XMLHttpRequest();
+            xhttp.onload=function(){
+                const data = JSON.parse(this.responseText);
+                document.getElementById("table").innerHTML=this.responseText;
+                marker.setLatLng([data.Longitud, data.Latitud]);
+            }
+            xhttp.open("GET", "/data");
+            xhttp.send();
+        }
+
+        setInterval(function() {
+            table();
+        }, 500);
+    </script>
+    <div id="table">
+
+    </div>
+
+    <div id="myMap" style="height: 300px"></div>
+
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+     integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+     crossorigin=""></script>
+    <script src="/map.js"></script>
+
+    </body>
+    </html>
+
+  
