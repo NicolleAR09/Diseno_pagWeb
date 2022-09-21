@@ -38,7 +38,7 @@ application = new function(){
 
     
     }
-    setInterval(this.leer,1000);
+    setInterval(this.leer,5000);
 }
 
 application.leer();
