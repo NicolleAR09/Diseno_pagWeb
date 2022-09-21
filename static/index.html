@@ -39,6 +39,7 @@
         background-color: rgb(29, 29, 94);
         color:#ffffff;
         text-align: center;
+        justify-content: center;
         
     }
 
@@ -121,7 +122,7 @@
                         function table(){
                             const xhttp=new XMLHttpRequest();
                             xhttp.onload=function(){
-                               // const JSON = {"database":{"Latitud":"", "Longitud":"", "Date":"", "Time":""}};
+                                const JSON = {"database":{"Latitud":"", "Longitud":"", "Date":"", "Time":""}};
                                 const data = JSON.parse(this.responseText);
                                // console.log(data.length)
                                 
