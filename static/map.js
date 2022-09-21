@@ -15,12 +15,12 @@ let marker = L.marker([10.9886091, -74.7922088]).addTo(myMap)
 
 //var  ppopup = L.popup();
 
-function onMapClick(e) {
-popup
-    .setLatLng(e.latlng)
-    .setContent("You clicked the map at " + e.latlng.toString())
-    .openOn(myMap);
-}
+//function onMapClick(e) {
+//popup
+  //  .setLatLng(e.latlng)
+    //.setContent("You clicked the map at " + e.latlng.toString())
+    //.openOn(myMap);
+//}
 
 myMap.on('click', onMapClick);
 
