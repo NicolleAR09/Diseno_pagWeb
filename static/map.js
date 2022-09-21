@@ -24,12 +24,25 @@ let marker = L.marker([10.9886091, -74.7922088]).addTo(myMap)
 
 //myMap.on('click', onMapClick);
 
-var polyline = [];
-var latlong = [Number("lat"),Number("lng")];
-marker.setLatLng(latlong);
-map.setView(latlong);
 
-polyline.push(latlong);
-line = L.polyline(polyline, {color: 'red'}).addTo(myMap);
+var polyline = [];
+application = new function(){
+    this.leer = async function(){
+        var latlong = [Number("lat"),Number("lng")];
+        marker.setLatLng(latlong);
+        map.setView(latlong);
+
+        polyline.push(latlong);
+        line = L.polyline(polyline, {color: 'red'}).addTo(myMap);
+
+
+    
+    }
+    setInterval(this.leer,1000);
+}
+
+application.leer();
+
+
 
 
