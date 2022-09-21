@@ -8,7 +8,7 @@ const express = require('express');
     Date: "00/00/00",
     Time: "00:00:00"
  };
-
+//comment javier
  app.get("/data", (req, res) => {
     const json = JSON.stringify(data)
     return res.status(200).send(json);
