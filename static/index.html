@@ -130,7 +130,15 @@
 
                     <script type="text/javascript">
 
-                        
+                        async function timestamp(){
+                            const start = document.getElementById("meeting-time").value;
+                            const end = document.getElementById("ending-time").value;
+                          //  const response = await fetch(`/datahistoric/${}`);
+                          console.log(start,end);
+
+
+                        }
+
                         
                         function table(){
                             const xhttp=new XMLHttpRequest();
@@ -229,9 +237,12 @@
 
     <input type="datetime-local" id="meeting-time">
 
-    <label for="meeting-time">Choose an end time:</label>
 
-    <input type="datetime-local" id="meeting-time">
+    <label for="ending-time">Choose an end time:</label>
+
+    <input type="datetime-local" id="ending-time">
+
+
       <!-- name="meeting-time" value="2018-06-12T19:30"
         min="" max="2018-06-14T00:00" -->
 
