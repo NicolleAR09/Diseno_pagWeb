@@ -82,8 +82,21 @@
                         function table(){
                             const xhttp=new XMLHttpRequest();
                             xhttp.onload=function(){
-                                const JSON = '{"Latitud":"", "Longitud":"", "Date":"", "Time":""}';
+                                const JSON = {"database":{"Latitud":"", "Longitud":"", "Date":"", "Time":""}};
                                 const data = JSON.parse(this.responseText);
+                                console.log(data.length)
+                                $("#Table").append( '<tr align=center> <td><b>Latitude</b></td>'+
+                                                    '<td><b>Longitude</b></td>' +
+                                                    '<td><b>Date</b></td>' +
+                                                    '<td><b>Time</b></td> </tr>')
+                                for (i=0; i<data.length;i++)
+
+                                $("#Table").append( '<tr align=center>'+
+                                                    '<td><b>Latitude</b></td>'+ data.
+                                                    '<td> <b>Longitude</b></td>' +
+                                                    '<td><b>Date</b></td>' +
+                                                    '<td><b>Time</b></td> </tr>')
+
                                 document.getElementById("table").innerHTML=this.responseText;
                                 marker.setLatLng([data.Longitud, data.Latitud]);
                             }
