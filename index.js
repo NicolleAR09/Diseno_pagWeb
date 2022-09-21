@@ -50,6 +50,27 @@ app.use(express.static(__dirname+'/static'));
 app.listen(8000, ()=>console.log('Mi servidor está corriendo sobre el puerto 8000'));
 socket.bind(8050);
 
+
+//Addition of the database
+const mysql = require('mysql')
+
+DBConfig = {
+  host: 'disenoelectronico.cc3xavelbops.us-east-1.rds.amazonaws.com',
+  port: '3306',
+  user: 'admin',
+  password:"disenoelectronico",
+  database:'diseno-electronico'
+}
+
+const connection = mysql.createConnection(DBConfig)
+connection.connect((error)=>{
+  if(error){
+      console.log(error)
+      connection.end()
+  }
+  
+})
+
 // Contenido estático
 
  /*
