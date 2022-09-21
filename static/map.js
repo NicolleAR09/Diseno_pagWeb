@@ -25,4 +25,11 @@ popup
 myMap.on('click', onMapClick);
 
 var polyline = [];
-var LatLong = [Number(),Number()]
+var LatLong = [Number(lat),Number(lng)];
+marker.setLatLng(latlong);
+map.setView(latlong);
+
+polyline.push(latlong);
+line = L.polyline(polyline, {color: 'red'}).addTo(myMap);
+
+
