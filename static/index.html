@@ -124,9 +124,13 @@
                             xhttp.onload=function(){
                                 const JSON = {"database":{"Latitud":"", "Longitud":"", "Date":"", "Time":""}};
                                 const data = JSON.parse(this.responseText);
+                                const datos = '<tr>'+'<td><b>'+data.Latitud+'</b></td>'+
+                                             '<td><b>'+data.Longitud+'</b></td>'+
+                                            '<td><b>'+data.Date+'</b></td>' +
+                                            '<td><b>'+data.Time+'</b></td>'+'</tr>'
                                // console.log(data.length)
                                 
-                                document.getElementById("table").innerHTML=this.responseText;
+                                document.getElementById("table").innerHTML=data;
                                 marker.setLatLng([data.Longitud, data.Latitud]);
                             }
                             xhttp.open("GET", "/data");
