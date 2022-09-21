@@ -125,6 +125,7 @@
                                 const jsn = {"database":{"Latitud":"", "Longitud":"", "Date":"", "Time":""}};
                                 var data = this.responseText;
                                 data=JSON.parse(data)
+                                console.log(this.responseText);
                                 const datos = '<tr>'+'<td><b>'+data.Latitud+'</b></td>'+
                                               '<td><b>'+data.Longitud+'</b></td>'+
                                               '<td><b>'+data.Date+'</b></td>' +
