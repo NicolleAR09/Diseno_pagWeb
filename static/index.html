@@ -126,13 +126,15 @@
                                 var data = this.responseText;
                                 data=JSON.parse(data)
                                 console.log(data.Latitud);
-                                const datos = '<tr>'+'<td><b>'+data.Latitud+'</b></td>'+
-                                              '<td><b>'+data.Longitud+'</b></td>'+
-                                              '<td><b>'+data.Date+'</b></td>' +
-                                              '<td><b>'+data.Time+'</b></td>'+'</tr>'
+                                const datos = "<tr>"+
+                                              "<td>"+data.Latitud+"</td>"+
+                                              "<td>"+data.Longitud+"</td>"+
+                                              "<td>"+data.Date+"</td>"+
+                                              "<td>"+data.Time+"</td>"+
+                                              "</tr>";
                                // console.log(data.length)
                                 
-                                document.getElementById("table").innerHTML=data;
+                                document.getElementById("table").innerHTML=datos;
                                 marker.setLatLng([data.Longitud, data.Latitud]);
                             }
                             xhttp.open("GET", "/data");
