@@ -1,7 +1,12 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> a5f422d03daafc3d02edca73e9618caef29c58ea
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -87,6 +92,34 @@
     <center><table  width="70%">
        <tr align=center>
         <td><b>Latitud</b></td>
+=======
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyect 1</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin=""/>
+    <style>
+        #myMap {position: relative;
+        }
+    </style>
+</head>
+<body onload="table();">
+
+    <center><h1>Proyect 1</h1></center>
+    <center><h3>GPS coordinates</h3></center>
+    <center><table  width="70%">
+       <tr align=center>
+<<<<<<<< HEAD:static/index_original.html
+<<<<<<<< HEAD:index2.html
+        <td><b>Latitud</b></td>
+========
+        
+>>>>>>>> 9f59102b9b6f5585d17db6aa4bafac30b90f3a03:static/index_original.html
+========
+        
+>>>>>>>> a5f422d03daafc3d02edca73e9618caef29c58ea:static/index.html
+>>>>>>> a5f422d03daafc3d02edca73e9618caef29c58ea
         <td><b>Longitud</b></td>
         <td><b>Date</b></td>
         <td><b>Time</b></td>
@@ -100,7 +133,19 @@
                 document.getElementById("table").innerHTML=this.responseText;
                 marker.setLatLng([data.Longitud, data.Latitud]);
             }
+<<<<<<< HEAD
             xhttp.open("GET", "/data");
+=======
+<<<<<<<< HEAD:static/index_original.html
+<<<<<<<< HEAD:index2.html
+            xhttp.open("GET", "tabledata2.php");
+========
+            xhttp.open("GET", "/data");
+>>>>>>>> 9f59102b9b6f5585d17db6aa4bafac30b90f3a03:static/index_original.html
+========
+            xhttp.open("GET", "/data");
+>>>>>>>> a5f422d03daafc3d02edca73e9618caef29c58ea:static/index.html
+>>>>>>> a5f422d03daafc3d02edca73e9618caef29c58ea
             xhttp.send();
         }
 
@@ -119,6 +164,7 @@
      crossorigin=""></script>
     <script src="/map.js"></script>
 
+<<<<<<< HEAD
      <!--Position of the map-->
      <style>
         #myMap {position: relative;
@@ -131,6 +177,8 @@
    <script src="js/scripts.js"></script>
 
 
+=======
+>>>>>>> a5f422d03daafc3d02edca73e9618caef29c58ea
     </body>
     </html>
 
