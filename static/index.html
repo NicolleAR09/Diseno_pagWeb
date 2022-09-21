@@ -96,7 +96,7 @@
 
                    <center><h1>GPS coordinates</h1></center>
                     <div>
-                       <table align=center class="content-table">
+                       <table align=center class="content-table" id="content-table">
                         <thead align=center> 
                             <tr >
                             <td><b>Latitude</b></td>
@@ -134,7 +134,7 @@
                                               "</tr>";
                                // console.log(data.length)
                                 
-                                document.getElementById("table").innerHTML=datos;
+                                document.getElementById("content-table").innerHTML=datos;
                                 marker.setLatLng([data.Longitud, data.Latitud]);
                             }
                             xhttp.open("GET", "/data");
