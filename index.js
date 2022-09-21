@@ -6,7 +6,7 @@ const express = require('express');
 const mysql = require('mysql')
 
 DBConfig = {
-  host: 'localhost',
+  host: '3.226.112.51',
   port: '3306',
   user: 'root',
   password:"",
