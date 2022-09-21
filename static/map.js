@@ -25,7 +25,7 @@ popup
 myMap.on('click', onMapClick);
 
 var polyline = [];
-var LatLong = [Number(lat),Number(lng)];
+var latlong = [Number(lat),Number(lng)];
 marker.setLatLng(latlong);
 map.setView(latlong);
 
