@@ -22,4 +22,4 @@ popup
     .openOn(myMap);
 }
 
-myMap.on('click', onMapClick);
+myMap.on('click', onMapClick);   
