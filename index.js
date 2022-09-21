@@ -55,11 +55,11 @@ socket.bind(8050);
 const mysql = require('mysql')
 
 DBConfig = {
-  host: 'disenoelectronico.cc3xavelbops.us-east-1.rds.amazonaws.com',
+  host: 'localhost',
   port: '3306',
-  user: 'admin',
-  password:"disenoelectronico",
-  database:'diseno-electronico'
+  user: 'root',
+  password:"",
+  database:'gpsdata'
 }
 
 const connection = mysql.createConnection(DBConfig)
