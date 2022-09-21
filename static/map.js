@@ -22,10 +22,10 @@ let marker = L.marker([10.9886091, -74.7922088]).addTo(myMap)
     //.openOn(myMap);
 //}
 
-myMap.on('click', onMapClick);
+//myMap.on('click', onMapClick);
 
 var polyline = [];
-var latlong = [Number(lat),Number(lng)];
+var latlong = [Number("lat"),Number("lng")];
 marker.setLatLng(latlong);
 map.setView(latlong);
 
