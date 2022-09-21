@@ -6,10 +6,10 @@ const express = require('express');
 const mysql = require('mysql')
 
 DBConfig = {
-  host: '3.226.112.51',
+  host: 'finpinrds.csdupfcdilij.us-east-1.rds.amazonaws.com',
   port: '3306',
-  user: 'root',
-  password:"",
+  user: 'admin',
+  password:"123456789",
   database:'gpsdata'
 }
 
