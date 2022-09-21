@@ -126,12 +126,13 @@
                                 var data = this.responseText;
                                 data=JSON.parse(data)
                                 console.log(data.Latitud);
-                                const datos = "<tr>"+
-                                              "<td>"+data.Latitud+"</td>"+
-                                              "<td>"+data.Longitud+"</td>"+
-                                              "<td>"+data.Date+"</td>"+
-                                              "<td>"+data.Time+"</td>"+
-                                              "</tr>";
+                                var datos = "";
+                                datos += "<tr>";
+                                    datos +=  "<td>"+data.Latitud+"</td>";
+                                    datos +=   "<td>"+data.Longitud+"</td>";
+                                    datos +=   "<td>"+data.Date+"</td>";
+                                    datos +=   "<td>"+data.Time+"</td>";
+                                    datos +=  "</tr>";
                                // console.log(data.length)
                                 
                                 document.getElementById("content-table").innerHTML=datos;
