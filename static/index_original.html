@@ -1,6 +1,4 @@
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +20,11 @@
     <center><h3>GPS coordinates</h3></center>
     <center><table  width="70%">
        <tr align=center>
+<<<<<<<< HEAD:index2.html
         <td><b>Latitud</b></td>
+========
+        
+>>>>>>>> 9f59102b9b6f5585d17db6aa4bafac30b90f3a03:static/index_original.html
         <td><b>Longitud</b></td>
         <td><b>Date</b></td>
         <td><b>Time</b></td>
@@ -32,11 +34,18 @@
         function table(){
             const xhttp=new XMLHttpRequest();
             xhttp.onload=function(){
+                const data = JSON.parse(this.responseText);
                 document.getElementById("table").innerHTML=this.responseText;
+                marker.setLatLng([data.Longitud, data.Latitud]);
             }
+<<<<<<<< HEAD:index2.html
             xhttp.open("GET", "tabledata2.php");
+========
+            xhttp.open("GET", "/data");
+>>>>>>>> 9f59102b9b6f5585d17db6aa4bafac30b90f3a03:static/index_original.html
             xhttp.send();
         }
+
         setInterval(function() {
             table();
         }, 500);
@@ -50,7 +59,7 @@
     <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
      integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
      crossorigin=""></script>
-    <script src="map.js"></script>
+    <script src="/map.js"></script>
 
     </body>
     </html>
