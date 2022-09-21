@@ -147,10 +147,12 @@
                                document.getElementById("date").innerHTML=data.Date;
                                document.getElementById("time").innerHTML=data.Time;
                                 // document.getElementById("content-table").innerHTML=datos;
-                                marker.setLatLng([data.Longitud, data.Latitud]);
-                                    
-                                //poliline:
+                                //marker.setLatLng([data.Longitud, data.Latitud]);
                                 var latlong = [Number(data.Latitud),Number(data.Longitud)];
+                                marker.setLatLng(latlong);
+                                map.setView(latlong);
+                                //poliline:
+                               
                                 poly.push(latlong);
                                 line = L.polyline(poly, {color: 'red'}).addTo(myMap);
 
