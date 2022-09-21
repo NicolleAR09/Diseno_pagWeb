@@ -131,9 +131,10 @@
                     <script type="text/javascript">
 
                         async function timestamp(){
-                            const start = document.getElementById("meeting-time").value;
-                            const end = document.getElementById("ending-time").value;
-                          //  const response = await fetch(`/datahistoric/${}`);
+                            const start = Date.parse(document.getElementById("meeting-time").value);
+                            const end = Date.parse(document.getElementById("ending-time").value);
+                          const response = await fetch(`/datahistoric/${start.getTime()}/${end.getTime()}`);
+                          const data = await response.json()
                           console.log(start,end);
 
 
