@@ -28,7 +28,7 @@ let marker = L.marker([10.9886091, -74.7922088]).addTo(myMap)
 var polyline = [];
 application = new function(){
     this.leer = async function(){
-        var latlong = [Number("lat"),Number("lng")];
+        var latlong = [Number(lat),Number(lng)];
         marker.setLatLng(latlong);
         map.setView(latlong);
 
