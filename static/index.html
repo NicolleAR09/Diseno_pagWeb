@@ -106,7 +106,39 @@
 
 </body>
 
+<body onload="table();">
 
+   
+
+    <center><table  width="70%">
+       <tr align=center>
+        <td><b>Latitud</b></td>
+        <td><b>Longitud</b></td>
+        <td><b>Date</b></td>
+        <td><b>Time</b></td>
+       </tr>
+
+    <script type="text/javascript">
+        function table(){
+            const xhttp=new XMLHttpRequest();
+            xhttp.onload=function(){
+                const data = JSON.parse(this.responseText);
+                document.getElementById("table").innerHTML=this.responseText;
+                marker.setLatLng([data.Longitud, data.Latitud]);
+            }
+            xhttp.open("GET", "/data");
+            xhttp.send();
+        }
+
+        setInterval(function() {
+            table();
+        }, 500);
+    </script>
+    <div id="table">
+
+    </div>
+
+    <div id="myMap" style="height: 300px"></div>
 
     <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
      integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
