@@ -72,8 +72,8 @@
 
                     <center><table  width="70%">
                        <tr align=center>
-                        <td><b>Latitud</b></td>
-                        <td><b>Longitud</b></td>
+                        <td><b>Latitude</b></td>
+                        <td><b>Longitude</b></td>
                         <td><b>Date</b></td>
                         <td><b>Time</b></td>
                        </tr>
@@ -82,6 +82,7 @@
                         function table(){
                             const xhttp=new XMLHttpRequest();
                             xhttp.onload=function(){
+                                const JSON = '{"latitude":, "longitude":, "date":, "time":}';
                                 const data = JSON.parse(this.responseText);
                                 document.getElementById("table").innerHTML=this.responseText;
                                 marker.setLatLng([data.Longitud, data.Latitud]);
