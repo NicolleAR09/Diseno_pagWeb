@@ -23,3 +23,6 @@ popup
 }
 
 myMap.on('click', onMapClick);
+
+var polyline = [];
+var LatLong = [Number(),Number()]

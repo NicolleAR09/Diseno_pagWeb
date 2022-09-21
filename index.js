@@ -2,6 +2,26 @@ const express = require('express');
 
  const app = express();
 
+//Addition of the database
+const mysql = require('mysql')
+
+DBConfig = {
+  host: 'localhost',
+  port: '3306',
+  user: 'root',
+  password:"",
+  database:'gpsdata'
+}
+
+const connection = mysql.createConnection(DBConfig)
+connection.connect((error)=>{
+  if(error){
+      console.log(error)
+      connection.end()
+  }
+  
+})
+
  const data = {
     Latitud: 0,
     Longitud: 0,
@@ -43,6 +63,7 @@ const insertData = (info) => {
     data.Date = info[2];
     data.Time = info[3];
 
+    const query = `INSERT INTO gpsdata (Latitud, Longitud, Date, Time) VALUES ('data.Latitud', 'data.Longitud', 'data.Date','data.Time')`;
     console.log("Received: ", data);
 };
 
@@ -51,25 +72,6 @@ app.listen(8000, ()=>console.log('Mi servidor está corriendo sobre el puerto 80
 socket.bind(8050);
 
 
-//Addition of the database
-const mysql = require('mysql')
-
-DBConfig = {
-  host: 'localhost',
-  port: '3306',
-  user: 'root',
-  password:"",
-  database:'gpsdata'
-}
-
-const connection = mysql.createConnection(DBConfig)
-connection.connect((error)=>{
-  if(error){
-      console.log(error)
-      connection.end()
-  }
-  
-})
 
 // Contenido estático
 
