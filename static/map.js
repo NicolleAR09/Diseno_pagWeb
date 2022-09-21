@@ -25,23 +25,23 @@ let marker = L.marker([10.9886091, -74.7922088]).addTo(myMap)
 //myMap.on('click', onMapClick);
 
 
-var polyline = [];
-application = new function(){
-    this.leer = async function(){
-        var latlong = [Number(document.getElementById("lat").value),Number(document.getElementById("lng").value)];
-        marker.setLatLng(latlong);
-        map.setView(latlong);
+// var polyline = [];
+// application = new function(){
+//     this.leer = async function(){
+//         var latlong = [Number(document.getElementById("lat").value),Number(document.getElementById("lng").value)];
+//         marker.setLatLng(latlong);
+//         map.setView(latlong);
 
-        polyline.push(latlong);
-        line = L.polyline(polyline, {color: 'red'}).addTo(myMap);
+//         polyline.push(latlong);
+//         line = L.polyline(polyline, {color: 'red'}).addTo(myMap);
 
 
     
-    }
-    setInterval(this.leer,5000);
-}
+//     }
+//     setInterval(this.leer,5000);
+// }
 
-application.leer();
+// application.leer();
 
 
 
