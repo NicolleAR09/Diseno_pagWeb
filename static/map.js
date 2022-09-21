@@ -9,15 +9,6 @@ L.tileLayer(tilesProvider,{
 
 let marker = L.marker([10.9886091, -74.7922088]).addTo(myMap)
 
-marker.setLatLng([data.Longitud, data.Latitud]);
-                                
-          //marker.setLatLng(latlong);
-         //map.setView(latlong);
-          //poliline:
-          var latlong = [Number(data.Latitud),Number(data.Longitud)];
-          poly.push(latlong);
-          line = L.polyline(poly, {color: 'red'}).addTo(myMap);
-
 
 
 // marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();

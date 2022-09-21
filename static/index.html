@@ -125,7 +125,9 @@
                     <div>
 
                     <script type="text/javascript">
-                        var poly= [];
+
+                        const line = L.polyline([], {color: 'red'}).addTo(myMap);
+                        
                         function table(){
                             const xhttp=new XMLHttpRequest();
                             xhttp.onload=function(){
@@ -153,8 +155,8 @@
                                 //map.setView(latlong);
                                 //poliline:
                                 var latlong = [Number(data.Latitud),Number(data.Longitud)];
-                                poly.push(latlong);
-                                line = L.polyline(poly, {color: 'red'}).addTo(myMap);
+                                //poly.push(latlong);
+                                line.addLatLng(latlong)
 
                             
 
