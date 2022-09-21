@@ -8,6 +8,7 @@ L.tileLayer(tilesProvider,{
 }).addTo(myMap)
 
 let marker = L.marker([10.9886091, -74.7922088]).addTo(myMap)
+const line = L.polyline([], {color: 'red'}).addTo(myMap);
 
 
 
