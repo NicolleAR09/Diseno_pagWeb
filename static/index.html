@@ -123,7 +123,7 @@
                             const xhttp=new XMLHttpRequest();
                             xhttp.onload=function(){
                                 const JSON = {"database":{"Latitud":"", "Longitud":"", "Date":"", "Time":""}};
-                                const data = JSON.parse(this.responseText);
+                                const data = JSON.parse(responseText);
                                 const datos = '<tr>'+'<td><b>'+data.Latitud+'</b></td>'+
                                              '<td><b>'+data.Longitud+'</b></td>'+
                                             '<td><b>'+data.Date+'</b></td>' +
