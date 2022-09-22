@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Proyect 1</title>
+    <title>FindPin</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -19,8 +19,37 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
     integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
     crossorigin=""/>
+
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""></script>
+
+
    
 </head>
+
+
+<style>
+    .content-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        min-width: 400px;
+        text-align: center;
+
+    }
+
+    .content-table thead tr {
+        background-color: rgb(29, 29, 94);
+        color:#ffffff;
+        text-align: center;
+        justify-content: center;
+        
+    }
+
+   
+
+</style>
 
 <body>
 
@@ -36,7 +65,7 @@
             <ul class="navbar-nav ms-auto py-4 py-lg-0">
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Home</a></li>
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
-                <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="post.html">Sample Post</a></li>
+           
                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li>
                           
             </ul>
@@ -46,13 +75,13 @@
 
 
 <!-- Page Header-->
-<header class="masthead" style="background-image: url('assets/img/map-bg.jpg')">
+<header class="masthead" style="background-image: url('assets/img/banner.jpg')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>FindPin</h1>
-                    <span class="subheading">A pin to track your vehicles</span>
+                    <span class="subheading">A pin to track your moving devices</span>
                 </div>
             </div>
         </div>
@@ -65,29 +94,117 @@
         <div class="col-md-10 col-lg-8 col-xl-7">
 
             <!-- Post preview-->
-            <div class="post-preview">
-                <a href="post.html">
+               <!--  <div class="post-preview">-->
+               
+                
+
+                   <center><h1>GPS coordinates</h1></center>
+                    <div>
+                       <table align=center class="content-table" id="content-table">
+                        <thead align=center> 
+                            <tr >
+                            <td><b>Id</b></td>
+                            <td><b>Latitude</b></td>
+                            <td><b>Longitude</b></td>
+                            <td><b>Timestamp</b></td>
+                            </tr>
+                            <tr >
+                                <td id = "Id"><b></b></td>
+                                <td id = "lat"><b></b></td>
+                                <td id = "lng"><b></b></td>
+                                <td id = "timestamp"><b></b></td>
+                                </tr>
+                         </thead>
+
+
+                        
+
+
+
+                       </table> 
+                      
+                    </div>
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                    <div>
+
+                    <script type="text/javascript">
+
+                        async function timestamp(){
+                            const start = Date.parse(document.getElementById("stime").value);
+                            const end = Date.parse(document.getElementById("ftime").value);
+                          const response = await fetch(`/datahistoric/${start.getTime()}/${end.getTime()}`);
+                          const data = await response.json()
+                          console.log(start,end);
+
+
+                        }
+
+                        
+                        function table(){
+                            const xhttp=new XMLHttpRequest();
+                            xhttp.onload=function(){
+                                const jsn = {"database":{"Id":"", "Latitud":"", "Longitud":"", "Timestamp":""}};
+                                var data = this.responseText;
+                                data=JSON.parse(data)
+                                console.log(data.Latitud);
+                                var datos = "";
+                                // datos += "<tr>";
+                                //     datos +=  "<td>"+data.Latitud+"</td>";
+                                //     datos +=   "<td>"+data.Longitud+"</td>";
+                                //     datos +=   "<td>"+data.Date+"</td>";
+                                //     datos +=   "<td>"+data.Time+"</td>";
+                                //     datos +=  "</tr>";
+                               // console.log(data.length)
+                                
+                               document.getElementById("id").innerHTML=data.Id;
+                               document.getElementById("lat").innerHTML=data.Latitud;
+                               document.getElementById("lng").innerHTML=data.Longitud;
+                               document.getElementById("timestamp").innerHTML=data.Timestamp;
+                                // document.getElementById("content-table").innerHTML=datos;
+                                marker.setLatLng([data.Longitud, data.Latitud]);
+                                
+                                //marker.setLatLng(latlong);
+                                //map.setView(latlong);
+                                //poliline:
+                                var latlong = [Number(data.Longitud),Number(data.Latitud)];
+                                //poly.push(latlong);
+                                line.addLatLng(latlong)
+
+                            
+
+                            }
+                            xhttp.open("GET", "/data");
+                            xhttp.send();
+                        }
+                
+                        setInterval(function() {
+                            table();
+                        }, 500);
+                    </script>
+
+                    </div>
+                    <div id="table">
+                
+                </div>
+                
                     
-                </a>
-                <p class="post-meta">
-                    Posted by
-                    <a href="#!">Start Bootstrap</a>
-                    
-                </p>
+            
             </div>
+            <div id="myMap" style="height: 300px"></div>
             <!-- Divider-->
             <hr class="my-4" />
 
 </body>
 
-<body onload="table();">
+<!-- <body onload="table();">
 
-    <center><h1>GPS coordinates</h1></center>
+   
 
     <center><table  width="70%">
        <tr align=center>
-        <td><b>Latitud</b></td>
-        <td><b>Longitud</b></td>
+        <td><b>Latitude</b></td>
+        <td><b>Longitude</b></td>
         <td><b>Date</b></td>
         <td><b>Time</b></td>
        </tr>
@@ -112,23 +229,74 @@
 
     </div>
 
-    <div id="myMap" style="height: 300px"></div>
+    <div id="myMap" style="height: 300px"></div>-->
 
-    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
-     integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
-     crossorigin=""></script>
+ 
     <script src="/map.js"></script>
 
+    <label for="stime">Choose a start time:</label>
+
+    <input type="datetime-local" id="stime">
+
+
+    <label for="ftime">Choose an end time:</label>
+
+    <input type="datetime-local" id="ftime">
+
+
+      <!-- name="meeting-time" value="2018-06-12T19:30"
+        min="" max="2018-06-14T00:00" -->
+
      <!--Position of the map-->
-     <style>
+    <!-- <style>
         #myMap {position: relative;
         }
-    </style>
+    </style>-->
+
+ <!-- Footer-->
+ <footer class="border-top">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <ul class="list-inline text-center">
+                    <li class="list-inline-item">
+                        <a href="#!">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#!">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#!">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2022</div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
 
    <!-- Bootstrap core JS-->
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
    <!-- Core theme JS-->
    <script src="js/scripts.js"></script>
+    <script src = "./record.js"></script>
 
 
     </body>

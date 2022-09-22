@@ -8,18 +8,4 @@ L.tileLayer(tilesProvider,{
 }).addTo(myMap)
 
 let marker = L.marker([10.9886091, -74.7922088]).addTo(myMap)
-
-
-
-// marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-
-//var  ppopup = L.popup();
-
-function onMapClick(e) {
-popup
-    .setLatLng(e.latlng)
-    .setContent("You clicked the map at " + e.latlng.toString())
-    .openOn(myMap);
-}
-
-myMap.on('click', onMapClick);   
+const line = L.polyline([], {color: 'red'}).addTo(myMap);
