@@ -103,16 +103,16 @@
                        <table align=center class="content-table" id="content-table">
                         <thead align=center> 
                             <tr >
+                            <td><b>Id</b></td>
                             <td><b>Latitude</b></td>
                             <td><b>Longitude</b></td>
-                            <td><b>Date</b></td>
-                            <td><b>Time</b></td>
+                            <td><b>Timestamp</b></td>
                             </tr>
                             <tr >
+                                <td id = "Id"><b></b></td>
                                 <td id = "lat"><b></b></td>
                                 <td id = "lng"><b></b></td>
-                                <td id = "date"><b></b></td>
-                                <td id = "time"><b></b></td>
+                                <td id = "timestamp"><b></b></td>
                                 </tr>
                          </thead>
 
@@ -144,7 +144,7 @@
                         function table(){
                             const xhttp=new XMLHttpRequest();
                             xhttp.onload=function(){
-                                const jsn = {"database":{"Latitud":"", "Longitud":"", "Date":"", "Time":""}};
+                                const jsn = {"database":{"Id":"", "Latitud":"", "Longitud":"", "Timestamp":""}};
                                 var data = this.responseText;
                                 data=JSON.parse(data)
                                 console.log(data.Latitud);
@@ -157,10 +157,10 @@
                                 //     datos +=  "</tr>";
                                // console.log(data.length)
                                 
+                               document.getElementById("id").innerHTML=data.Id;
                                document.getElementById("lat").innerHTML=data.Latitud;
                                document.getElementById("lng").innerHTML=data.Longitud;
-                               document.getElementById("date").innerHTML=data.Date;
-                               document.getElementById("time").innerHTML=data.Time;
+                               document.getElementById("timestamp").innerHTML=data.Timestamp;
                                 // document.getElementById("content-table").innerHTML=datos;
                                 marker.setLatLng([data.Longitud, data.Latitud]);
                                 

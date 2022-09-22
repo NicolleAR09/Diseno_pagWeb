@@ -1,0 +1,25 @@
+{
+  "name": "paginaleo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NicolleAR09/Diseno_pagWeb.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NicolleAR09/Diseno_pagWeb/issues"
+  },
+  "homepage": "https://github.com/NicolleAR09/Diseno_pagWeb#readme",
+  "dependencies": {
+    "dgram": "^1.0.1",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "mysql": "^2.18.1"
+  }
+}

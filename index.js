@@ -1,4 +1,5 @@
 const express = require('express');    
+require('dotenv').config();
 
  const app = express();
 
@@ -6,11 +7,11 @@ const express = require('express');
 const mysql = require('mysql')
 
 DBConfig = {
-  host: 'finpinrds.csdupfcdilij.us-east-1.rds.amazonaws.com',
   port: '3306',
-  user: 'admin',
-  password:"123456789",
-  database:'gpsdata'
+  host: process.env.H,
+  user: process.env.U,
+  password: process.env.P,
+  database: process.env.DB,
 }
 
 const connection = mysql.createConnection(DBConfig)
@@ -55,15 +56,13 @@ socket.on('listening', (req, res) => {
   console.log(`UDP server listening on: ${address.address}:${address.port}`);
 });
 
-//app.listen(8000);
-//console.log('Server on port 8000')
+// insert data to the satabase
 const insertData = (info) => {
     data.Latitud = info[0];
     data.Longitud = info[1];
-    data.Date = info[2];
-    data.Time = info[3];
+    data.Timestamp = info[2];
 
-    const query = `INSERT INTO gpsdata (Latitud, Longitud, Date, Time) VALUES ('data.Latitud', 'data.Longitud', 'data.Date','data.Time')`;
+    const query = `INSERT INTO gpsdata (Latitud, Longitud, Date, Timestamp) VALUES ('data.Latitud', 'data.Longitud','data.Timestamp')`;
     connection.query(query, function(err, result){
       if(err)throw err;
       console.log('Register saved')
@@ -71,6 +70,7 @@ const insertData = (info) => {
     console.log("Received: ", data);
 };
 
+//initializing server
 app.use(express.static(__dirname+'/static'));
 app.listen(8000, ()=>console.log('Mi servidor está corriendo sobre el puerto 8000'));
 socket.bind(8050);
