@@ -30,13 +30,13 @@ jobs:
           REMOTE_HOST: ${{ secrets.HOST_JAVIER }}
           REMOTE_USER: ${{ secrets.USER }}
           TARGET: ${{ secrets.DIRECTORIO }}
-     - name: Deploy to Server 3
-        uses: easingthemes/ssh-deploy@main
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.KEY_LEO }}
-          REMOTE_HOST: ${{ secrets.HOST_LEO }}
-          REMOTE_USER: ${{ secrets.USER }}
-          TARGET: ${{ secrets.DIRECTORIO }}
+     # - name: Deploy to Server 3
+      #  uses: easingthemes/ssh-deploy@main
+       # env:
+        #  SSH_PRIVATE_KEY: ${{ secrets.KEY_LEO }}
+         # REMOTE_HOST: ${{ secrets.HOST_LEO }}
+          #REMOTE_USER: ${{ secrets.USER }}
+          #TARGET: ${{ secrets.DIRECTORIO }}
       - name: Deploy to Server 4
         uses: easingthemes/ssh-deploy@main
         env:
