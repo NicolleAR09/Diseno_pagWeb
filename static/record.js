@@ -17,7 +17,7 @@ minutes < 10 ? minutes = "0" + minutes : minutes = minutes;
 
 const hora = hora1 + ":" + minutes;
 
-const currentDate = yyyy + "-" + mm + "-" + dd + "T" + hora;
+const currentDate = yyyy + "/" + mm + "/" + dd + " " + hora;
 
 
 //Obtener los inputs donde se van a colocar la fechas
