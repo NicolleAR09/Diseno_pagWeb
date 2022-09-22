@@ -29,7 +29,7 @@ startDate.max = currentDate;
 endDate.max = currentDate;
 
 
-// Seleccionar maximo y minimo para los calendarios segun las fechas seleccionadas
+// Seleccionar maximo y minimo para los calendarios segun las fechas seleccionadas.
 // Al hacer click en el calendario de fecha inicial, se obtiene el valor del calendario de fecha final
 // y se coloca que sea el maximo posible, para que la fecha inicial no sea nunca posterior a la final
 startDate.addEventListener("click", async () => {
