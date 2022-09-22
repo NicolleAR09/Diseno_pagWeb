@@ -25,6 +25,7 @@ const startDate = document.getElementById("sdate");
 const endDate = document.getElementById("fdate");
 
 //Definir que la fecha maxima por defecto sea la del dia de hoy
+console.log(startDate);
 startDate.max = currentDate;
 endDate.max = currentDate;
 
