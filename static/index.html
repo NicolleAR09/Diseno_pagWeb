@@ -131,8 +131,8 @@
                     <script type="text/javascript">
 
                         async function timestamp(){
-                            const start = Date.parse(document.getElementById("meeting-time").value);
-                            const end = Date.parse(document.getElementById("ending-time").value);
+                            const start = Date.parse(document.getElementById("stime").value);
+                            const end = Date.parse(document.getElementById("ftime").value);
                           const response = await fetch(`/datahistoric/${start.getTime()}/${end.getTime()}`);
                           const data = await response.json()
                           console.log(start,end);
@@ -234,14 +234,14 @@
  
     <script src="/map.js"></script>
 
-    <label for="meeting-time">Choose a start time:</label>
+    <label for="stime">Choose a start time:</label>
 
-    <input type="datetime-local" id="meeting-time">
+    <input type="datetime-local" id="stime">
 
 
-    <label for="ending-time">Choose an end time:</label>
+    <label for="ftime">Choose an end time:</label>
 
-    <input type="datetime-local" id="ending-time">
+    <input type="datetime-local" id="ftime">
 
 
       <!-- name="meeting-time" value="2018-06-12T19:30"
@@ -296,6 +296,7 @@
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
    <!-- Core theme JS-->
    <script src="js/scripts.js"></script>
+    <script src = "./record.js"></script>
 
 
     </body>
