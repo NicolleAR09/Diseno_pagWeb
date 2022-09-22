@@ -9,10 +9,10 @@ const mysql = require('mysql')
 
 DBConfig = {
   port: '3306',
-  host: process.env.H,
-  user: process.env.U,
-  password: process.env.P,
-  database: process.env.DB,
+  host: 'finpinrds.csdupfcdilij.us-east-1.rds.amazonaws.com',
+  user: 'admin',
+  password: '123456789',
+  database: 'gpsdata',
 }
 
 const connection = mysql.createConnection(DBConfig)
