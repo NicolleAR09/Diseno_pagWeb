@@ -21,8 +21,8 @@ const currentDate = yyyy + "/" + mm + "/" + dd + " " + hora;
 
 
 //Obtener los inputs donde se van a colocar la fechas
-const startDate = document.getElementById("sdate");
-const endDate = document.getElementById("fdate");
+const startDate = document.getElementById("stime");
+const endDate = document.getElementById("ftime");
 
 //Definir que la fecha maxima por defecto sea la del dia de hoy
 console.log(startDate);
@@ -48,11 +48,11 @@ const showRecordInfo = async () => {
     // Se tienen que formatear porque por defecto traen la siguiente estructura, YYYY/MM/DDThh:mm:ss,
     // Entonces se elimina la T que separa la fecha y la hora, y se coloca un espacio, obteniendo 
     // la siguiente estructura YYYY/MM/DD hh:mm:ss
-    const idate = document.getElementById('sdate').value; //.value.split('T').join(' ');
-    const fdate = document.getElementById('fdate').value; //.value.split('T').join(' ');
+    const idate = document.getElementById('stime').value; //.value.split('T').join(' ');
+    const fdate = document.getElementById('ftime').value; //.value.split('T').join(' ');
     
     // Se hace el fetch a la api con las fechas para obtener la informacion de la base de datos
-    fetch(`/record?idate=${sdate}&fdate=${fdate}`, {
+    fetch(`/record?idate=${stime}&fdate=${ftime}`, {
         method: 'GET',
         headers: {
             Accept: 'application/json',
