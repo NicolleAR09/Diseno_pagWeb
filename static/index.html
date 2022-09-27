@@ -184,16 +184,36 @@
  
     <script src="/map.js"></script>
 
-    <label for="stimee">Choose a start time:</label>
+    <label for="stime">Choose a start time:</label>
 
-    <input type="datetime-local" id="stime">
+    <input type="datetime-local" id="stime" style="cursor:pointer">
 
 
     <label for="ftime">Choose an end time:</label>
 
-    <input type="datetime-local" id="ftime">
+    <input type="datetime-local" id="ftime" style="cursor:pointer">
 
-    
+    <style>
+        button
+        {
+            font-size: 20px;
+            padding: 5px;
+            border-radius: 5px;
+            margin: 10px;
+            background-color: #ffffff;
+            cursor: pointer;
+        }
+        #setDate 
+        {
+            text-align: center;
+        }
+    </style>
+
+    <div id="setDate">
+        <button class="submitInput" onclick="searchRange()">
+            Set Date
+        </button>
+    </div>
 
 
 

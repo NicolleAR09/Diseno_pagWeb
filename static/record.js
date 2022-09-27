@@ -48,6 +48,7 @@ const showRecordInfo = async () => {
     // Se tienen que formatear porque por defecto traen la siguiente estructura, YYYY/MM/DDThh:mm:ss,
     // Entonces se elimina la T que separa la fecha y la hora, y se coloca un espacio, obteniendo 
     // la siguiente estructura YYYY/MM/DD hh:mm:ss
+    console.log('Botton pushed')
     const idate = document.getElementById('stime').value; //.value.split('T').join(' ');
     const fdate = document.getElementById('ftime').value; //.value.split('T').join(' ');
     
