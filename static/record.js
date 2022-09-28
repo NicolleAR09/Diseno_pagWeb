@@ -97,10 +97,7 @@ const showRecordInfo = async () => {
 };
 
 const showpath = async () => {
-    // Se obtienen los valores de fecha en los calendarios y se formatean para poder hacer la consulta.
-    // Se tienen que formatear porque por defecto traen la siguiente estructura, YYYY/MM/DDThh:mm:ss,
-    // Entonces se elimina la T que separa la fecha y la hora, y se coloca un espacio, obteniendo 
-    // la siguiente estructura YYYY/MM/DD hh:mm:ss
+    
     console.log('Botton pushed')
     const stime = document.getElementById('stime').value; //.value.split('T').join(' ');
     const ftime = document.getElementById('ftime').value; //.value.split('T').join(' ');
