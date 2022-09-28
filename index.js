@@ -60,12 +60,12 @@ socket.on('listening', (req, res) => {
 
 //-------------------------------------------insert info to database
 const insertData = (info) => {
-    data.Latitud = info[0];
-    data.Longitud = info[1];
+    data.Latitud = Number(info[0]);
+    data.Longitud = Number(info[1]);
     data.Timestamp = new Date(Date.parse(info[2])).toISOString();
 
     console.log(data);
-    
+
     const query = `INSERT INTO gpsdata (Latitud, Longitud, Timestamp) VALUES ('${data.Latitud}', '${data.Longitud}','${data.Timestamp}')`;
     connection.query(query, function(err, result){
       if(err)throw err;
