@@ -10,9 +10,9 @@ L.tileLayer(tilesProvider,{
 let marker = L.marker([10.9886091, -74.7922088]).addTo(myMap)
 const line = L.polyline([], {color: 'red'}).addTo(myMap);
 
-onclick = "selectedMarker = marker" 
+onclick = "marker" 
 
 //update all locations
 // focus selected marker
 
-myMap.fitBounds(selectedMarker.getBounds());
+myMap.fitBounds(marker.getBounds());
