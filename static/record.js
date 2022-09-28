@@ -17,12 +17,12 @@ minutes < 10 ? minutes = "0" + minutes : minutes = minutes;
 
 const hora = hora1 + ":" + minutes;
 
-const currentDate = yyyy + "/" + mm + "/" + dd + " " + hora;
+const currentDate = yyyy + "-" + mm + "-" + dd + "T" + hora;
 
 
 //Obtener los inputs donde se van a colocar la fechas
-const startDate = document.getElementById("sdate");
-const endDate = document.getElementById("fdate");
+const startDate = document.getElementById("stime");
+const endDate = document.getElementById("ftime");
 
 //Definir que la fecha maxima por defecto sea la del dia de hoy
 console.log(startDate);
@@ -48,17 +48,20 @@ const showRecordInfo = async () => {
     // Se tienen que formatear porque por defecto traen la siguiente estructura, YYYY/MM/DDThh:mm:ss,
     // Entonces se elimina la T que separa la fecha y la hora, y se coloca un espacio, obteniendo 
     // la siguiente estructura YYYY/MM/DD hh:mm:ss
-    const idate = document.getElementById('sdate').value; //.value.split('T').join(' ');
-    const fdate = document.getElementById('fdate').value; //.value.split('T').join(' ');
+    console.log('Botton pushed')
+    const stime = document.getElementById('stime').value; //.value.split('T').join(' ');
+    const ftime = document.getElementById('ftime').value; //.value.split('T').join(' ');
     
     // Se hace el fetch a la api con las fechas para obtener la informacion de la base de datos
-    fetch(`/record?idate=${sdate}&fdate=${fdate}`, {
+    fetch(`/index?stime=${stime}&ftime=${ftime}`, {
         method: 'GET',
         headers: {
             Accept: 'application/json',
         },
+        
     },
     ).then(response => {
+        console.log('Fetch done')
         historic = [];
         for(var poly of histPolylines) {
             map.removeLayer(poly);
@@ -76,6 +79,7 @@ const showRecordInfo = async () => {
                 // Se traza la polilinea
                 const poly = L.polyline(historic, {color: 'red'}).addTo(map);
                 histPolylines.push(poly);
+                console.log('Historic done')
             });
         }
     });

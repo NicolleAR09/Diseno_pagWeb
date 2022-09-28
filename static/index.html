@@ -92,29 +92,26 @@
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
-
-            <!-- Post preview-->
-               <!--  <div class="post-preview">-->
                
                 
-
-                   <center><h1>GPS coordinates</h1></center>
+                    <style>
+                        h1 {text-align: center;}
+                    </style>
+                    <h1>GPS coordinates</h1>
                     <div>
-                       <table align=center class="content-table" id="content-table">
-                        <thead align=center> 
+                       <table style="margin-left: auto;margin-right: auto" class="content-table" id="content-table">
+                        <th> 
                             <tr >
-                            <td><b>Id</b></td>
                             <td><b>Latitude</b></td>
                             <td><b>Longitude</b></td>
                             <td><b>Timestamp</b></td>
                             </tr>
                             <tr >
-                                <td id = "Id"><b></b></td>
                                 <td id = "lat"><b></b></td>
                                 <td id = "lng"><b></b></td>
                                 <td id = "timestamp"><b></b></td>
-                                </tr>
-                         </thead>
+                            </tr>
+                         </th>
 
 
                         
@@ -149,23 +146,12 @@
                                 data=JSON.parse(data)
                                 console.log(data.Latitud);
                                 var datos = "";
-                                // datos += "<tr>";
-                                //     datos +=  "<td>"+data.Latitud+"</td>";
-                                //     datos +=   "<td>"+data.Longitud+"</td>";
-                                //     datos +=   "<td>"+data.Date+"</td>";
-                                //     datos +=   "<td>"+data.Time+"</td>";
-                                //     datos +=  "</tr>";
-                               // console.log(data.length)
                                 
-                               //document.getElementById("Id").innerHTML=data.Id;
                                document.getElementById("lat").innerHTML=data.Latitud;
                                document.getElementById("lng").innerHTML=data.Longitud;
                                document.getElementById("timestamp").innerHTML=data.Timestamp;
-                                // document.getElementById("content-table").innerHTML=datos;
                                 marker.setLatLng([data.Longitud, data.Latitud]);
                                 
-                                //marker.setLatLng(latlong);
-                                //map.setView(latlong);
                                 //poliline:
                                 var latlong = [Number(data.Longitud),Number(data.Latitud)];
                                 //poly.push(latlong);
@@ -197,65 +183,42 @@
 
 </body>
 
-<!-- <body onload="table();">
-
-   
-
-    <center><table  width="70%">
-       <tr align=center>
-        <td><b>Latitude</b></td>
-        <td><b>Longitude</b></td>
-        <td><b>Date</b></td>
-        <td><b>Time</b></td>
-       </tr>
-
-    <script type="text/javascript">
-        function table(){
-            const xhttp=new XMLHttpRequest();
-            xhttp.onload=function(){
-                const data = JSON.parse(this.responseText);
-                document.getElementById("table").innerHTML=this.responseText;
-                marker.setLatLng([data.Longitud, data.Latitud]);
-            }
-            xhttp.open("GET", "/data");
-            xhttp.send();
-        }
-
-        setInterval(function() {
-            table();
-        }, 500);
-    </script>
-    <div id="table">
-
-    </div>
-
-    <div id="myMap" style="height: 300px"></div>-->
-
  
     <script src="/map.js"></script>
 
-    <label for="sdate">Choose a start time:</label>
+    <label for="stime">Choose a start time:</label>
 
-    <input type="datetime-local" id="sdate">
-
-
-    <label for="fdate">Choose an end time:</label>
-
-    <input type="datetime-local" id="fdate">
+    <input type="datetime-local" id="stime" style="cursor:pointer">
 
 
-    
+    <label for="ftime">Choose an end time:</label>
 
-      <!-- name="meeting-time" value="2018-06-12T19:30"
-        min="" max="2018-06-14T00:00" -->
+    <input type="datetime-local" id="ftime" style="cursor:pointer">
 
-     <!--Position of the map-->
-    <!-- <style>
-        #myMap {position: relative;
+    <style>
+        button
+        {
+            font-size: 20px;
+            padding: 5px;
+            border-radius: 5px;
+            margin: 10px;
+            background-color: #ffffff;
+            cursor: pointer;
         }
-    </style>-->
+        #setDate 
+        {
+            text-align: center;
+        }
+    </style>
 
- <!-- Footer-->
+    <div id="setDate">
+        <button class="submitInput" onclick="showRecordInfo()">
+            Set Date
+        </button>
+    </div>
+
+
+
  <footer class="border-top">
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
