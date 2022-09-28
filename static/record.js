@@ -49,17 +49,19 @@ const showRecordInfo = async () => {
     // Entonces se elimina la T que separa la fecha y la hora, y se coloca un espacio, obteniendo 
     // la siguiente estructura YYYY/MM/DD hh:mm:ss
     console.log('Botton pushed')
-    const idate = document.getElementById('stime').value; //.value.split('T').join(' ');
-    const fdate = document.getElementById('ftime').value; //.value.split('T').join(' ');
+    const stime = document.getElementById('stime').value; //.value.split('T').join(' ');
+    const ftime = document.getElementById('ftime').value; //.value.split('T').join(' ');
     
     // Se hace el fetch a la api con las fechas para obtener la informacion de la base de datos
-    fetch(`/record?idate=${stime}&fdate=${ftime}`, {
+    fetch(`/index?stime=${stime}&ftime=${ftime}`, {
         method: 'GET',
         headers: {
             Accept: 'application/json',
         },
+        
     },
     ).then(response => {
+        console.log('Fetch done')
         historic = [];
         for(var poly of histPolylines) {
             map.removeLayer(poly);
@@ -77,6 +79,7 @@ const showRecordInfo = async () => {
                 // Se traza la polilinea
                 const poly = L.polyline(historic, {color: 'red'}).addTo(map);
                 histPolylines.push(poly);
+                console.log('Historic done')
             });
         }
     });
