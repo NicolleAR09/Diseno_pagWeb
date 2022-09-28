@@ -9,7 +9,7 @@ const mysql = require('mysql')
 
 DBConfig = {
   port: '3306',
-  host: 'finpinrds.csdupfcdilij.us-east-1.rds.amazonaws.com',
+  host: 'database-1.csdupfcdilij.us-east-1.rds.amazonaws.com',
   user: 'admin',
   password: '123456789',
   database: 'gpsdata',
