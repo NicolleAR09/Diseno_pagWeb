@@ -32,7 +32,7 @@ const setRangeRed = (input) => {
         }
     }
 
-    const marcador = L.marker([circleArrayRed[range2].lat, circleArrayRed[range2].lng]).addTo(map);
+    const marcador = L.marker([circleArrayRed[range2].lat, circleArrayRed[range2].lng]).addTo(myMap);
     rangeMarkersRed.push(marcador);
     marcador.bindPopup(`
         fecha: ${infoRed[range2].fecha} <br>
@@ -59,7 +59,7 @@ const reSizeCircle = (input) =>{
     }
 }
 
-const circle = L.circle([10.976029412029105, -74.80355101913315], {radius: 1000}).addTo(map);
+const circle = L.circle([10.976029412029105, -74.80355101913315], {radius: 1000}).addTo(myMap);
 let clicker = false;
 circle.on({
     click: function (){
