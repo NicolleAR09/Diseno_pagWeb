@@ -1,6 +1,6 @@
 var historic = new Array();
 var info = new Array();
-var histPolylines = new Array();
+var histPolyline = new Array();
 
 //Crear fecha con el dia de hoy
 const today = new Date();
@@ -63,7 +63,7 @@ const showRecordInfo = async () => {
     ).then(response => {
         console.log('Fetch done')
         historic = [];
-        for(var poly of histPolylines) {
+        for(var poly of histPolyline) {
             map.removeLayer(poly);
         }
         if (response.ok) {
@@ -78,7 +78,7 @@ const showRecordInfo = async () => {
                 console.log(historic);
                 // Se traza la polilinea
                 const poly = L.polyline(historic, {color: 'red'}).addTo(myMap);
-                histPolylines.push(poly);
+                histPolyline.push(poly);
                 console.log('Historic done')
             });
         }

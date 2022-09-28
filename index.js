@@ -90,6 +90,16 @@ app.get("/record", async (req, res) => {
       return res.status(500);
     }
   })
+
+  const query2 = `SELECT * FROM gpsdata`;
+  console.log(query2);
+  connection.query2(query2,(err1, result1) => {
+    if (!err) {
+      console.log(result1);
+    } else {
+      console.log(`Ha ocurrido el siguiente ${err1}`);
+    }
+  })
 });
 //-----------------------------------------initializing server
 app.use(express.static(__dirname+'/static'));
