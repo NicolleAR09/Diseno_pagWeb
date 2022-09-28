@@ -77,7 +77,7 @@ const showRecordInfo = async () => {
                 }
                 console.log(historic);
                 // Se traza la polilinea
-                const poly = L.polyline(historic, {color: 'red'}).addTo(map);
+                const poly = L.polyline(historic, {color: 'red'}).addTo(myMap);
                 histPolylines.push(poly);
                 console.log('Historic done')
             });
