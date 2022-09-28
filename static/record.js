@@ -51,13 +51,16 @@ const showRecordInfo = async () => {
     console.log('Botton pushed')
     const stime = document.getElementById('stime').value; //.value.split('T').join(' ');
     const ftime = document.getElementById('ftime').value; //.value.split('T').join(' ');
-    map.on('click', function(e) {        
+    
+    myMap.on('click', function(e) {        
         let Loc= e.latlng;    
         console.log(Loc)
         latds=Loc.lat
         longds=Loc.lng
         marker.setLatLng([lat, long]).addTo(myMap)
     });
+    
+    
     // Se hace el fetch a la api con las fechas para obtener la informacion de la base de datos
     fetch(`/record?stime=${stime}&ftime=${ftime}`, {
         method: 'GET',
