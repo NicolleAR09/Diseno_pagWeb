@@ -86,6 +86,7 @@ const showRecordInfo = async () => {
         }
     });
 
+//Historic 2
     myMap.on('click', function(e) {        
         let Loc= e.latlng;    
         console.log(Loc)
@@ -117,7 +118,7 @@ const showpath = async () => {
              const info = json;
              let pathway // cambia nombre
              dato = info.Timestamp // busca como traer los datos 
-             pathway = data.map(function(bar){ // si no funciona data map prueben dato.map sino info.map
+             pathway = dato.map(function(bar){ // si no funciona data map prueben dato.map sino info.map
              return '<li>'+dato+'</li>'   // Poner el tiempo traido
           })
           document.getElementById("pathway").innerHTML = pathway;
