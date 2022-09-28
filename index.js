@@ -62,9 +62,9 @@ socket.on('listening', (req, res) => {
 const insertData = (info) => {
     data.Latitud = info[0];
     data.Longitud = info[1];
-    data.Timestamp = info[2];
+    data.Timestamp = new Date(Date.parse(info[2])).toISOString();
 
-    const query = `INSERT INTO gpsdata (Latitud, Longitud, Timestamp) VALUES ('data.Latitud', 'data.Longitud','data.Timestamp')`;
+    const query = `INSERT INTO gpsdata (Latitud, Longitud, Timestamp) VALUES ('${data.Latitud}', '${data.Longitud}','${data.Timestamp}')`;
     connection.query(query, function(err, result){
       if(err)throw err;
       console.log('Register saved')
