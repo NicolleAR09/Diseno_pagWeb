@@ -73,9 +73,11 @@ const showRecordInfo = async () => {
                 const info = json;
                 
                 // Se rellena el vector con la informacion obtenida de la base de datos  
-                for(var item of info) {
+                if (info) {
+                    for(var item of info) {
                         historic.push([item.Longitud, item.Latitud]);
                         info.push(item.Timestamp,);
+                    }
                 }
                 console.log(historic);
                 // Se traza la polilinea
