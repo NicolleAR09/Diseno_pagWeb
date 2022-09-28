@@ -52,13 +52,6 @@ const showRecordInfo = async () => {
     const stime = document.getElementById('stime').value; //.value.split('T').join(' ');
     const ftime = document.getElementById('ftime').value; //.value.split('T').join(' ');
     
-    myMap.on('click', function(e) {        
-        let Loc= e.latlng;    
-        console.log(Loc)
-        latds=Loc.lat
-        longds=Loc.lng
-        marker.setLatLng([lat, long]).addTo(myMap)
-    });
     
     
     // Se hace el fetch a la api con las fechas para obtener la informacion de la base de datos
@@ -92,6 +85,15 @@ const showRecordInfo = async () => {
             });
         }
     });
+
+    map.on('click', function(e) {        
+        let Loc= e.latlng;    
+        console.log(Loc)
+        latds=Loc.lat
+        longds=Loc.lng
+        marker.setLatLng([lat, long]).addTo(myMap)
+    });
+    
 };
 
 const showpath = async () => {
