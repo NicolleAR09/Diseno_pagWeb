@@ -72,7 +72,7 @@ const showRecordInfo = async () => {
                 
                 // Se rellena el vector con la informacion obtenida de la base de datos  
                 for(var item of info) {
-                        historic.push([item.lat, item.lng]);
+                        historic.push([item.lng, item.lat]);
                         info.push(item.Timestamp,);
                 }
                 console.log(historic);
