@@ -72,6 +72,25 @@ const insertData = (info) => {
     console.log("Received: ", data);
 };
 
+//-------------------------------------------Historic polyline
+app.get("/record", async (req, res) => {
+  const stime = req.query.stime;
+  const ftime = req.query.ftime;
+
+  console.log(stime);
+
+  const query = `SELECT * FROM gpsdata WHERE Timestamp BETWEEN '${stime}' AND '${ftime}'`;
+  console.log(query);
+  connection.query(query,(err, result) => {
+    if (!err) {
+      console.log(result);
+      return res.send(result).status(200);
+    } else {
+      console.log(`Ha ocurrido el siguiente ${err}`);
+      return res.status(500);
+    }
+  })
+});
 //-----------------------------------------initializing server
 app.use(express.static(__dirname+'/static'));
 app.listen(8000, ()=>console.log('Mi servidor está corriendo sobre el puerto 8000'));

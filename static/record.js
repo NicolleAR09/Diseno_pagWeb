@@ -53,7 +53,7 @@ const showRecordInfo = async () => {
     const ftime = document.getElementById('ftime').value; //.value.split('T').join(' ');
     
     // Se hace el fetch a la api con las fechas para obtener la informacion de la base de datos
-    fetch(`/index?stime=${stime}&ftime=${ftime}`, {
+    fetch(`/record?stime=${stime}&ftime=${ftime}`, {
         method: 'GET',
         headers: {
             Accept: 'application/json',
