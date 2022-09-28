@@ -52,8 +52,10 @@ const showRecordInfo = async () => {
     const stime = document.getElementById('stime').value; //.value.split('T').join(' ');
     const ftime = document.getElementById('ftime').value; //.value.split('T').join(' ');
     
+    
+    
     // Se hace el fetch a la api con las fechas para obtener la informacion de la base de datos
-    fetch(`/record?stime=${stime}&ftime=${ftime}`, {
+    fetch(`/record?stime=${Date.parse(stime)}&ftime=${Date.parse(ftime)}`, {
         method: 'GET',
         headers: {
             Accept: 'application/json',
@@ -64,23 +66,69 @@ const showRecordInfo = async () => {
         console.log('Fetch done')
         historic = [];
         for(var poly of histPolyline) {
-            map.removeLayer(poly);
+            myMap.removeLayer(poly);
         }
         if (response.ok) {
             response.json().then(json => {
                 const info = json;
                 
                 // Se rellena el vector con la informacion obtenida de la base de datos  
-                for(var item of info) {
-                        historic.push([item.lng, item.lat]);
-                        info.push(item.Timestamp,);
-                }
+                    for(var item of info) {
+                        if (item) {
+                            console.log(item);
+                            historic.push([item.Longitud, item.Latitud]);
+                            info.push(item.Timestamp,);
+                        }
+                    }
+                    
                 console.log(historic);
                 // Se traza la polilinea
-                const poly = L.polyline(historic, {color: 'red'}).addTo(myMap);
-                histPolyline.push(poly);
+                //const poly = L.polyline(historic, {color: 'red'}).addTo(myMap);
+                //histPolyline.push(poly);
                 console.log('Historic done')
             });
         }
+    });
+
+//Historic 2
+    myMap.on('click', function(e) {        
+        let Loc= e.latlng;    
+        console.log(Loc)
+        latds=Loc.lat
+        longds=Loc.lng
+        marker.setLatLng([lat, long]).addTo(myMap)
+    });
+    
+};
+
+const showpath = async () => {
+    
+    console.log('Botton pushed')
+    const stime = document.getElementById('stime').value; //.value.split('T').join(' ');
+    const ftime = document.getElementById('ftime').value; //.value.split('T').join(' ');
+    const latd=latds
+    const longd=longds
+    
+    // Se hace el fetch a la api con las fechas para obtener la informacion de la base de datos
+    fetch(`/pathg?stime=${stime}&ftime=${ftime}&latd=${latd}&longd=${longd}`, {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+        },
+        
+    },
+    ).then(response => {
+            response.json().then(json => {
+             const info = json;
+             let pathway // cambia nombre
+             dato = info.Timestamp // busca como traer los datos 
+             pathway = dato.map(function(bar){ // si no funciona data map prueben dato.map sino info.map
+             return '<li>'+dato+'</li>'   // Poner el tiempo traido
+          })
+          document.getElementById("pathway").innerHTML = pathway;
+
+            })
+               
+
     });
 };

@@ -60,11 +60,13 @@ socket.on('listening', (req, res) => {
 
 //-------------------------------------------insert info to database
 const insertData = (info) => {
-    data.Latitud = info[0];
-    data.Longitud = info[1];
-    data.Timestamp = info[2];
+    data.Latitud = Number(info[0]);
+    data.Longitud = Number(info[1]);
+    data.Timestamp = new Date(Date.parse(info[2])).toISOString();
 
-    const query = `INSERT INTO gpsdata (Latitud, Longitud, Timestamp) VALUES ('data.Latitud', 'data.Longitud','data.Timestamp')`;
+    console.log(data);
+
+    const query = `INSERT INTO gpsdata (Latitud, Longitud, Timestamp) VALUES ('${data.Latitud}', '${data.Longitud}','${data.Timestamp}')`;
     connection.query(query, function(err, result){
       if(err)throw err;
       console.log('Register saved')
@@ -76,10 +78,35 @@ const insertData = (info) => {
 app.get("/record", async (req, res) => {
   const stime = req.query.stime;
   const ftime = req.query.ftime;
-
+  
   console.log(stime);
 
   const query = `SELECT * FROM gpsdata WHERE Timestamp BETWEEN '${stime}' AND '${ftime}'`;
+  console.log(query);
+  connection.query(query,(err, result) => {
+    if (!err) {
+      console.log(result);
+      return res.send(result).status(200);
+    } else {
+      console.log(`Ha ocurrido el siguiente ${err}`);
+      return res.status(500);
+    }
+  })
+});
+
+
+
+//-------------------------------------------Historic 2
+app.get("/pathg", async (req, res) => {
+  const stime = req.query.stime;
+  const ftime = req.query.ftime;
+  const latid= req.query.latd
+  const longd=req.query.longd
+  console.log(stime);
+
+  const query = "SELECT  Timestamp FROM gpsdata WHERE Latitud BETWEEN ("+latid+"*0.99992) and ("+latid+
+  "*1.00012) and Longitud BETWEEN ("+longd+"*1.00012) AND ("+longd+"*0.99992) and Timestamp between ' " +
+  stime + "' and '" + ftime + "'"
   console.log(query);
   connection.query(query,(err, result) => {
     if (!err) {
