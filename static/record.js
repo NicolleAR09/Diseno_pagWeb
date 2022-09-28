@@ -1,6 +1,6 @@
 var historic = new Array();
 var info = new Array();
-var histPolylines = new Array();
+var histPolyline = new Array();
 
 //Crear fecha con el dia de hoy
 const today = new Date();
@@ -21,10 +21,11 @@ const currentDate = yyyy + "-" + mm + "-" + dd + "T" + hora;
 
 
 //Obtener los inputs donde se van a colocar la fechas
-const startDate = document.getElementById("sdate");
-const endDate = document.getElementById("fdate");
+const startDate = document.getElementById("stime");
+const endDate = document.getElementById("ftime");
 
 //Definir que la fecha maxima por defecto sea la del dia de hoy
+console.log(startDate);
 startDate.max = currentDate;
 endDate.max = currentDate;
 
@@ -47,19 +48,22 @@ const showRecordInfo = async () => {
     // Se tienen que formatear porque por defecto traen la siguiente estructura, YYYY/MM/DDThh:mm:ss,
     // Entonces se elimina la T que separa la fecha y la hora, y se coloca un espacio, obteniendo 
     // la siguiente estructura YYYY/MM/DD hh:mm:ss
-    const idate = document.getElementById('sdate').value; //.value.split('T').join(' ');
-    const fdate = document.getElementById('fdate').value; //.value.split('T').join(' ');
+    console.log('Botton pushed')
+    const stime = document.getElementById('stime').value; //.value.split('T').join(' ');
+    const ftime = document.getElementById('ftime').value; //.value.split('T').join(' ');
     
     // Se hace el fetch a la api con las fechas para obtener la informacion de la base de datos
-    fetch(`/record?idate=${sdate}&fdate=${fdate}`, {
+    fetch(`/record?stime=${stime}&ftime=${ftime}`, {
         method: 'GET',
         headers: {
             Accept: 'application/json',
         },
+        
     },
     ).then(response => {
+        console.log('Fetch done')
         historic = [];
-        for(var poly of histPolylines) {
+        for(var poly of histPolyline) {
             map.removeLayer(poly);
         }
         if (response.ok) {
@@ -68,13 +72,14 @@ const showRecordInfo = async () => {
                 
                 // Se rellena el vector con la informacion obtenida de la base de datos  
                 for(var item of info) {
-                        historic.push([item.lat, item.lng]);
+                        historic.push([item.lng, item.lat]);
                         info.push(item.Timestamp,);
                 }
                 console.log(historic);
                 // Se traza la polilinea
-                const poly = L.polyline(historic, {color: 'red'}).addTo(map);
-                histPolylines.push(poly);
+                const poly = L.polyline(historic, {color: 'red'}).addTo(myMap);
+                histPolyline.push(poly);
+                console.log('Historic done')
             });
         }
     });

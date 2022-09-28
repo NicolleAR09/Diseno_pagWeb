@@ -9,10 +9,10 @@ const mysql = require('mysql')
 
 DBConfig = {
   port: '3306',
-  host: process.env.H,
-  user: process.env.U,
-  password: process.env.P,
-  database: process.env.DB,
+  host: 'database-1.csdupfcdilij.us-east-1.rds.amazonaws.com',
+  user: 'admin',
+  password: '123456789',
+  database: 'gpsdata',
 }
 
 const connection = mysql.createConnection(DBConfig)
@@ -64,7 +64,7 @@ const insertData = (info) => {
     data.Longitud = info[1];
     data.Timestamp = info[2];
 
-    const query = `INSERT INTO gpsdata (Latitud, Longitud, Date, Timestamp) VALUES ('data.Latitud', 'data.Longitud','data.Timestamp')`;
+    const query = `INSERT INTO gpsdata (Latitud, Longitud, Timestamp) VALUES ('data.Latitud', 'data.Longitud','data.Timestamp')`;
     connection.query(query, function(err, result){
       if(err)throw err;
       console.log('Register saved')
@@ -72,6 +72,25 @@ const insertData = (info) => {
     console.log("Received: ", data);
 };
 
+//-------------------------------------------Historic polyline
+app.get("/record", async (req, res) => {
+  const stime = req.query.stime;
+  const ftime = req.query.ftime;
+
+  console.log(stime);
+
+  const query = `SELECT * FROM gpsdata WHERE Timestamp BETWEEN '${stime}' AND '${ftime}'`;
+  console.log(query);
+  connection.query(query,(err, result) => {
+    if (!err) {
+      console.log(result);
+      return res.send(result).status(200);
+    } else {
+      console.log(`Ha ocurrido el siguiente ${err}`);
+      return res.status(500);
+    }
+  })
+});
 //-----------------------------------------initializing server
 app.use(express.static(__dirname+'/static'));
 app.listen(8000, ()=>console.log('Mi servidor está corriendo sobre el puerto 8000'));
