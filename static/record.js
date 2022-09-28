@@ -51,7 +51,13 @@ const showRecordInfo = async () => {
     console.log('Botton pushed')
     const stime = document.getElementById('stime').value; //.value.split('T').join(' ');
     const ftime = document.getElementById('ftime').value; //.value.split('T').join(' ');
-    
+    map.on('click', function(e) {        
+        let Loc= e.latlng;    
+        console.log(Loc)
+        latds=Loc.lat
+        longds=Loc.lng
+        marker.setLatLng([lat, long]).addTo(myMap)
+    });
     // Se hace el fetch a la api con las fechas para obtener la informacion de la base de datos
     fetch(`/record?stime=${stime}&ftime=${ftime}`, {
         method: 'GET',
@@ -82,5 +88,40 @@ const showRecordInfo = async () => {
                 console.log('Historic done')
             });
         }
+    });
+};
+
+const showpath = async () => {
+    // Se obtienen los valores de fecha en los calendarios y se formatean para poder hacer la consulta.
+    // Se tienen que formatear porque por defecto traen la siguiente estructura, YYYY/MM/DDThh:mm:ss,
+    // Entonces se elimina la T que separa la fecha y la hora, y se coloca un espacio, obteniendo 
+    // la siguiente estructura YYYY/MM/DD hh:mm:ss
+    console.log('Botton pushed')
+    const stime = document.getElementById('stime').value; //.value.split('T').join(' ');
+    const ftime = document.getElementById('ftime').value; //.value.split('T').join(' ');
+    const latd=latds
+    const longd=longds
+    
+    // Se hace el fetch a la api con las fechas para obtener la informacion de la base de datos
+    fetch(`/pathg?stime=${stime}&ftime=${ftime}&latd=${latd}&longd=${longd}`, {
+        method: 'GET',
+        headers: {
+            Accept: 'application/json',
+        },
+        
+    },
+    ).then(response => {
+            response.json().then(json => {
+             const info = json;
+             let pathway // cambia nombre
+            dato = info.Timestamp // busca como traer los datos 
+             rec = data.map(function(bar){ // si no funciona data map prueben dato.map sino info.map
+            return '<li>'+dato+'</li>'   // Poner el tiempo traido
+          })
+          document.getElementById("pathway").innerHTML = pathway;
+
+            })
+               
+
     });
 };
