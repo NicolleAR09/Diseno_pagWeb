@@ -66,7 +66,7 @@ const showRecordInfo = async () => {
         console.log('Fetch done')
         historic = [];
         for(var poly of histPolyline) {
-            map.removeLayer(poly);
+            myMap.removeLayer(poly);
         }
         if (response.ok) {
             response.json().then(json => {
@@ -86,7 +86,7 @@ const showRecordInfo = async () => {
         }
     });
 
-    map.on('click', function(e) {        
+    myMap.on('click', function(e) {        
         let Loc= e.latlng;    
         console.log(Loc)
         latds=Loc.lat
@@ -119,9 +119,9 @@ const showpath = async () => {
             response.json().then(json => {
              const info = json;
              let pathway // cambia nombre
-            dato = info.Timestamp // busca como traer los datos 
-             rec = data.map(function(bar){ // si no funciona data map prueben dato.map sino info.map
-            return '<li>'+dato+'</li>'   // Poner el tiempo traido
+             dato = info.Timestamp // busca como traer los datos 
+             pathway = data.map(function(bar){ // si no funciona data map prueben dato.map sino info.map
+             return '<li>'+dato+'</li>'   // Poner el tiempo traido
           })
           document.getElementById("pathway").innerHTML = pathway;
 
