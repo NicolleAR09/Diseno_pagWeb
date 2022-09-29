@@ -133,6 +133,8 @@ const showRecordInfo = async () => {
                     // si no funciona data map prueben dato.map sino info.map
                     return "<li>" + dato + "</li>"; // Poner el tiempo traido
                 });
+
+                console.log(pathway, info);
                 document.getElementById("pathway").innerHTML = pathway;
             });
         });

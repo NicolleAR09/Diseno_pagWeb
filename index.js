@@ -105,9 +105,9 @@ app.get("/pathg", async (req, res) => {
 
     const query = `SELECT * FROM gpsdata WHERE Latitud <= ${
         longd.toFixed(4) + 0.02
-    } AND Latitud >= ${longd.toFixed(4) - 0.02} AND Longitud >= ${
-        latid.toFixed(4) + 0.02
-    } AND Longitud <= ${latid.toFixed(4) - 0.02}`;
+    } AND Latitud >= ${longd.toFixed(4) - 0.02} AND Longitud >= ${latid.toFixed(
+        4
+    )} AND Longitud <= ${latid.toFixed(4) - 0.02}`;
 
     console.log(query);
     connection.query(query, (err, result) => {
