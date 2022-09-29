@@ -116,6 +116,7 @@ const showRecordInfo = async () => {
     myMap.on("click", async (e) => {
         let Loc = e.latlng;
         marker.setLatLng([Loc.lat, Loc.lng]).addTo(myMap);
+        L.marker([Loc.lat, Loc.lng]).addTo(map);
 
         // aqui tienes que llamar la al backend con Loc.lat y Loc.lng para que te retorne el timestamp
         // Se hace el fetch a la api con las fechas para obtener la informacion de la base de datos
