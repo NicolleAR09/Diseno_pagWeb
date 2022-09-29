@@ -125,7 +125,16 @@ const showRecordInfo = async () => {
         );
 
         request.json().then((json) => {
-            console.log(json);
+            response.json().then((json) => {
+                const info = json;
+                let pathway; // cambia nombre
+                dato = info.Timestamp; // busca como traer los datos
+                pathway = dato.map(function (bar) {
+                    // si no funciona data map prueben dato.map sino info.map
+                    return "<li>" + dato + "</li>"; // Poner el tiempo traido
+                });
+                document.getElementById("pathway").innerHTML = pathway;
+            });
         });
     });
 };
