@@ -96,25 +96,7 @@ app.get("/record", async (req, res) => {
 
 
 
-//-------------------------------------------Historic 2
-app.get("/pathg", async (req, res) => {
-  const latd= req.query.latd
-  const longd=req.query.longd
 
-  const query = "SELECT * FROM gpsdata WHERE Latitud BETWEEN ${latd*0.8} AND ${latd*1.2) AND Longitud BETWEEN ${longd*1.2} AND ${longd*0.8} " 
-
-  //const query = "SELECT * FROM gpsdata WHERE Longitud=${longitud} AND Latitud=${latitud}"
-  console.log(query);
-  connection.query(query,(err, result) => {
-    if (!err) {
-      console.log(result);
-      return res.send(result).status(200);
-    } else {
-      console.log(`Ha ocurrido el siguiente ${err}`);
-      return res.status(500);
-    }
-  })
-});
 
 
 
