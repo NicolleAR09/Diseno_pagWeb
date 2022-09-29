@@ -16,6 +16,9 @@ onclick = "marker";
 // focus selected marker
 
 window.onload = () => {
-    const bounds = new L.LatLngBounds(L.LatLng(10.9886091, -74.7922088));
+    const bounds = new L.LatLngBounds(
+        L.LatLng(10.9876091, -74.7912088),
+        L.LatLng(10.9886091, -74.7922088)
+    );
     myMap.fitBounds(bounds);
 };
