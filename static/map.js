@@ -12,8 +12,8 @@ const line = L.polyline([], { color: "red" }).addTo(myMap);
 
 onclick = "marker";
 
-var southWest = new L.LatLng(40.712, -74.227),
-    northEast = new L.LatLng(40.774, -74.125),
+var southWest = new L.LatLng(10.928, -74.892),
+    northEast = new L.LatLng(10.988, -74.792),
     bounds = new L.LatLngBounds(southWest, northEast);
 
 //update all locations
