@@ -40,6 +40,8 @@ app.get("/data", (req, res) => {
 const dgram = require("dgram");
 const socket = dgram.createSocket("udp4");
 
+console.log("Are you getting called?");
+
 socket.on("error", (err) => {
     console.log(`server error:\n${err.stack}`);
     socket.close();
