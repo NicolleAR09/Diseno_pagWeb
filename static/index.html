@@ -142,30 +142,30 @@
                         }
 
 
-                        function table() {
-                            const xhttp = new XMLHttpRequest();
-                            xhttp.onload = function () {
-                                const jsn = { "database": { "Id": "", "Latitud": "", "Longitud": "", "Timestamp": "" } };
-                                var data = this.responseText;
-                                data = JSON.parse(data)
-                                var datos = "";
+                        // function table() {
+                        //     const xhttp = new XMLHttpRequest();
+                        //     xhttp.onload = function () {
+                        //         const jsn = { "database": { "Id": "", "Latitud": "", "Longitud": "", "Timestamp": "" } };
+                        //         var data = this.responseText;
+                        //         data = JSON.parse(data)
+                        //         var datos = "";
 
-                                document.getElementById("lat").innerHTML = data.Latitud;
-                                document.getElementById("lng").innerHTML = data.Longitud;
-                                document.getElementById("timestamp").innerHTML = data.Timestamp;
-                                marker.setLatLng([data.Longitud, data.Latitud]);
+                        //         document.getElementById("lat").innerHTML = data.Latitud;
+                        //         document.getElementById("lng").innerHTML = data.Longitud;
+                        //         document.getElementById("timestamp").innerHTML = data.Timestamp;
+                        //         marker.setLatLng([data.Longitud, data.Latitud]);
 
-                                //poliline:
-                                var latlong = [Number(data.Longitud), Number(data.Latitud)];
-                                //poly.push(latlong);
-                                line.addLatLng(latlong)
+                        //         //poliline:
+                        //         var latlong = [Number(data.Longitud), Number(data.Latitud)];
+                        //         //poly.push(latlong);
+                        //         line.addLatLng(latlong)
 
 
 
-                            }
-                            xhttp.open("GET", "/data");
-                            xhttp.send();
-                        }
+                        //     }
+                        //     xhttp.open("GET", "/data");
+                        //     xhttp.send();
+                        // }
 
                         setInterval(function () {
                             table();
