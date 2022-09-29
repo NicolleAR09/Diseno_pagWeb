@@ -103,11 +103,11 @@ app.get("/pathg", async (req, res) => {
     const latid = parseFloat(req.query.latd);
     const longd = parseFloat(req.query.longd);
 
-    const query = `SELECT * FROM gpsdata WHERE Latitud <= ${longd.toFixed(
-        4
-    )} AND Latitud >= ${longd.toFixed(5)} AND Longitud >= ${latid.toFixed(
-        5
-    )} AND Longitud <= ${latid.toFixed(4)}`;
+    const query = `SELECT * FROM gpsdata WHERE Latitud <= ${
+        longd.toFixed(4) + 0.02
+    } AND Latitud >= ${longd.toFixed(4) - 0.02} AND Longitud >= ${
+        latid.toFixed(4) + 0.02
+    } AND Longitud <= ${latid.toFixed(4) - 0.02}`;
 
     console.log(query);
     connection.query(query, (err, result) => {
