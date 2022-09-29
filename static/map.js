@@ -16,6 +16,6 @@ onclick = "marker";
 // focus selected marker
 
 window.onload = () => {
-    console.log(marker);
+    console.log(marker.getBounds());
     myMap.fitBounds(marker);
 };
