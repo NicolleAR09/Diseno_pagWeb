@@ -98,11 +98,10 @@ app.get("/record", async (req, res) => {
 
 //-------------------------------------------Historic 2
 app.get("/pathg", async (req, res) => {
-  const latid= req.query.latd
+  const latd= req.query.latd
   const longd=req.query.longd
 
-  const query = "SELECT * FROM gpsdata WHERE Latitud BETWEEN ("+latid+"*0.8) and ("+latid+
-  "*1.2) and Longitud BETWEEN ("+longd+"*1.2) AND ("+longd+"*0.8) " 
+  const query = `SELECT * FROM gpsdata WHERE Latitud BETWEEN ${latd*0.8} AND ${latd*1.2} AND Longitud BETWEEN ${longd*1.2} AND ${longd*0.8}`;
 
   //const query = "SELECT * FROM gpsdata WHERE Longitud=${longitud} AND Latitud=${latitud}"
   console.log(query);
@@ -116,6 +115,10 @@ app.get("/pathg", async (req, res) => {
     }
   })
 });
+
+
+
+
 //-----------------------------------------initializing server
 app.use(express.static(__dirname+'/static'));
 app.listen(8000, ()=>console.log('Mi servidor está corriendo sobre el puerto 8000'));
