@@ -96,10 +96,26 @@ app.get("/record", async (req, res) => {
 
 
 
+//-------------------------------------------Historic 2
+app.get("/pathg", async (req, res) => {
+  const latid= req.query.latd
+  const longd=req.query.longd
 
+  const query = "SELECT * FROM gpsdata WHERE Latitud BETWEEN ("+latid+"*0.99992) and ("+latid+
+  "*1.00012) and Longitud BETWEEN ("+longd+"*1.00012) AND ("+longd+"*0.99992) " 
 
-
-
+  //const query = "SELECT * FROM gpsdata WHERE Longitud=${longitud} AND Latitud=${latitud}"
+  console.log(query);
+  connection.query(query,(err, result) => {
+    if (!err) {
+      console.log(result);
+      return res.send(result).status(200);
+    } else {
+      console.log(`Ha ocurrido el siguiente ${err}`);
+      return res.status(500);
+    }
+  })
+});
 //-----------------------------------------initializing server
 app.use(express.static(__dirname+'/static'));
 app.listen(8000, ()=>console.log('Mi servidor está corriendo sobre el puerto 8000'));
