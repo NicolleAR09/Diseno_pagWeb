@@ -108,7 +108,7 @@ const showRecordInfo = async () => {
             
         console.log(request);
 
-        response.json().then(json => {
+        request.json().then(json => {
             console.log(json)
             const info = json;
             let pathway // cambia nombre
