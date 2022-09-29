@@ -52,45 +52,47 @@ const showRecordInfo = async () => {
     const stime = document.getElementById('stime').value; //.value.split('T').join(' ');
     const ftime = document.getElementById('ftime').value; //.value.split('T').join(' ');
     
-    
-    
-    // Se hace el fetch a la api con las fechas para obtener la informacion de la base de datos
-    fetch(`/record?stime=${Date.parse(stime)}&ftime=${Date.parse(ftime)}`, {
-        method: 'GET',
-        headers: {
-            Accept: 'application/json',
-        },
+    // Implementacion temporal
+    try {
+        const validatedStartDate = new Date(stime).toISOString().slice(0, 19).replace('T', ' ');
+        const validatedEndDate = new Date(ftime).toISOString().slice(0, 19).replace('T', ' ');
+
+        // Se hace el fetch a la api con las fechas para obtener la informacion de la base de datos
+        const request = await fetch(`/record?stime=${validatedStartDate}&ftime=${validatedEndDate}`, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+            }});  
         
-    },
-    ).then(response => {
-        console.log('Fetch done')
-        historic = [];
+        if (!request.ok) return console.log("Unable to fetch data with given dates, plase check parsing or request")
+
+        const historic = [];
         for(var poly of histPolyline) {
             myMap.removeLayer(poly);
         }
-        if (response.ok) {
-            response.json().then(json => {
-                const info = json;
-                
-                // Se rellena el vector con la informacion obtenida de la base de datos  
-                    for(var item of info) {
-                        if (item) {
-                            console.log(item);
-                            historic.push([item.Longitud, item.Latitud]);
-                            info.push(item.Timestamp,);
-                        }
+        request.json().then(json => {
+            const info = json;
+            
+            // Se rellena el vector con la informacion obtenida de la base de datos  
+                for(let item of info) {
+                    if (item) {
+                        console.log(item);
+                        historic.push([item.Longitud, item.Latitud]);
+                        info.push(item.Timestamp,);
                     }
-                    
-                console.log(historic);
-                // Se traza la polilinea
-                //const poly = L.polyline(historic, {color: 'red'}).addTo(myMap);
-                //histPolyline.push(poly);
-                console.log('Historic done')
-            });
-        }
-    });
+                }
+                
+            console.log(historic);
+            // Se traza la polilinea
+            //const poly = L.polyline(historic, {color: 'red'}).addTo(myMap);
+            //histPolyline.push(poly);
+            console.log('Historic done')
+        });
+    } catch (e) {
+        console.error(e)
+    }
 
-//Historic 2
+    //Historic 2
     myMap.on('click', function(e) {        
         let Loc= e.latlng;    
         console.log(Loc)
@@ -98,7 +100,6 @@ const showRecordInfo = async () => {
         longds=Loc.lng
         marker.setLatLng([lat, long]).addTo(myMap)
     });
-    
 };
 
 const showpath = async () => {
