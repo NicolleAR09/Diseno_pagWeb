@@ -17,5 +17,5 @@ onclick = "marker";
 
 window.onload = () => {
     console.log(marker);
-    myMap.fitBounds(marker.getBounds());
+    myMap.fitBounds(marker);
 };
