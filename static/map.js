@@ -12,6 +12,10 @@ const line = L.polyline([], { color: "red" }).addTo(myMap);
 
 onclick = "marker";
 
+var southWest = new L.LatLng(40.712, -74.227),
+    northEast = new L.LatLng(40.774, -74.125),
+    bounds = new L.LatLngBounds(southWest, northEast);
+
 //update all locations
 // focus selected marker
-myMap.fitBounds(marker.getBounds());
+myMap.fitBounds(bounds);
