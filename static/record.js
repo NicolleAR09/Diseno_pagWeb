@@ -73,6 +73,8 @@ const showRecordInfo = async () => {
                     Accept: "application/json"
                 }
             }
+        ).then((response) =>
+            response.json().then((data) => console.log(data, "data"))
         );
 
         console.log(request);
