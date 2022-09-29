@@ -109,10 +109,11 @@ const showRecordInfo = async () => {
         console.log(request);
 
         response.json().then(json => {
+            console.log(json)
             const info = json;
             let pathway // cambia nombre
             dato = info.Timestamp // busca como traer los datos 
-            pathway = dato.map(function(bar){ // si no funciona data map prueben dato.map sino info.map
+            pathway = dato.map(() => { // si no funciona data map prueben dato.map sino info.map
             return '<li>'+dato+'</li>'   // Poner el tiempo traido
          })
          document.getElementById("pathway").innerHTML = pathway;})
