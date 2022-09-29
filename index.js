@@ -64,16 +64,17 @@ socket.on("listening", (req, res) => {
 
 //-------------------------------------------insert info to database
 const insertData = (info) => {
+    console.log("Inserting data", info);
     data.Latitud = info[0];
     data.Longitud = info[1];
     data.Timestamp = info[2];
 
-    const query = `INSERT INTO gpsdata (Latitud, Longitud, Timestamp) VALUES ('data.Latitud', 'data.Longitud','data.Timestamp')`;
-    connection.query(query, function (err, result) {
-        if (err) throw err;
-        console.log("Register saved");
-    });
-    console.log("Received: ", data);
+    // const query = `INSERT INTO gpsdata (Latitud, Longitud, Timestamp) VALUES ('data.Latitud', 'data.Longitud','data.Timestamp')`;
+    // connection.query(query, function (err, result) {
+    //     if (err) throw err;
+    //     console.log("Register saved");
+    // });
+    // console.log("Received: ", data);
 };
 
 //-------------------------------------------Historic polyline
