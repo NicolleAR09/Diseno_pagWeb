@@ -78,8 +78,6 @@ app.get("/record", async (req, res) => {
     const stime = req.query.stime;
     const ftime = req.query.ftime;
 
-    print(stime);
-
     const query = `SELECT * FROM gpsdata WHERE Timestamp BETWEEN '${stime}' AND '${ftime}'`;
     print(query);
     connection.query(query, (err, result) => {
@@ -102,13 +100,12 @@ app.get("/pathg", async (req, res) => {
         latd * 0.8
     } AND ${latd * 1.2} AND Longitud BETWEEN ${longd * 1.2} AND ${longd * 0.8}`;
 
-    console.log(query);
     connection.query(query, (err, result) => {
         if (!err) {
             console.log(result);
             return res.send(result).status(200);
         } else {
-            console.log(`Ha ocurrido el siguiente ${err}`);
+            console.log(`Ha ocurrido el siguiente error: ${err}`);
             return res.status(500);
         }
     });

@@ -74,15 +74,19 @@ const showRecordInfo = async () => {
             }
         );
 
+        console.log(request);
         if (!request.ok)
             return console.log(
                 "Unable to fetch data with given dates, plase check parsing or request"
             );
 
+        console.log("Request ok");
         const historic = [];
         for (var poly of histPolyline) {
             myMap.removeLayer(poly);
         }
+
+        console.log("Polyline removed");
         request.json().then((json) => {
             const info = json;
 
@@ -99,7 +103,6 @@ const showRecordInfo = async () => {
                 }
             }
 
-            console.log(historic);
             // Se traza la polilinea
             const poly = L.polyline(historic, { color: "red" }).addTo(myMap);
             histPolyline.push(poly);
@@ -122,8 +125,6 @@ const showRecordInfo = async () => {
                 Accept: "application/json"
             }
         });
-
-        console.log(request);
 
         request.json().then((json) => {
             console.log(json);
