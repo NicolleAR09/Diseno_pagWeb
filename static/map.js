@@ -14,7 +14,4 @@ onclick = "marker";
 
 //update all locations
 // focus selected marker
-
-window.onload = function (e) {
-    myMap.fitBounds(marker.getBounds());
-};
+myMap.fitBounds(marker.getBounds());
