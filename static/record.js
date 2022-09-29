@@ -63,6 +63,7 @@ const showRecordInfo = async () => {
             .slice(0, 19)
             .replace("T", " ");
 
+        console.log(validatedStartDate, validatedEndDate);
         // Se hace el fetch a la api con las fechas para obtener la informacion de la base de datos
         const request = await fetch(
             `/record?stime=${validatedStartDate}&ftime=${validatedEndDate}`,
