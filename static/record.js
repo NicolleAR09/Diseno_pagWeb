@@ -115,27 +115,3 @@ const showRecordInfo = async () => {
         L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
     });
 };
-
-const showpath = async () => {
-    const stime = document.getElementById("stime").value; //.value.split('T').join(' ');
-    const ftime = document.getElementById("ftime").value; //.value.split('T').join(' ');
-
-    // Se hace el fetch a la api con las fechas para obtener la informacion de la base de datos
-    fetch(`/pathg?stime=${stime}&ftime=${ftime}&latd=${latd}&longd=${longd}`, {
-        method: "GET",
-        headers: {
-            Accept: "application/json"
-        }
-    }).then((response) => {
-        response.json().then((json) => {
-            const info = json;
-            let pathway; // cambia nombre
-            dato = info.Timestamp; // busca como traer los datos
-            pathway = dato.map(function (bar) {
-                // si no funciona data map prueben dato.map sino info.map
-                return "<li>" + dato + "</li>"; // Poner el tiempo traido
-            });
-            document.getElementById("pathway").innerHTML = pathway;
-        });
-    });
-};
