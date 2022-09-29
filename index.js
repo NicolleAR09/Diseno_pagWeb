@@ -98,11 +98,8 @@ app.get("/record", async (req, res) => {
 
 //-------------------------------------------Historic 2
 app.get("/pathg", async (req, res) => {
-  const stime = req.query.stime;
-  const ftime = req.query.ftime;
   const latid= req.query.latd
   const longd=req.query.longd
-  console.log(stime);
 
   const query = "SELECT * FROM gpsdata WHERE Latitud BETWEEN ("+latid+"*0.99992) and ("+latid+
   "*1.00012) and Longitud BETWEEN ("+longd+"*1.00012) AND ("+longd+"*0.99992) " 

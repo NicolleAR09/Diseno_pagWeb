@@ -94,14 +94,20 @@ const showRecordInfo = async () => {
     }
 
     //Historic 2
-    myMap.on('click', function(e) {
-        console.log(e)        
+    myMap.on('click', async (e) => {
         let Loc= e.latlng;    
-        console.log(Loc)
-        latds=Loc.lat
-        longds=Loc.lng
-        marker.setLatLng([lat, long]).addTo(myMap)
+        marker.setLatLng([Loc.lat, Loc.lng]).addTo(myMap)
+
+        // aqui tienes que llamar la al backend con Loc.lat y Loc.lng para que te retorne el timestamp
+         // Se hace el fetch a la api con las fechas para obtener la informacion de la base de datos
+         const request = await fetch(`/pathg?latd=${Loc.lat}&longd=${Loc.lng}`, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+            }}); 
     });
+
+    //
 };
 
 const showpath = async () => {
