@@ -94,7 +94,8 @@ const showRecordInfo = async () => {
     }
 
     //Historic 2
-    myMap.on('click', function(e) {        
+    myMap.on('click', function(e) {
+        console.log(e)        
         let Loc= e.latlng;    
         console.log(Loc)
         latds=Loc.lat
