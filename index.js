@@ -59,13 +59,11 @@ socket.on("listening", (req, res) => {
 
 //-------------------------------------------insert info to database
 const insertData = (info) => {
-    data.Latitud = Number(info[0]);
-    data.Longitud = Number(info[1]);
-    data.Timestamp = new Date(Date.parse(info[2])).toISOString();
+    data.Latitud = info[0];
+    data.Longitud = info[1];
+    data.Timestamp = info[2];
 
-    console.log(data);
-
-    const query = `INSERT INTO gpsdata (Latitud, Longitud, Timestamp) VALUES ('${data.Latitud}', '${data.Longitud}','${data.Timestamp}')`;
+    const query = `INSERT INTO gpsdata (Latitud, Longitud, Timestamp) VALUES ('data.Latitud', 'data.Longitud','data.Timestamp')`;
     connection.query(query, function (err, result) {
         if (err) throw err;
         console.log("Register saved");
@@ -78,8 +76,10 @@ app.get("/record", async (req, res) => {
     const stime = req.query.stime;
     const ftime = req.query.ftime;
 
+    console.log(stime);
+
     const query = `SELECT * FROM gpsdata WHERE Timestamp BETWEEN '${stime}' AND '${ftime}'`;
-    print(query);
+    console.log(query);
     connection.query(query, (err, result) => {
         if (!err) {
             console.log(result);
@@ -93,24 +93,37 @@ app.get("/record", async (req, res) => {
 
 //-------------------------------------------Historic 2
 app.get("/pathg", async (req, res) => {
-    const latd = parseInt(req.query.latd);
-    const longd = parseInt(req.query.longd);
+    const stime = req.query.stime;
+    const ftime = req.query.ftime;
+    const latid = req.query.latd;
+    const longd = req.query.longd;
+    console.log(stime);
 
-    const query = `SELECT * FROM gpsdata WHERE Latitud BETWEEN ${
-        latd * 0.8
-    } AND ${latd * 1.2} AND Longitud BETWEEN ${longd * 1.2} AND ${longd * 0.8}`;
-
+    const query =
+        "SELECT  Timestamp FROM gpsdata WHERE Latitud BETWEEN (" +
+        latid +
+        "*0.99992) and (" +
+        latid +
+        "*1.00012) and Longitud BETWEEN (" +
+        longd +
+        "*1.00012) AND (" +
+        longd +
+        "*0.99992) and Timestamp between ' " +
+        stime +
+        "' and '" +
+        ftime +
+        "'";
+    console.log(query);
     connection.query(query, (err, result) => {
         if (!err) {
             console.log(result);
             return res.send(result).status(200);
         } else {
-            console.log(`Ha ocurrido el siguiente error: ${err}`);
+            console.log(`Ha ocurrido el siguiente ${err}`);
             return res.status(500);
         }
     });
 });
-
 //-----------------------------------------initializing server
 app.use(express.static(__dirname + "/static"));
 app.listen(8000, () =>

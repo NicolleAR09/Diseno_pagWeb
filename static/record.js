@@ -63,7 +63,6 @@ const showRecordInfo = async () => {
             .slice(0, 19)
             .replace("T", " ");
 
-        console.log(validatedStartDate, validatedEndDate);
         // Se hace el fetch a la api con las fechas para obtener la informacion de la base de datos
         const request = await fetch(
             `/record?stime=${validatedStartDate}&ftime=${validatedEndDate}`,
@@ -73,23 +72,17 @@ const showRecordInfo = async () => {
                     Accept: "application/json"
                 }
             }
-        ).then((response) =>
-            response.json().then((data) => console.log(data, "data"))
         );
 
-        console.log(request);
         if (!request.ok)
             return console.log(
                 "Unable to fetch data with given dates, plase check parsing or request"
             );
 
-        console.log("Request ok");
         const historic = [];
         for (var poly of histPolyline) {
             myMap.removeLayer(poly);
         }
-
-        console.log("Polyline removed");
         request.json().then((json) => {
             const info = json;
 
@@ -106,6 +99,7 @@ const showRecordInfo = async () => {
                 }
             }
 
+            console.log(historic);
             // Se traza la polilinea
             const poly = L.polyline(historic, { color: "red" }).addTo(myMap);
             histPolyline.push(poly);
@@ -116,26 +110,34 @@ const showRecordInfo = async () => {
     }
 
     //Historic 2
-    myMap.on("click", async (e) => {
+    myMap.on("click", function (e) {
         let Loc = e.latlng;
-        marker.setLatLng([Loc.lat, Loc.lng]).addTo(myMap);
-        L.marker([Loc.lat, Loc.lng]).addTo(map);
+        console.log(Loc);
+        latds = Loc.lat;
+        longds = Loc.lng;
+        marker.setLatLng([lat, long]).addTo(myMap);
+    });
+};
 
-        // aqui tienes que llamar la al backend con Loc.lat y Loc.lng para que te retorne el timestamp
-        // Se hace el fetch a la api con las fechas para obtener la informacion de la base de datos
-        const request = await fetch(`/pathg?latd=${Loc.lat}&longd=${Loc.lng}`, {
-            method: "GET",
-            headers: {
-                Accept: "application/json"
-            }
-        });
+const showpath = async () => {
+    console.log("Botton pushed");
+    const stime = document.getElementById("stime").value; //.value.split('T').join(' ');
+    const ftime = document.getElementById("ftime").value; //.value.split('T').join(' ');
+    const latd = latds;
+    const longd = longds;
 
-        request.json().then((json) => {
-            console.log(json);
+    // Se hace el fetch a la api con las fechas para obtener la informacion de la base de datos
+    fetch(`/pathg?stime=${stime}&ftime=${ftime}&latd=${latd}&longd=${longd}`, {
+        method: "GET",
+        headers: {
+            Accept: "application/json"
+        }
+    }).then((response) => {
+        response.json().then((json) => {
             const info = json;
             let pathway; // cambia nombre
             dato = info.Timestamp; // busca como traer los datos
-            pathway = dato.map(() => {
+            pathway = dato.map(function (bar) {
                 // si no funciona data map prueben dato.map sino info.map
                 return "<li>" + dato + "</li>"; // Poner el tiempo traido
             });
