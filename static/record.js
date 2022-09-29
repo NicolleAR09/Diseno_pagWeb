@@ -91,7 +91,7 @@ const showRecordInfo = async () => {
                 if (item) {
                     if (
                         item.Longitud !== undefined &&
-                        item.Latitud != undefined
+                        item.Latitud !== undefined
                     ) {
                         historic.push([item.Longitud, item.Latitud]);
                         info.push(item.Timestamp);

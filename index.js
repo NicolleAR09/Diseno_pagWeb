@@ -132,3 +132,4 @@ app.listen(8000, () =>
 
 //----------------------------------------port from sniffer
 socket.bind(8050);
+console.log("Socker listening on port 8050");

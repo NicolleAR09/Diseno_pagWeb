@@ -148,6 +148,7 @@
                                 const jsn = { "database": { "Id": "", "Latitud": "", "Longitud": "", "Timestamp": "" } };
                                 var data = this.responseText;
                                 data = JSON.parse(data)
+                                console.log(data.Latitud);
                                 var datos = "";
 
                                 document.getElementById("lat").innerHTML = data.Latitud;
@@ -187,7 +188,7 @@
 </body>
 
 
-<script src="/map.js"></script>
+<script src="./map.js"></script>
 
 <label for="stime">Choose a start time:</label>
 
@@ -268,7 +269,7 @@
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
-<script src="js/scripts.js"></script>
+<script src="./js/scripts.js"></script>
 <script src="./record.js"></script>
 
 
