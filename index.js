@@ -107,7 +107,7 @@ app.get("/pathg", async (req, res) => {
         longd.toFixed(4) + 0.02
     } AND Latitud >= ${longd.toFixed(4) - 0.02} AND Longitud >= ${latid.toFixed(
         4
-    )} AND Longitud <= ${latid.toFixed(4) - 0.02}`;
+    )} AND Longitud <= ${latid.toFixed(4)}`;
 
     console.log(query);
     connection.query(query, (err, result) => {
