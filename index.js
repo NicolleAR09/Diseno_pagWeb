@@ -100,10 +100,14 @@ app.get("/record", async (req, res) => {
 
 //-------------------------------------------Historic 2
 app.get("/pathg", async (req, res) => {
-    const latid = req.query.latd;
-    const longd = req.query.longd;
+    const latid = parseFloat(req.query.latd);
+    const longd = parseFloat(req.query.longd);
 
-    const query = `SELECT * FROM gpsdata WHERE Latitud <= ${latid} AND Latitud >= ${latid} AND Longitud >= ${longd} AND Longitud <= ${longd}`;
+    const query = `SELECT * FROM gpsdata WHERE Latitud <= ${longd.toFixed(
+        4
+    )} AND Latitud >= ${longd.toFixed(5)} AND Longitud >= ${latid.toFixed(
+        5
+    )} AND Longitud <= ${latid.toFixed(4)}`;
 
     console.log(query);
     connection.query(query, (err, result) => {
