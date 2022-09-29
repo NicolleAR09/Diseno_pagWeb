@@ -112,7 +112,7 @@ const showRecordInfo = async () => {
     //Historic 2
     myMap.on("click", (e) => {
         marker.setLatLng([e.latlng.lat, e.latlng.lng]).addTo(myMap);
-        L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
+        L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
     });
 };
 
