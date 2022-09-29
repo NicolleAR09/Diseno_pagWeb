@@ -102,7 +102,6 @@ app.get("/record", async (req, res) => {
 app.get("/pathg", async (req, res) => {
     const latid = req.query.latd;
     const longd = req.query.longd;
-    console.log(stime);
 
     const query = `SELECT  Timestamp FROM gpsdata WHERE Latitud BETWEEN ${
         parseInt(latid) * 0.8

@@ -110,8 +110,22 @@ const showRecordInfo = async () => {
     }
 
     //Historic 2
-    myMap.on("click", (e) => {
+    myMap.on("click", async (e) => {
         marker.setLatLng([e.latlng.lat, e.latlng.lng]).addTo(myMap);
         L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
+
+        const request = await fetch(
+            `/pathg?latd=${e.latlng.lat}&longd=${e.latlng.lng}`,
+            {
+                method: "GET",
+                headers: {
+                    Accept: "application/json"
+                }
+            }
+        );
+
+        request.json().then((json) => {
+            console.log(json);
+        });
     });
 };
