@@ -52,6 +52,11 @@ socket.on("message", async (msg, senderInfo) => {
         console.log(`Message sent to ${senderInfo.address}:${senderInfo.port}`);
     });
 });
+
+socket.on("close", () => {
+    console.log("Socket closed");
+});
+
 socket.on("listening", (req, res) => {
     const address = socket.address();
     console.log(`UDP server listening on: ${address.address}:${address.port}`);
