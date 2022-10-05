@@ -32,6 +32,7 @@ const setRangeRed = (input) => {
         }
     }
 
+    
     const marcador = L.marker([circleArrayRed[range2].lat, circleArrayRed[range2].lng]).addTo(myMap);
     rangeMarkersRed.push(marcador);
     marcador.bindPopup(`
