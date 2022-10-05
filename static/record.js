@@ -146,7 +146,9 @@ const showRecordInfo = async () => {
                 const closestPoint = json[minDistanceIndex];
 
                 // get the closest point's timestamp
-                const closestPointTimestamp = closestPoint.Timestamp;
+                try {
+                    const closestPointTimestamp = closestPoint.Timestamp;
+                
 
                 if (closestPointTimestamp == 0) {
                     pathway =
@@ -156,6 +158,10 @@ const showRecordInfo = async () => {
                     pathway = "<b>" + closestPointTimestamp + "</b>";
                     
                 }
+                } catch (error) {
+                    alert("No hay datos, por favor seleccione otro punto");
+                }
+                
 
                 document.getElementById("pathway").innerHTML = pathway;
             });
