@@ -148,11 +148,13 @@ const showRecordInfo = async () => {
                 // get the closest point's timestamp
                 const closestPointTimestamp = closestPoint.Timestamp;
 
-                if (closestPointTimestamp != 0) {
-                    pathway = "<b>" + closestPointTimestamp + "</b>";
-                } else {
+                if (closestPointTimestamp == 0) {
                     pathway =
                         "<b> No hay datos, por favor seleccione otro punto </b>";
+                        console.log(closestPointTimestamp)
+                } else {
+                    pathway = "<b>" + closestPointTimestamp + "</b>";
+                    
                 }
 
                 document.getElementById("pathway").innerHTML = pathway;
