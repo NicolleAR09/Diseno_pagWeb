@@ -109,9 +109,9 @@ app.get("/pathg", async (req, res) => {
         //} AND Longitud BETWEEN ${latid} AND ${latid + 10}`;
 
         circQuery ="Select DISTINCT Fecha, Hora,acos(sin(radians("+latid+"))*sin(radians(Latitud)) + cos(radians("+latid+
-        "))*cos(radians(Latitud))*cos(radians("+longd+")-(radians(Longitud)))) * (6371)  From datos Where acos"+
+        "))*cos(radians(Latitud))*cos(radians("+longd+")-(radians(Longitud)))) * (1000)  From datos Where acos"+
         "(sin(radians("+longd+"))*sin(radians(Latitud)) + cos(radians("+latid+"))*cos(radians(Latitud))*cos(radians("+
-        longd+")-(radians(Longitud)))) * (6371) <0.05 and timestamp(Fecha,Hora) between ' " +
+        longd+")-(radians(Longitud)))) * (1000) <0.05 and timestamp(Fecha,Hora) between ' " +
         stime + "' and '" + ftime + "'"
 
         console.log(circQuery);
