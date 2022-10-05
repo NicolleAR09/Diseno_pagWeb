@@ -110,7 +110,7 @@ const showRecordInfo = async () => {
     }
 
     //Historic 2
-    myMap.on("click", (e) => {
+    myMap.on("mousemove", (e) => {
         console.log(histPolyline);
 
        
