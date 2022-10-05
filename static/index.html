@@ -187,15 +187,16 @@
 
 </body>
 
+<h2>If you want to know the route for a time interval set a start date and an end date</h2>
 
 <script src="./map.js"></script>
 
-<label for="stime">Choose a start time:</label>
+<label for="stime">Choose a start date:</label>
 
 <input type="datetime-local" id="stime" style="cursor:pointer">
 
 
-<label for="ftime">Choose an end time:</label>
+<label for="ftime">Choose an end date:</label>
 
 <input type="datetime-local" id="ftime" style="cursor:pointer">
 
@@ -216,13 +217,16 @@
 
 <div>
     <br/>
-        Tiempo aproximado:
+    <h2>If you want to know date for an specific path click on the line in the map</h2>
+        Approximate date:
         <input type="text" id="time" style="width: 50px; height: 20px; border: 0; background-color: #ffffff; text-align: center;" readonly>
         <div id="pathway"/>
         </input>
 </div>
 
+
 <div id="setDate">
+    To set the date interval click here
     <button class="submitInput" onclick="showRecordInfo()">
         Set Date
     </button>
