@@ -44,6 +44,7 @@ socket.on("error", (err) => {
     console.log(`server error:\n${err.stack}`);
     socket.close();
 });
+
 socket.on("message", async (msg, senderInfo) => {
     console.log("Messages received " + msg);
     const infoMensaje = String(msg).split(",");
@@ -52,6 +53,11 @@ socket.on("message", async (msg, senderInfo) => {
         console.log(`Message sent to ${senderInfo.address}:${senderInfo.port}`);
     });
 });
+
+socket.on("close", () => {
+    console.log("Socket closed");
+});
+
 socket.on("listening", (req, res) => {
     const address = socket.address();
     console.log(`UDP server listening on: ${address.address}:${address.port}`);
@@ -59,18 +65,17 @@ socket.on("listening", (req, res) => {
 
 //-------------------------------------------insert info to database
 const insertData = (info) => {
-    data.Latitud = Number(info[0]);
-    data.Longitud = Number(info[1]);
-    data.Timestamp = new Date(Date.parse(info[2])).toISOString();
+    console.log("Inserting data", info);
+    data.Latitud = info[0];
+    data.Longitud = info[1];
+    data.Timestamp = info[2];
 
-    console.log(data);
-
-    const query = `INSERT INTO gpsdata (Latitud, Longitud, Timestamp) VALUES ('${data.Latitud}', '${data.Longitud}','${data.Timestamp}')`;
-    connection.query(query, function (err, result) {
-        if (err) throw err;
-        console.log("Register saved");
-    });
-    console.log("Received: ", data);
+    // const query = `INSERT INTO gpsdata (Latitud, Longitud, Timestamp) VALUES ('data.Latitud', 'data.Longitud','data.Timestamp')`;
+    // connection.query(query, function (err, result) {
+    //     if (err) throw err;
+    //     console.log("Register saved");
+    // });
+    // console.log("Received: ", data);
 };
 
 //-------------------------------------------Historic polyline
@@ -78,10 +83,10 @@ app.get("/record", async (req, res) => {
     const stime = req.query.stime;
     const ftime = req.query.ftime;
 
-    print(stime);
+    console.log(stime);
 
     const query = `SELECT * FROM gpsdata WHERE Timestamp BETWEEN '${stime}' AND '${ftime}'`;
-    print(query);
+    console.log(query);
     connection.query(query, (err, result) => {
         if (!err) {
             console.log(result);
@@ -95,25 +100,28 @@ app.get("/record", async (req, res) => {
 
 //-------------------------------------------Historic 2
 app.get("/pathg", async (req, res) => {
-    const latd = parseInt(req.query.latd);
-    const longd = parseInt(req.query.longd);
+    try {
+        const latid = parseFloat(req.query.latd);
+        const longd = parseFloat(req.query.longd);
 
-    const query = `SELECT * FROM gpsdata WHERE Latitud BETWEEN ${
-        latd * 0.8
-    } AND ${latd * 1.2} AND Longitud BETWEEN ${longd * 1.2} AND ${longd * 0.8}`;
+        const query = `SELECT * FROM gpsdata WHERE Latitud BETWEEN ${longd} AND ${
+            longd + 10
+        } AND Longitud BETWEEN ${latid} AND ${latid + 10}`;
 
-    console.log(query);
-    connection.query(query, (err, result) => {
-        if (!err) {
-            console.log(result);
-            return res.send(result).status(200);
-        } else {
-            console.log(`Ha ocurrido el siguiente ${err}`);
-            return res.status(500);
-        }
-    });
+        console.log(query);
+        connection.query(query, (err, result) => {
+            if (!err) {
+                console.log(result);
+                return res.send(result).status(200);
+            } else {
+                console.log(`Ha ocurrido el siguiente ${err}`);
+                return res.status(500);
+            }
+        });
+    } catch (e) {
+        console.error(e);
+    }
 });
-
 //-----------------------------------------initializing server
 app.use(express.static(__dirname + "/static"));
 app.listen(8000, () =>
@@ -121,4 +129,6 @@ app.listen(8000, () =>
 );
 
 //----------------------------------------port from sniffer
-socket.bind(8050);
+socket.bind(8050).unref();
+
+//SELECT * FROM gpsdata WHERE Latitud BETWEEN 0.0000 AND 0.0000 AND Longitud BETWEEN 0.0000 AND 0.0000

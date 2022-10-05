@@ -91,7 +91,7 @@ const showRecordInfo = async () => {
                 if (item) {
                     if (
                         item.Longitud !== undefined &&
-                        item.Latitud != undefined
+                        item.Latitud !== undefined
                     ) {
                         historic.push([item.Longitud, item.Latitud]);
                         info.push(item.Timestamp);
@@ -110,31 +110,51 @@ const showRecordInfo = async () => {
     }
 
     //Historic 2
-    myMap.on("click", async (e) => {
-        let Loc = e.latlng;
-        marker.setLatLng([Loc.lat, Loc.lng]).addTo(myMap);
+    myMap.on("click", (e) => {
+        console.log(histPolyline);
 
-        // aqui tienes que llamar la al backend con Loc.lat y Loc.lng para que te retorne el timestamp
-        // Se hace el fetch a la api con las fechas para obtener la informacion de la base de datos
-        const request = await fetch(`/pathg?latd=${Loc.lat}&longd=${Loc.lng}`, {
+        marker.setLatLng([e.latlng.lat, e.latlng.lng]).addTo(myMap);
+        L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
+
+        fetch(`/pathg?latd=${e.latlng.lat}&longd=${e.latlng.lng}`, {
             method: "GET",
             headers: {
                 Accept: "application/json"
             }
-        });
+        }).then((response) => {
+            response.json().then((json) => {
+                const distances = json.map((item) => {
+                    // item has the form of
+                    // {ID: 1173, Latitud: -74.837, Longitud: 11.0151, Timestamp: "2022-09-29T11:02:56.000Z"}
+                    // we need to find the closest point to the current location by comparing each distance e.latlng.lat, e.latlng.lng with item.Latitud, item.Longitud and finding the minimum
 
-        console.log(request);
+                    return Math.sqrt(
+                        Math.pow(e.latlng.lat - item.Longitud, 2) +
+                            Math.pow(e.latlng.lng - item.Latitud, 2)
+                    );
+                });
 
-        request.json().then((json) => {
-            console.log(json);
-            const info = json;
-            let pathway; // cambia nombre
-            dato = info.Timestamp; // busca como traer los datos
-            pathway = dato.map(() => {
-                // si no funciona data map prueben dato.map sino info.map
-                return "<li>" + dato + "</li>"; // Poner el tiempo traido
+                // find the minimum distance
+                const minDistance = Math.min(...distances);
+
+                // find the index of the minimum distance
+                const minDistanceIndex = distances.indexOf(minDistance);
+
+                // get the closest point
+                const closestPoint = json[minDistanceIndex];
+
+                // get the closest point's timestamp
+                const closestPointTimestamp = closestPoint.Timestamp;
+
+                if (closestPointTimestamp) {
+                    pathway = "<b>" + closestPointTimestamp + "</b>";
+                } else {
+                    pathway =
+                        "<b> No hay datos, por favor seleccione otro punto </b>";
+                }
+
+                document.getElementById("pathway").innerHTML = pathway;
             });
-            document.getElementById("pathway").innerHTML = pathway;
         });
     });
 };
