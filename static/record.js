@@ -107,7 +107,6 @@ const showRecordInfo = async () => {
                 const poly = L.polyline(historic, { color: "red" }).addTo(myMap);
                 histPolyline.push(poly);
                 console.log("Historic done");
-
             }
 
         });
