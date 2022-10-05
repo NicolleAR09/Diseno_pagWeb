@@ -102,7 +102,7 @@ const showRecordInfo = async () => {
             console.log(historic);
             // Se traza la polilinea
             if (historic == 0) {
-                pathnot="<b> No hay datos, por favor seleccione otro intervalo </b>";
+                pathway ="<b> No hay datos, por favor seleccione otro intervalo </b>";
             } else {
                 const poly = L.polyline(historic, { color: "red" }).addTo(myMap);
                 histPolyline.push(poly);
