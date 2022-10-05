@@ -100,6 +100,9 @@ const showRecordInfo = async () => {
             }
 
             console.log(historic);
+            if (historic == 0) {
+                alert("No hay datos, por favor seleccione otro punto");
+            }
             // Se traza la polilinea
             const poly = L.polyline(historic, { color: "red" }).addTo(myMap);
             histPolyline.push(poly);
