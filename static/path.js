@@ -32,7 +32,7 @@ const setRangeRed = (input) => {
         }
     }
 
-    const marcador = L.marker1([circleArrayRed[range2].lat, circleArrayRed[range2].lng]).addTo(myMap);
+    const marcador = L.marker([circleArrayRed[range2].lat, circleArrayRed[range2].lng]).addTo(myMap);
     rangeMarkersRed.push(marcador);
     marcador.bindPopup(`
         fecha: ${infoRed[range2].fecha} <br>
