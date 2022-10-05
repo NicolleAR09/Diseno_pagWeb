@@ -101,7 +101,7 @@ const showRecordInfo = async () => {
 
             console.log(historic);
             if (historic == 0) {
-                alert("No hay datos, por favor seleccione otro punto");
+                alert("No hay datos, por favor seleccione otro intervalo");
             }
             // Se traza la polilinea
             const poly = L.polyline(historic, { color: "red" }).addTo(myMap);
