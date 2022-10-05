@@ -104,12 +104,18 @@ app.get("/pathg", async (req, res) => {
         const latid = parseFloat(req.query.latd);
         const longd = parseFloat(req.query.longd);
 
-        const query = `SELECT * FROM gpsdata WHERE Latitud BETWEEN ${longd} AND ${
-            longd + 10
-        } AND Longitud BETWEEN ${latid} AND ${latid + 10}`;
+       // const query = `SELECT * FROM gpsdata WHERE Latitud BETWEEN ${longd} AND ${
+         //   longd + 10
+        //} AND Longitud BETWEEN ${latid} AND ${latid + 10}`;
 
-        console.log(query);
-        connection.query(query, (err, result) => {
+        circQuery ="Select DISTINCT Fecha, Hora,acos(sin(radians("+latid+"))*sin(radians(Latitud)) + cos(radians("+latid+
+        "))*cos(radians(Latitud))*cos(radians("+longd+")-(radians(Longitud)))) * (6371)  From datos Where acos"+
+        "(sin(radians("+longd+"))*sin(radians(Latitud)) + cos(radians("+latid+"))*cos(radians(Latitud))*cos(radians("+
+        longd+")-(radians(Longitud)))) * (6371) <0.05 and timestamp(Fecha,Hora) between ' " +
+        stime + "' and '" + ftime + "'"
+
+        console.log(circQuery);
+        connection.query(circQuery, (err, result) => {
             if (!err) {
                 console.log(result);
                 return res.send(result).status(200);
