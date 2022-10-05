@@ -150,7 +150,7 @@ const showRecordInfo = async () => {
 
                 // get the closest point's timestamp
                 try {
-                    const closestPointTimestamp = closestPoint.Timestamp;
+                    const closestPointTimestamp = new Date (Date.parse(closestPoint.Timestamp)).toString();
                 
 
                 if (closestPointTimestamp == 0) {
