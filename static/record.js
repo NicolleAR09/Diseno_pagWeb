@@ -110,7 +110,7 @@ const showRecordInfo = async () => {
     }
 
     //Historic 2
-    myMap.on("mousemove", (e) => {
+    myMap.on("onclick", (e) => {
         console.log(histPolyline);
 
         marker.setLatLng([e.latlng.lat, e.latlng.lng]).addTo(myMap);
