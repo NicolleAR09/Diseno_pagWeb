@@ -101,13 +101,9 @@ const showRecordInfo = async () => {
 
             console.log(historic);
             // Se traza la polilinea
-            if (historic == 0) {
-                pathway ="<b> No hay datos, por favor seleccione otro intervalo </b>";
-            } else {
-                const poly = L.polyline(historic, { color: "red" }).addTo(myMap);
-                histPolyline.push(poly);
-                console.log("Historic done");
-            }
+            const poly = L.polyline(historic, { color: "red" }).addTo(myMap);
+            histPolyline.push(poly);
+            console.log("Historic done");
 
         });
     } catch (e) {
@@ -152,7 +148,7 @@ const showRecordInfo = async () => {
                 // get the closest point's timestamp
                 const closestPointTimestamp = closestPoint.Timestamp;
 
-                if (closestPointTimestamp) {
+                if (closestPointTimestamp != 0) {
                     pathway = "<b>" + closestPointTimestamp + "</b>";
                 } else {
                     pathway =
