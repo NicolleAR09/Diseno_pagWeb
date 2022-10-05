@@ -101,9 +101,15 @@ const showRecordInfo = async () => {
 
             console.log(historic);
             // Se traza la polilinea
-            const poly = L.polyline(historic, { color: "red" }).addTo(myMap);
-            histPolyline.push(poly);
-            console.log("Historic done");
+            if (historic == 0) {
+                pathnot="<b> No hay datos, por favor seleccione otro intervalo </b>";
+            } else {
+                const poly = L.polyline(historic, { color: "red" }).addTo(myMap);
+                histPolyline.push(poly);
+                console.log("Historic done");
+
+            }
+
         });
     } catch (e) {
         console.error(e);
@@ -114,9 +120,9 @@ const showRecordInfo = async () => {
         console.log(histPolyline);
 
         marker.setLatLng([e.latlng.lat, e.latlng.lng]).addTo(myMap);
-    
+
         L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
-        
+
         fetch(`/pathg?latd=${e.latlng.lat}&longd=${e.latlng.lng}`, {
             method: "GET",
             headers: {
@@ -131,7 +137,7 @@ const showRecordInfo = async () => {
 
                     return Math.sqrt(
                         Math.pow(e.latlng.lat - item.Longitud, 2) +
-                            Math.pow(e.latlng.lng - item.Latitud, 2)
+                        Math.pow(e.latlng.lng - item.Latitud, 2)
                     );
                 });
 
