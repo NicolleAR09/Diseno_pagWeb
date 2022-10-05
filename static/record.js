@@ -113,8 +113,8 @@ const showRecordInfo = async () => {
     myMap.on("mousemove", (e) => {
         console.log(histPolyline);
 
-        marker1.setLatLng([e.latlng.lat, e.latlng.lng]).addTo(myMap);
-        L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
+        marker.setLatLng([e.latlng.lat, e.latlng.lng]).addTo(myMap);
+        L.marker1([e.latlng.lat, e.latlng.lng]).addTo(myMap);
         
         fetch(`/pathg?latd=${e.latlng.lat}&longd=${e.latlng.lng}`, {
             method: "GET",
