@@ -117,9 +117,9 @@ const showRecordInfo = async () => {
     myMap.on("click", (e) => {
         console.log(histPolyline);
 
-        myMap.removeLayer(marker) ;
+        myMap.removeLayer(marker1) ;
 
-        marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
+        marker1 = L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
         
         //setLatLng([e.latlng.lat, e.latlng.lng]).addTo(myMap);
 
