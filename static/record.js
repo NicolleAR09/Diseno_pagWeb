@@ -150,7 +150,7 @@ const showRecordInfo = async () => {
 
                 if (closestPointTimestamp == 0) {
                     pathway =
-                        "<b> No hay datos, por favor seleccione otro punto </b>";
+                        "<b>"  + "No hay datos, por favor seleccione otro punto" + "</b>";
                         console.log(closestPointTimestamp)
                 } else {
                     pathway = "<b>" + closestPointTimestamp + "</b>";
