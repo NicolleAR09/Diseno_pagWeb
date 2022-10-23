@@ -340,6 +340,80 @@ th {
   border-width: 0;
 }
 
+.containerBanner{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  left: -320px;
+  transition: all ease-in-out 300ms;
+}
+
+.sidebar{
+  width: 320px;
+  height: 100%;
+  background: white;
+  opacity: .8;
+  overflow: auto;
+  float: left;
+}
+
+.sidebar img {
+  width:50px;
+  display: block;
+  margin: 10px auto;
+}
+
+.side-hide{
+  float: right;
+  margin: 12px;
+  color: black;
+  opacity: .7;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.sidebar ul{
+  padding: 12px 10px;
+  text-align: justify;
+}
+
+.content{
+  padding: 20px;
+
+}
+
+.button {
+  text-align:center;
+  color: #11244a;
+  background-color: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 0 0 0 0.25rem rgba(38, 151, 175, 0.5);
+}
+
+.content button {
+  text-align:center;
+  color: #11244a;
+  background-color: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 0 0 0 0.25rem rgba(38, 151, 175, 0.5);
+  padding: 10px 20px;
+  display: block;
+  /* margin: 10px auto; */
+  float: left;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: 10px
+}
+
+.show{
+  left: 0;
+}
+
+
+
+
+
 label {
   display: inline-block;
 }
@@ -3014,10 +3088,22 @@ textarea.form-control-lg {
 }
 
 .btn-secondary2 {
+  text-align:center;
   color: #ffffff;
   background-color: #ffffff;
   border-color: #ffffff;
   box-shadow: 0 0 0 0.25rem rgba(38, 151, 175, 0.5);
+  
+}
+
+.btn-secondary3 {
+  text-align:center;
+  color: #11244a;
+  background-color: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 0 0 0 0.25rem rgba(38, 151, 175, 0.5);
+  
+  
 }
 
 .btn-primary:hover {
@@ -11144,6 +11230,16 @@ header.masthead {
   padding-bottom: 8rem;
   background: no-repeat center center;
   background-color: #6c757d;
+  background-size: cover;
+  background-attachment: scroll;
+}
+header.masthead2 {
+  position: relative;
+  margin-bottom: .2rem;
+  padding-top: 5px;
+  padding-bottom: 5rem;
+  background: no-repeat center center;
+  background-color: #11244a;
   background-size: cover;
   background-attachment: scroll;
 }
