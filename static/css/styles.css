@@ -3012,6 +3012,14 @@ textarea.form-control-lg {
   background-color: #0085A1;
   border-color: #0085A1;
 }
+
+.btn-secondary2 {
+  color: #ffffff;
+  background-color: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 0 0 0 0.25rem rgba(38, 151, 175, 0.5);
+}
+
 .btn-primary:hover {
   color: #fff;
   background-color: #007189;
@@ -3041,6 +3049,7 @@ textarea.form-control-lg {
   color: #fff;
   background-color: #6c757d;
   border-color: #6c757d;
+  
 }
 .btn-secondary:hover {
   color: #fff;
