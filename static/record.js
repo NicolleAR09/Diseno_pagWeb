@@ -97,6 +97,7 @@ const showRecordInfo = async () => {
         latds=Loc.lat
         longds=Loc.lng
         marker.setLatLng([lat, long]).addTo(myMap)
+        console.log("Hola");
     });
     
 };
