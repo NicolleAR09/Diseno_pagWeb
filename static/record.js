@@ -114,7 +114,7 @@ const showRecordInfo = async () => {
     }
 
     //Historic 2
-    myMap.on("click", (e) => {
+    myMap.on("onclick", (e) => {
         console.log(histPolyline);
 
         myMap.removeLayer(marker1) ;

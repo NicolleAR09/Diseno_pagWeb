@@ -373,6 +373,15 @@ th {
   cursor: pointer;
 }
 
+.menu_bars{
+  float: left;
+  margin: 12px;
+  color: white;
+
+  font-size: 24px;
+  cursor: pointer;
+}
+
 .sidebar ul{
   padding: 12px 10px;
   text-align: justify;
