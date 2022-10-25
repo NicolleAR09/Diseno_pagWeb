@@ -7,7 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>FindPin</title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="assets/Logo3.ico" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -57,7 +57,10 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
         <div class="container px-4 px-lg-5">
+            
             <a class="navbar-brand" href="index.html">Start Localization</a>
+            
+            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
@@ -66,8 +69,8 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="historic.html">Historics</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
-
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li>
 
                 </ul>
@@ -81,16 +84,26 @@
         <div class="container position-relative px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
-                    <div class="site-heading">
+                    <div class="site-heading"> 
+                        <div><img src="\assets\img\findpinlogo.png" alt="FindPin" width="100" height="100"></div>
                         <h1>FindPin</h1>
-                        <span class="subheading">A pin to track your moving devices</span>
+                        <div><span class="subheading">A pin to track your moving devices </div>
+                            <div>
+                                    <button class="btn btn-secondary2" > 
+                                        <a href="#tituloGPS" > Lets get started</a>
+                                    </button>
+                                
+                            </div>
+                            
+                        </span>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Main Content-->
+    <!-- Main Content, TABLE-->
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
@@ -101,7 +114,7 @@
                         text-align: center;
                     }
                 </style>
-                <h1>GPS coordinates</h1>
+                <h1 id="tituloGPS">GPS coordinates</h1>
                 <div>
                     <table style="margin-left: auto;margin-right: auto" class="content-table" id="content-table">
                         <th>
@@ -181,21 +194,32 @@
 
 
             </div>
-            <div id="myMap" style="height: 300px"></div>
+            <div id="myMap" style="height: 350px"></div>
             <!-- Divider-->
             <hr class="my-4" />
+
+            <div style="width:100%; height:100%">
+                 <button class="btn btn-secondary2"> 
+                <a href="historic.html" > Go to Historics</a>
+                </button>
+            </div>
 
 </body>
 
 
+
+
+<h4>If you want to know the route for a time interval set a start date and an end date</h4>
+<h6>*If nothing shows on the map please set another interval</h6>
+
 <script src="./map.js"></script>
 
-<label for="stime">Choose a start time:</label>
+<label for="stime">Choose a start date:</label>
 
 <input type="datetime-local" id="stime" style="cursor:pointer">
 
 
-<label for="ftime">Choose an end time:</label>
+<label for="ftime">Choose an end date:</label>
 
 <input type="datetime-local" id="ftime" style="cursor:pointer">
 
@@ -215,12 +239,22 @@
 </style>
 
 <div id="setDate">
+    To set the date interval click here
     <button class="submitInput" onclick="showRecordInfo()">
         Set Date
     </button>
 </div>
 
-<div id="pathway">
+
+<div>
+    <br/>
+    <h4>If you want to know a date for an specific path click on the line in the map</h4>
+    <h6>*If no approximate date shows up please click somewhere else</h6>
+        Approximate date:
+        <input type="text" id="time" style="width: 50px; height: 20px; border: 0; background-color: #ffffff; text-align: center;" readonly>
+        <div id="pathway"></div>
+        </input>
+</div>
 
 <footer class="border-top">
     <div class="container px-4 px-lg-5">

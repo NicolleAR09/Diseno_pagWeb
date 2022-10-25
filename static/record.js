@@ -100,41 +100,81 @@ const showRecordInfo = async () => {
             }
 
             console.log(historic);
+            if (historic == 0) {
+                alert("No hay datos, por favor seleccione otro intervalo");
+            }
             // Se traza la polilinea
             const poly = L.polyline(historic, { color: "red" }).addTo(myMap);
             histPolyline.push(poly);
             console.log("Historic done");
+
         });
     } catch (e) {
         console.error(e);
     }
 
     //Historic 2
-    myMap.on("click", async (e) => {
-        marker.setLatLng([e.latlng.lat, e.latlng.lng]).addTo(myMap);
-        L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
+    myMap.on("onclick", (e) => {
+        console.log(histPolyline);
 
-        const request = await fetch(
-            `/pathg?latd=${e.latlng.lat}&longd=${e.latlng.lng}`,
-            {
-                method: "GET",
-                headers: {
-                    Accept: "application/json"
-                }
+        var marker = null;
+
+        myMap.on('click', function (e) {
+        if (marker !== null) {
+            map.removeLayer(marker);
+        }
+        marker = L.marker(e.latlng).addTo(map);
+        });
+        
+        //setLatLng([e.latlng.lat, e.latlng.lng]).addTo(myMap);
+
+       // L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
+
+        fetch(`/pathg?latd=${e.latlng.lat}&longd=${e.latlng.lng}`, {
+            method: "GET",
+            headers: {
+                Accept: "application/json"
             }
-        );
-
-        request.json().then((json) => {
+        }).then((response) => {
             response.json().then((json) => {
-                const info = json;
-                let pathway; // cambia nombre
-                dato = info.Timestamp; // busca como traer los datos
-                pathway = dato.map(function (bar) {
-                    // si no funciona data map prueben dato.map sino info.map
-                    return "<li>" + dato + "</li>"; // Poner el tiempo traido
+                const distances = json.map((item) => {
+                    // item has the form of
+                    // {ID: 1173, Latitud: -74.837, Longitud: 11.0151, Timestamp: "2022-09-29T11:02:56.000Z"}
+                    // we need to find the closest point to the current location by comparing each distance e.latlng.lat, e.latlng.lng with item.Latitud, item.Longitud and finding the minimum
+
+                    return Math.sqrt(
+                        Math.pow(e.latlng.lat - item.Longitud, 2) +
+                        Math.pow(e.latlng.lng - item.Latitud, 2)
+                    );
                 });
 
-                console.log(pathway, info);
+                // find the minimum distance
+                const minDistance = Math.min(...distances);
+
+                // find the index of the minimum distance
+                const minDistanceIndex = distances.indexOf(minDistance);
+
+                // get the closest point
+                const closestPoint = json[minDistanceIndex];
+
+                // get the closest point's timestamp
+                try {
+                    const closestPointTimestamp = new Date (Date.parse(closestPoint.Timestamp)).toString();
+                
+
+                if (closestPointTimestamp == 0) {
+                    pathway =
+                        alert("No hay datos, por favor seleccione otro punto");
+                        console.log(closestPointTimestamp)
+                } else {
+                    pathway = "<b>" + closestPointTimestamp + "</b>";
+                    
+                }
+                } catch (error) {
+                    alert("No hay datos, por favor seleccione otro punto");
+                }
+                
+
                 document.getElementById("pathway").innerHTML = pathway;
             });
         });

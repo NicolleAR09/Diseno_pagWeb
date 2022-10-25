@@ -70,12 +70,12 @@ const insertData = (info) => {
     data.Longitud = info[1];
     data.Timestamp = info[2];
 
-    // const query = `INSERT INTO gpsdata (Latitud, Longitud, Timestamp) VALUES ('data.Latitud', 'data.Longitud','data.Timestamp')`;
-    // connection.query(query, function (err, result) {
-    //     if (err) throw err;
-    //     console.log("Register saved");
-    // });
-    // console.log("Received: ", data);
+    const query = `INSERT INTO gpsdata (Latitud, Longitud, Timestamp) VALUES ('${data.Latitud}', '${data.Longitud}','${data.Timestamp}')`;
+    connection.query(query, function (err, result) {
+        if (err) throw err;
+        console.log("Register saved");
+    });
+    console.log("Received: ", data);
 };
 
 //-------------------------------------------Historic polyline
@@ -100,25 +100,47 @@ app.get("/record", async (req, res) => {
 
 //-------------------------------------------Historic 2
 app.get("/pathg", async (req, res) => {
-    const latid = parseFloat(req.query.latd);
-    const longd = parseFloat(req.query.longd);
+    try {
+        const latid = parseFloat(req.query.latd);
+        const longd = parseFloat(req.query.longd);
 
-    const query = `SELECT * FROM gpsdata WHERE Latitud <= ${
-        longd.toFixed(4) + 0.02
-    } AND Latitud >= ${longd.toFixed(4) - 0.02} AND Longitud >= ${latid.toFixed(
-        4
-    )} AND Longitud <= ${latid.toFixed(4)}`;
+        // const query = `SELECT * FROM gpsdata WHERE Latitud BETWEEN ${longd} AND ${
+        //   longd + 10
+        //} AND Longitud BETWEEN ${latid} AND ${latid + 10}`;
 
-    console.log(query);
-    connection.query(query, (err, result) => {
-        if (!err) {
-            console.log(result);
-            return res.send(result).status(200);
-        } else {
-            console.log(`Ha ocurrido el siguiente ${err}`);
-            return res.status(500);
-        }
-    });
+        circQuery =
+            "Select DISTINCT Fecha, Hora,acos(sin(radians(" +
+            latid +
+            "))*sin(radians(Latitud)) + cos(radians(" +
+            latid +
+            "))*cos(radians(Latitud))*cos(radians(" +
+            longd +
+            ")-(radians(Longitud)))) * (6371)  From datos Where acos" +
+            "(sin(radians(" +
+            longd +
+            "))*sin(radians(Latitud)) + cos(radians(" +
+            latid +
+            "))*cos(radians(Latitud))*cos(radians(" +
+            longd +
+            ")-(radians(Longitud)))) * (6371) <0.02 and timestamp(Fecha,Hora) between ' " +
+            stime +
+            "' and '" +
+            ftime +
+            "'";
+
+        console.log(circQuery);
+        connection.query(circQuery, (err, result) => {
+            if (!err) {
+                console.log(result);
+                return res.send(result).status(200);
+            } else {
+                console.log(`Ha ocurrido el siguiente ${err}`);
+                return res.status(500);
+            }
+        });
+    } catch (e) {
+        console.error(e);
+    }
 });
 //-----------------------------------------initializing server
 app.use(express.static(__dirname + "/static"));
@@ -128,3 +150,5 @@ app.listen(8000, () =>
 
 //----------------------------------------port from sniffer
 socket.bind(8050).unref();
+
+//SELECT * FROM gpsdata WHERE Latitud BETWEEN 0.0000 AND 0.0000 AND Longitud BETWEEN 0.0000 AND 0.0000
