@@ -126,6 +126,9 @@ const showRecordInfo = async () => {
         marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
         });
         
+        const stime = document.getElementById("stime").value; //.value.split('T').join(' ');
+        const ftime = document.getElementById("ftime").value; //.value.split('T').join(' ');
+
         const stime2 = new Date(stime)
             .toISOString()
             .slice(0, 19)
