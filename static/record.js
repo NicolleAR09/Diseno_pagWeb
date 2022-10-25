@@ -114,7 +114,7 @@ const showRecordInfo = async () => {
     }
 
     //Historic 2
-    myMap.on("onclick", (e) => {
+    myMap.on("click", (e) => {
         console.log(histPolyline);
         console.log("entró");
 
