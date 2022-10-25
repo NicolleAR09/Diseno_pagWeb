@@ -120,7 +120,7 @@ const showRecordInfo = async () => {
 
         var marker = null;
 
-        myMap.on('click', function (e) {
+        myMap.on('click', (e) =>{
         if (marker !== null) {
             map.removeLayer(marker);
         }
