@@ -13,7 +13,7 @@
 
 
  #myMap{
-  height: 80%;
+  height: calc(100vh-85px);
   width: 100%;
   top: 0;
   position: relative;
@@ -341,12 +341,14 @@ th {
 }
 
 .containerBanner{
-  position: fixed;
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  top: 85px;
+  width: 350px;
+  height: calc(100vh-85px);
   overflow: auto;
-  left: -320px;
+  left: -500px;
   transition: all ease-in-out 300ms;
+  z-index: 100000000;
 }
 
 .sidebar{
