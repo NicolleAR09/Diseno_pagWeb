@@ -128,7 +128,7 @@ const showRecordInfo = async () => {
         console.log("new marker point");
         });
         
-        setLatLng([e.latlng.lat, e.latlng.lng]).addTo(myMap);
+        //setLatLng([e.latlng.lat, e.latlng.lng]).addTo(myMap);
 
         L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
 
