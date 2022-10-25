@@ -116,10 +116,6 @@ const showRecordInfo = async () => {
     //Historic 2
     myMap.on("onclick", (e) => {
         console.log(histPolyline);
-        
-        setLatLng([e.latlng.lat, e.latlng.lng]).addTo(myMap);
-
-        L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
 
         var marker = null;
 
@@ -127,10 +123,12 @@ const showRecordInfo = async () => {
         if (marker !== null) {
             map.removeLayer(marker);
         }
-        marker = L.marker(e.latlng).addTo(map);
+        marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
         });
         
-        
+        setLatLng([e.latlng.lat, e.latlng.lng]).addTo(myMap);
+
+        L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
 
         fetch(`/pathg?latd=${e.latlng.lat}&longd=${e.latlng.lng}`, {
             method: "GET",
