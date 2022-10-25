@@ -126,8 +126,16 @@ const showRecordInfo = async () => {
         marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
         });
         
+        const stime2 = new Date(stime)
+            .toISOString()
+            .slice(0, 19)
+            .replace("T", " ");
 
-        fetch(`/pathg?latd=${e.latlng.lat}&longd=${e.latlng.lng}`, {
+        const ftime2 = new Date(ftime)
+            .toISOString()
+            .slice(0, 19)
+            .replace("T", " ");
+        fetch(`/pathg?latd=${e.latlng.lat}&longd=${e.latlng.lng}&stime=${stime2}&ftime=${ftime2}`, {
             method: "GET",
             headers: {
                 Accept: "application/json"

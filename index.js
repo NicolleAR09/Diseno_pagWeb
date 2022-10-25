@@ -101,6 +101,8 @@ app.get("/record", async (req, res) => {
 //-------------------------------------------Historic 2
 app.get("/pathg", async (req, res) => {
     try {
+        const stime = req.query.stime;
+        const ftime = req.query.ftime;
         const latid = parseFloat(req.query.latd);
         const longd = parseFloat(req.query.longd);
 
