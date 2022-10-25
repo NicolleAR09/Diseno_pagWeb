@@ -117,14 +117,14 @@ app.get("/pathg", async (req, res) => {
             latid +
             "))*cos(radians(Latitud))*cos(radians(" +
             longd +
-            ")-(radians(Longitud)))) * (6371)  From datos Where acos" +
+            ")-(radians(Longitud)))) * (6371)  From gpsdata Where acos" +
             "(sin(radians(" +
             longd +
             "))*sin(radians(Latitud)) + cos(radians(" +
             latid +
             "))*cos(radians(Latitud))*cos(radians(" +
             longd +
-            ")-(radians(Longitud)))) * (6371) <0.02 and timestamp(Fecha,Hora) between ' " +
+            ")-(radians(Longitud)))) * (6371) <0.02 and timestamp(Fecha,Hora) between '" +
             stime +
             "' and '" +
             ftime +

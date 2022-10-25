@@ -130,14 +130,11 @@ const showRecordInfo = async () => {
         const ftime = document.getElementById("ftime").value; //.value.split('T').join(' ');
 
         const stime2 = new Date(stime)
-            .toISOString()
-            .slice(0, 19)
-            .replace("T", " ");
+            .toISOString();
 
         const ftime2 = new Date(ftime)
-            .toISOString()
-            .slice(0, 19)
-            .replace("T", " ");
+            .toISOString();
+            
         fetch(`/pathg?latd=${e.latlng.lat}&longd=${e.latlng.lng}&stime=${stime2}&ftime=${ftime2}`, {
             method: "GET",
             headers: {
