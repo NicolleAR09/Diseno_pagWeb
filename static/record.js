@@ -116,7 +116,6 @@ const showRecordInfo = async () => {
     //Historic 2
     myMap.on("click", (e) => {
         console.log(histPolyline);
-        console.log("entró");
 
         var marker = null;
 
@@ -125,12 +124,8 @@ const showRecordInfo = async () => {
             myMap.removeLayer(marker);
         }
         marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
-        console.log("new marker point");
         });
         
-        //setLatLng([e.latlng.lat, e.latlng.lng]).addTo(myMap);
-
-        //marker.addTo(myMap);
 
         fetch(`/pathg?latd=${e.latlng.lat}&longd=${e.latlng.lng}`, {
             method: "GET",
@@ -170,7 +165,7 @@ const showRecordInfo = async () => {
                         console.log(closestPointTimestamp)
                 } else {
                     pathway = "<b>" + closestPointTimestamp + "</b>";
-                    
+                    console.log("pathway");
                 }
                 } catch (error) {
                     alert("No hay datos, por favor seleccione otro punto");
