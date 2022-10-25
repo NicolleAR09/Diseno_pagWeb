@@ -124,7 +124,7 @@ app.get("/pathg", async (req, res) => {
             latid +
             "))*cos(radians(Latitud))*cos(radians(" +
             longd +
-            ")-(radians(Longitud)))) * (6371) <0.02 and Timestamp between '" +
+            ")-(radians(Longitud)))) * (6371) <1 and Timestamp between '" +
             stime +
             "' and '" +
             ftime +
