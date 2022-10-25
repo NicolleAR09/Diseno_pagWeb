@@ -116,8 +116,9 @@ const showRecordInfo = async () => {
     //Historic 2
     myMap.on("onclick", (e) => {
         console.log(histPolyline);
+        console.log("entró");
 
-        var marker = L.marker([e.latlng.lat, e.latlng.lng]);
+        var marker = null;
 
         myMap.on('click', function (e) {
         if (marker !== null) {
