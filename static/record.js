@@ -114,16 +114,18 @@ const showRecordInfo = async () => {
     }
 
     //Historic 2
-    myMap.on("onclick", (e) => {
+    myMap.on("click", (e) => {
         console.log(histPolyline);
 
-        myMap.removeLayer(marker1) ;
+        var marker = null;
 
-        marker1 = L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
+        myMap.on('click', (e) =>{
+        if (marker !== null) {
+            myMap.removeLayer(marker);
+        }
+        marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
+        });
         
-        //setLatLng([e.latlng.lat, e.latlng.lng]).addTo(myMap);
-
-       // L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
 
         fetch(`/pathg?latd=${e.latlng.lat}&longd=${e.latlng.lng}`, {
             method: "GET",
@@ -163,7 +165,7 @@ const showRecordInfo = async () => {
                         console.log(closestPointTimestamp)
                 } else {
                     pathway = "<b>" + closestPointTimestamp + "</b>";
-                    
+                    console.log("pathway");
                 }
                 } catch (error) {
                     alert("No hay datos, por favor seleccione otro punto");

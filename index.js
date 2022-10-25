@@ -70,12 +70,12 @@ const insertData = (info) => {
     data.Longitud = info[1];
     data.Timestamp = info[2];
 
-    // const query = `INSERT INTO gpsdata (Latitud, Longitud, Timestamp) VALUES ('data.Latitud', 'data.Longitud','data.Timestamp')`;
-    // connection.query(query, function (err, result) {
-    //     if (err) throw err;
-    //     console.log("Register saved");
-    // });
-    // console.log("Received: ", data);
+    const query = `INSERT INTO gpsdata (Latitud, Longitud, Timestamp) VALUES ('${data.Latitud}', '${data.Longitud}','${data.Timestamp}')`;
+    connection.query(query, function (err, result) {
+        if (err) throw err;
+        console.log("Register saved");
+    });
+    console.log("Received: ", data);
 };
 
 //-------------------------------------------Historic polyline
@@ -104,15 +104,29 @@ app.get("/pathg", async (req, res) => {
         const latid = parseFloat(req.query.latd);
         const longd = parseFloat(req.query.longd);
 
-       // const query = `SELECT * FROM gpsdata WHERE Latitud BETWEEN ${longd} AND ${
-         //   longd + 10
+        // const query = `SELECT * FROM gpsdata WHERE Latitud BETWEEN ${longd} AND ${
+        //   longd + 10
         //} AND Longitud BETWEEN ${latid} AND ${latid + 10}`;
 
-        circQuery ="Select DISTINCT Fecha, Hora,acos(sin(radians("+latid+"))*sin(radians(Latitud)) + cos(radians("+latid+
-        "))*cos(radians(Latitud))*cos(radians("+longd+")-(radians(Longitud)))) * (6371)  From datos Where acos"+
-        "(sin(radians("+longd+"))*sin(radians(Latitud)) + cos(radians("+latid+"))*cos(radians(Latitud))*cos(radians("+
-        longd+")-(radians(Longitud)))) * (6371) <0.02 and timestamp(Fecha,Hora) between ' " +
-        stime + "' and '" + ftime + "'"
+        circQuery =
+            "Select DISTINCT Fecha, Hora,acos(sin(radians(" +
+            latid +
+            "))*sin(radians(Latitud)) + cos(radians(" +
+            latid +
+            "))*cos(radians(Latitud))*cos(radians(" +
+            longd +
+            ")-(radians(Longitud)))) * (6371)  From datos Where acos" +
+            "(sin(radians(" +
+            longd +
+            "))*sin(radians(Latitud)) + cos(radians(" +
+            latid +
+            "))*cos(radians(Latitud))*cos(radians(" +
+            longd +
+            ")-(radians(Longitud)))) * (6371) <0.02 and timestamp(Fecha,Hora) between ' " +
+            stime +
+            "' and '" +
+            ftime +
+            "'";
 
         console.log(circQuery);
         connection.query(circQuery, (err, result) => {
