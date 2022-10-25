@@ -122,9 +122,9 @@ const showRecordInfo = async () => {
 
         myMap.on('click', (e) =>{
         if (marker !== null) {
-            map.removeLayer(marker);
+            myMap.removeLayer(marker);
         }
-        marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
+        marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
         console.log("new marker point");
         });
         
