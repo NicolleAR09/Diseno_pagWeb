@@ -124,6 +124,7 @@ const showRecordInfo = async () => {
             map.removeLayer(marker);
         }
         marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
+        console.log("new marker point");
         });
         
         setLatLng([e.latlng.lat, e.latlng.lng]).addTo(myMap);
