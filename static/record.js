@@ -130,7 +130,7 @@ const showRecordInfo = async () => {
         
         //setLatLng([e.latlng.lat, e.latlng.lng]).addTo(myMap);
 
-        marker.addTo(myMap);
+        //marker.addTo(myMap);
 
         fetch(`/pathg?latd=${e.latlng.lat}&longd=${e.latlng.lng}`, {
             method: "GET",
