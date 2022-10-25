@@ -176,4 +176,7 @@ const showRecordInfo = async () => {
             });
         });
     });
+
 };
+
+document.getElementById("setDateButton").onclick(showRecordInfo)
