@@ -120,6 +120,9 @@ const showRecordInfo = async () => {
         var marker = null;
 
         myMap.on('click', (e) =>{
+
+            myMap.bindPopup("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
+            
         if (marker !== null) {
             myMap.removeLayer(marker);
         }
@@ -134,7 +137,7 @@ const showRecordInfo = async () => {
 
         const ftime2 = new Date(ftime)
             .toISOString();
-            
+
         fetch(`/pathg?latd=${e.latlng.lat}&longd=${e.latlng.lng}&stime=${stime2}&ftime=${ftime2}`, {
             method: "GET",
             headers: {
