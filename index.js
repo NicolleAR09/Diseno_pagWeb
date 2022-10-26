@@ -78,7 +78,7 @@ const insertData = (info) => {
     console.log("Received: ", data);
 };
 
-//-------------------------------------------Historic polyline
+//-------------------------------------------Historic 1
 app.get("/record", async (req, res) => {
     const stime = req.query.stime;
     const ftime = req.query.ftime;

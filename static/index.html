@@ -173,6 +173,7 @@
                                 var latlong = [Number(data.Longitud), Number(data.Latitud)];
                                 //poly.push(latlong);
                                 line.addLatLng(latlong)
+                                line2.addLatLng(latlong)  //adding second car
 
 
 
@@ -194,7 +195,7 @@
 
 
             </div>
-            <div id="myMap" style="height: 350px"></div>
+            <div id="myMap" style="height: 320px"></div>
             <!-- Divider-->
             <hr class="my-4" />
 
@@ -208,11 +209,12 @@
 
 
 
+<script src="./map.js"></script>
 
-<h4>If you want to know the route for a time interval set a start date and an end date</h4>
+<!--<h4>If you want to know the route for a time interval set a start date and an end date</h4>
 <h6>*If nothing shows on the map please set another interval</h6>
 
-<script src="./map.js"></script>
+
 
 <label for="stime">Choose a start date:</label>
 
@@ -255,6 +257,7 @@
         <div id="pathway"></div>
         </input>
 </div>
+-->
 
 <footer class="border-top">
     <div class="container px-4 px-lg-5">
