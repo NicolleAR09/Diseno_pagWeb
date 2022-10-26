@@ -129,8 +129,6 @@ const showRecordInfo = async () => {
                 alert("No hay datos, por favor seleccione otro intervalo");
             }
 
-            //-----------------------polyline veicle 2
-
             // Se traza la polilinea
             const poly1 = L.polyline(historic1, { color: "red" }).addTo(myMap);
             const poly2 = L.polyline(historic2, { color: "blue" }).addTo(myMap);
