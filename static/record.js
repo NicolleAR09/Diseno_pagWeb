@@ -183,7 +183,7 @@ const showRecordInfo = async () => {
 
                     return Math.sqrt(
                         Math.pow(e.latlng.lat - item.Longitud, 2) +
-                        Math.pow(e.latlng.lng - item.Latitud, 2)
+                            Math.pow(e.latlng.lng - item.Latitud, 2)
                     );
                 });
 
@@ -198,16 +198,15 @@ const showRecordInfo = async () => {
 
                 // get the closest point's timestamp
                 try {
-                    const closestPointTimestamp = new Date (Date.parse(closestPoint.Timestamp)).toString();
+                    const closestPointTimestamp = closestPoint.Timestamp;
                 
 
-                if (closestPointTimestamp == 0) {
-                    pathway =
-                        alert("No hay datos, por favor seleccione otro punto");
+                if (closestPointTimestamp) {
+                    pathway = "<b>" + closestPointTimestamp + "</b>";
                         console.log(closestPointTimestamp)
                 } else {
-                    pathway = "<b>" + closestPointTimestamp + "</b>";
-                    console.log("pathway");
+                    pathway =
+                        "<b> No hay datos, por favor seleccione otro punto </b>";
                 }
                 } catch (error) {
                     alert("No hay datos, por favor seleccione otro punto");
