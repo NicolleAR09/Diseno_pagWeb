@@ -26,6 +26,7 @@ const currentDate = yyyy + "-" + mm + "-" + dd + "T" + hora;
 //Obtener los inputs donde se van a colocar la fechas
 const startDate = document.getElementById("stime");
 const endDate = document.getElementById("ftime");
+const caropt = document.getElementById("carNum");
 
 //Definir que la fecha maxima por defecto sea la del dia de hoy
 console.log(startDate);
@@ -99,7 +100,8 @@ const showRecordInfo = async () => {
                         item.Latitud !== undefined
                     ) {
                         if(item.Car == 1){
-
+                            
+                            console.log(caropt);
                             historic1.push([item.Longitud, item.Latitud]);
                             info1.push(item.Timestamp);
 
