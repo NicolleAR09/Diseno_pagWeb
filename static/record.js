@@ -113,20 +113,24 @@ const showRecordInfo = async () => {
         console.error(e);
     }
 
-    //Historic 2
+    //-------------------------Historic 2
     myMap.on("click", (e) => {
         console.log(histPolyline);
 
         var marker = null;
 
         myMap.on('click', (e) =>{
-
-            myMap.bindPopup("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
+                  
             
-        if (marker !== null) {
-            myMap.removeLayer(marker);
-        }
-        marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
+
+            if (marker !== null) {
+                myMap.removeLayer(marker);
+            }
+            marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
+
+            marker.bindPopup("You clicked the map at : " + e.latlng.lat + ", " + e.latlng.lng).openPopup();
+
+        
         });
         
         const stime = document.getElementById("stime").value; //.value.split('T').join(' ');

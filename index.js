@@ -106,10 +106,6 @@ app.get("/pathg", async (req, res) => {
         const latid = parseFloat(req.query.latd);
         const longd = parseFloat(req.query.longd);
 
-        // const query = `SELECT * FROM gpsdata WHERE Latitud BETWEEN ${longd} AND ${
-        //   longd + 10
-        //} AND Longitud BETWEEN ${latid} AND ${latid + 10}`;
-
         circQuery =
             "Select DISTINCT Timestamp,acos(sin(radians(" +
             latid +
@@ -140,6 +136,7 @@ app.get("/pathg", async (req, res) => {
                 return res.status(500);
             }
         });
+
     } catch (e) {
         console.error(e);
     }
