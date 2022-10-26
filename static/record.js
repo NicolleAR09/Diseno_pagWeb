@@ -26,8 +26,7 @@ const currentDate = yyyy + "-" + mm + "-" + dd + "T" + hora;
 //Obtener los inputs donde se van a colocar la fechas
 const startDate = document.getElementById("stime");
 const endDate = document.getElementById("ftime");
-const caropt = document.getElementById("carNum");
-const carval = caropt.value;
+
 
 //Definir que la fecha maxima por defecto sea la del dia de hoy
 console.log(startDate);
@@ -87,6 +86,8 @@ const showRecordInfo = async () => {
 
         const historic1 = [];
         const historic2 =[];
+        const caropt = document.getElementById("carNum").value;
+        const carval = parseInt(caropt);
         for (var poly of histPolyline) {
             myMap.removeLayer(poly);
         }
@@ -100,7 +101,7 @@ const showRecordInfo = async () => {
                         item.Longitud !== undefined &&
                         item.Latitud !== undefined
                     ) {
-                        if(item.Car == 1 && carval == 'car1'){
+                        if(item.Car == 1 && carval == 1){
                             
                             console.log(carval);
                             historic1.push([item.Longitud, item.Latitud]);
@@ -108,7 +109,7 @@ const showRecordInfo = async () => {
 
                         }
                         
-                        if(item.car == 2 && carval == 'car2'){
+                        if(item.car == 2 && carval == 2){
                             
                             historic2.push([item.Longitud, item.Latitud]);
                             info2.push(item.Timestamp);
