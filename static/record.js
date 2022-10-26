@@ -122,11 +122,11 @@ const showRecordInfo = async () => {
 
             console.log(historic1);
             //console.log(historic2);
-            if (historic1 == 0 && carval == "car1") {
+            if (historic1 == 0 && carval == 1) {
                 alert("No hay datos, por favor seleccione otro intervalo");
             }
 
-            if (historic2 == 0 && carval == "car2") {
+            if (historic2 == 0 && carval == 2) {
                 alert("No hay datos, por favor seleccione otro intervalo");
             }
 
