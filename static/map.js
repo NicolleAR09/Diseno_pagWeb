@@ -7,7 +7,7 @@ L.tileLayer(tilesProvider, {
     attribution: "© OpenStreetMap"
 }).addTo(myMap);
 // Inicializacion del marker y la linea que dibuja la polylinea
-//let marker = L.marker([10.9886091, -74.7922088]).addTo(myMap);
+let marker = L.marker([10.9886091, -74.7922088]).addTo(myMap);
 const line = L.polyline([], { color: "red" }).addTo(myMap);
 const line2 = L.polyline([], { color: "blue" }).addTo(myMap); //adding second car 
 
