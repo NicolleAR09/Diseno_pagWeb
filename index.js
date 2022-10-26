@@ -106,20 +106,36 @@ app.get("/pathg", async (req, res) => {
         const latid = parseFloat(req.query.latd);
         const longd = parseFloat(req.query.longd);
 
-        const query = `SELECT * FROM gpsdata WHERE Latitud BETWEEN ${longd} AND ${
-            longd + 10
-            } AND Longitud BETWEEN ${latid} AND ${latid + 10}`;
-    
-            console.log(query);
-            connection.query(query, (err, result) => {
-                if (!err) {
-                    console.log(result);
-                    return res.send(result).status(200);
-                } else {
-                    console.log(`Ha ocurrido el siguiente ${err}`);
-                    return res.status(500);
-                }
-            });
+        circQuery =
+            "Select DISTINCT Timestamp,acos(sin(radians(" +
+            latid +
+            "))*sin(radians(Latitud)) + cos(radians(" +
+            latid +
+            "))*cos(radians(Latitud))*cos(radians(" +
+            longd +
+            ")-(radians(Longitud)))) * (6371)  From gpsdata Where acos" +
+            "(sin(radians(" +
+            longd +
+            "))*sin(radians(Latitud)) + cos(radians(" +
+            latid +
+            "))*cos(radians(Latitud))*cos(radians(" +
+            longd +
+            ")-(radians(Longitud)))) * (6371) <1 and Timestamp between '" +
+            stime +
+            "' and '" +
+            ftime +
+            "'";
+
+        console.log(circQuery);
+        connection.query(circQuery, (err, result) => {
+            if (!err) {
+                console.log(result);
+                return res.send(result).status(200);
+            } else {
+                console.log(`Ha ocurrido el siguiente ${err}`);
+                return res.status(500);
+            }
+        });
 
     } catch (e) {
         console.error(e);
