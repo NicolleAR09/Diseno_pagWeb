@@ -27,6 +27,7 @@ const currentDate = yyyy + "-" + mm + "-" + dd + "T" + hora;
 const startDate = document.getElementById("stime");
 const endDate = document.getElementById("ftime");
 const caropt = document.getElementById("carNum");
+const carval = caropt.value;
 
 //Definir que la fecha maxima por defecto sea la del dia de hoy
 console.log(startDate);
@@ -101,7 +102,7 @@ const showRecordInfo = async () => {
                     ) {
                         if(item.Car == 1){
                             
-                            console.log("Option selected :" + caropt);
+                            console.log(carval);
                             historic1.push([item.Longitud, item.Latitud]);
                             info1.push(item.Timestamp);
 
