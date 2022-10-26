@@ -113,7 +113,7 @@ const showRecordInfo = async () => {
         console.error(e);
     }
 
-    //Historic 2
+    //-------------------------Historic 2
     myMap.on("click", (e) => {
         console.log(histPolyline);
 
