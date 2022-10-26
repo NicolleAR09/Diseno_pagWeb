@@ -69,8 +69,10 @@ const insertData = (info) => {
     data.Latitud = info[0];
     data.Longitud = info[1];
     data.Timestamp = info[2];
+    data.Car = info[3];
+    
 
-    const query = `INSERT INTO gpsdata (Latitud, Longitud, Timestamp) VALUES ('${data.Latitud}', '${data.Longitud}','${data.Timestamp}')`;
+    const query = `INSERT INTO gpsdata (Latitud, Longitud, Timestamp, Car) VALUES ('${data.Latitud}', '${data.Longitud}','${data.Timestamp}', '${data.Car}')`;
     connection.query(query, function (err, result) {
         if (err) throw err;
         console.log("Register saved");
