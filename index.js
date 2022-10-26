@@ -110,7 +110,16 @@ app.get("/pathg", async (req, res) => {
         longd + 10
         } AND Longitud BETWEEN ${latid} AND ${latid + 10}`;
 
-        
+        console.log(query);
+        connection.query(query, (err, result) => {
+            if (!err) {
+                console.log(result);
+                return res.send(result).status(200);
+            } else {
+                console.log(`Ha ocurrido el siguiente ${err}`);
+                return res.status(500);
+            }
+        });
     } catch (e) {
         console.error(e);
     }

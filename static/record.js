@@ -128,7 +128,7 @@ const showRecordInfo = async () => {
             }
             marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
 
-            marker.bindPopup("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng).openPopup();
+            marker.bindPopup("You clicked the map at : " + e.latlng.lng + ", " + e.latlng.lat).openPopup();
 
         
         });
