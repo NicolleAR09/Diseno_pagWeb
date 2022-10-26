@@ -100,7 +100,7 @@ const showRecordInfo = async () => {
                         item.Longitud !== undefined &&
                         item.Latitud !== undefined
                     ) {
-                        if(item.Car == 1 && carval == "1"){
+                        if(item.Car == 1 && carval == "car1"){
                             
                             console.log("Funcionaaaaaa");
                             historic1.push([item.Longitud, item.Latitud]);
@@ -108,27 +108,34 @@ const showRecordInfo = async () => {
 
                         }
                         
-                        /*if(item.car == 2 && carval == "2"){
+                        if(item.car == 2 && carval == "car2"){
                             
                             historic2.push([item.Longitud, item.Latitud]);
                             info2.push(item.Timestamp);
 
-                        }*/
+                        }
                         
                     }
                 }
             }
 
             console.log(historic1);
-            if (historic1 == 0) {
+            //console.log(historic2);
+            if (historic1 == 0 && carval == "car1") {
+                alert("No hay datos, por favor seleccione otro intervalo");
+            }
+
+            if (historic2 == 0 && carval == "car2") {
                 alert("No hay datos, por favor seleccione otro intervalo");
             }
 
             //-----------------------polyline veicle 2
 
             // Se traza la polilinea
-            const poly = L.polyline(historic1, { color: "red" }).addTo(myMap);
-            histPolyline.push(poly);
+            const poly1 = L.polyline(historic1, { color: "red" }).addTo(myMap);
+            const poly2 = L.polyline(historic2, { color: "blue" }).addTo(myMap);
+            histPolyline.push(poly1);
+            histPolyline.push(poly2);
             console.log("Historic done");
 
 
