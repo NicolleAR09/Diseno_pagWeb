@@ -126,7 +126,13 @@ const showRecordInfo = async () => {
         }
         marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
 
-        myMap.bindPopup("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
+        //myMap.bindPopup("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
+
+        function onMapClick(e) {
+            alert("You clicked the map at " + e.latlng);
+        }
+        
+        myMap.on('click', onMapClick);
         });
         
         const stime = document.getElementById("stime").value; //.value.split('T').join(' ');
