@@ -1,5 +1,9 @@
-var historic = new Array();
-var info = new Array();
+var historic1 = new Array();
+var historic2 = new Array();
+
+var info1 = new Array();
+var info2 = new Array();
+
 var histPolyline = new Array();
 
 //Crear fecha con el dia de hoy
@@ -79,7 +83,8 @@ const showRecordInfo = async () => {
                 "Unable to fetch data with given dates, plase check parsing or request"
             );
 
-        const historic = [];
+        const historic1 = [];
+        const historic2 =[];
         for (var poly of histPolyline) {
             myMap.removeLayer(poly);
         }
@@ -93,20 +98,40 @@ const showRecordInfo = async () => {
                         item.Longitud !== undefined &&
                         item.Latitud !== undefined
                     ) {
-                        historic.push([item.Longitud, item.Latitud]);
-                        info.push(item.Timestamp);
+                        if(item.Car == 1){
+
+                            historic1.push([item.Longitud, item.Latitud]);
+                            info1.push(item.Timestamp);
+
+                        }
+                        
+                        /*if(item.car == 2){
+                            
+                            historic2.push([item.Longitud, item.Latitud]);
+                            info2.push(item.Timestamp);
+
+                        }*/
+                        
                     }
                 }
             }
 
-            console.log(historic);
-            if (historic == 0) {
+            console.log(historic1);
+            if (historic1 == 0) {
                 alert("No hay datos, por favor seleccione otro intervalo");
             }
+
+            //-----------------------polyline veicle 2
+
             // Se traza la polilinea
-            const poly = L.polyline(historic, { color: "red" }).addTo(myMap);
+            const poly = L.polyline(historic1, { color: "red" }).addTo(myMap);
             histPolyline.push(poly);
             console.log("Historic done");
+
+
+            
+
+            
 
         });
     } catch (e) {
