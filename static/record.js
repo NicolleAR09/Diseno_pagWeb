@@ -121,7 +121,7 @@ const showRecordInfo = async () => {
             }
 
             console.log(historic1);
-            //console.log(historic2);
+            console.log(historic2);
             if (historic1 == 0 && carval == 1) {
                 alert("No hay datos, por favor seleccione otro intervalo");
             }
