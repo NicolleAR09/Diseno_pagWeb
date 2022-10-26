@@ -152,18 +152,7 @@
                 <div>
 
                     <script type="text/javascript">
-
-                        async function timestamp() {
-                            const start = Date.parse(document.getElementById("stime").value);
-                            const end = Date.parse(document.getElementById("ftime").value);
-                            const response = await fetch(`/datahistoric/${start.getTime()}/${end.getTime()}`);
-                            const data = await response.json()
-                            console.log(start, end);
-
-
-                        }
-
-
+                        
                         function table() {
                             const xhttp = new XMLHttpRequest();
                             xhttp.onload = function () {
@@ -172,8 +161,21 @@
                                 data = JSON.parse(data);
                                 const caropt = document.getElementById("carNum").value;
                                 const carval = parseInt(caropt);
-                                console.log(data);
+                                //console.log(data);
                                 var datos = "";
+
+                                if(carval == 1){
+                                    console.log(data.Car);
+                                    
+                                
+
+                                }
+                            
+                                if(carval == 2){
+                                
+                                    
+
+                                }
 
                                 document.getElementById("lat").innerHTML = data.Latitud;
                                 document.getElementById("lng").innerHTML = data.Longitud;
