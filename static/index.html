@@ -92,7 +92,7 @@
                         <div><span class="subheading">A pin to track your moving devices </div>
                             <div>
                                     <button class="btn btn-secondary2" > 
-                                        <a href="#tituloGPS" > Lets get started</a>
+                                        <a href="#button_historics" > Lets get started</a>
                                     </button>
 
                                     
@@ -110,6 +110,13 @@
     <!-- Main Content, TABLE-->
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
+
+            <div id=button_historics style="width:100%; height:100%">
+                <button class="btn btn-secondary_historics"> 
+               <a href="historic.html" > Go to Historics</a>
+               </button>
+           </div>
+
             <div class="col-md-10 col-lg-8 col-xl-7">
 
 
@@ -121,11 +128,16 @@
                 <h1 id="tituloGPS">GPS coordinates</h1>
                 <div>
 
+                <div style="text-align: center">
                     <h6>Choose a vehicle</h6>
                     <select id="carNum" >
                         <option value="1"> Vehicle 1 </option>
                         <option value="2"> Vehicle 2 </option>
                     </select>
+                </div>
+
+                
+                    
 
                     <table style="margin-left: auto;margin-right: auto" class="content-table" id="content-table">
                         <th>
@@ -225,13 +237,9 @@
             </div>
             <div id="myMap" style="height: 320px"></div>
             <!-- Divider-->
-            <hr class="my-4" />
+            
 
-            <div style="width:100%; height:100%">
-                 <button class="btn btn-secondary2"> 
-                <a href="historic.html" > Go to Historics</a>
-                </button>
-            </div>
+            
 
 </body>
 

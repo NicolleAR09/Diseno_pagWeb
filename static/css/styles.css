@@ -3107,6 +3107,15 @@ textarea.form-control-lg {
   
 }
 
+.btn-secondary_historics {
+  float: left;
+  color: #ffffff;
+  background-color: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 0 0 0 0.25rem rgba(38, 151, 175, 0.5);
+  
+}
+
 .btn-secondary3 {
   text-align:center;
   color: #11244a;
