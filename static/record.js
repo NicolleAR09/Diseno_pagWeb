@@ -121,22 +121,16 @@ const showRecordInfo = async () => {
 
         myMap.on('click', (e) =>{
                   
-        if (marker !== null) {
-            myMap.removeLayer(marker);
-        }
-        marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
+            
 
-        //myMap.bindPopup("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
+            if (marker !== null) {
+                myMap.removeLayer(marker);
+            }
+            marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
 
-        var popup = L.popup();
-        function onMapClick(e) {
-            popup
-            .setLatLng(e.latlng)
-            .setContent("You clicked the map at " + e.latlng.toString())
-            .openOn(myMap);
-        }
+            marker.bindPopup("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng);
+
         
-        myMap.on('click', onMapClick);
         });
         
         const stime = document.getElementById("stime").value; //.value.split('T').join(' ');
