@@ -102,7 +102,7 @@ const showRecordInfo = async () => {
                     ) {
                         if(item.Car == 1 && carval == "car1"){
                             
-                            console.log("Funcionaaaaaa");
+                            console.log(carval);
                             historic1.push([item.Longitud, item.Latitud]);
                             info1.push(item.Timestamp);
 
