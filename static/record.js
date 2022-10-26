@@ -100,15 +100,15 @@ const showRecordInfo = async () => {
                         item.Longitud !== undefined &&
                         item.Latitud !== undefined
                     ) {
-                        if(item.Car == 1){
+                        if(item.Car == 1 && carval == "1"){
                             
-                            console.log(carval);
+                            console.log("Funcionaaaaaa");
                             historic1.push([item.Longitud, item.Latitud]);
                             info1.push(item.Timestamp);
 
                         }
                         
-                        /*if(item.car == 2){
+                        /*if(item.car == 2 && carval == "2"){
                             
                             historic2.push([item.Longitud, item.Latitud]);
                             info2.push(item.Timestamp);
