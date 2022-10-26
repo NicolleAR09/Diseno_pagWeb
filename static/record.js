@@ -202,8 +202,10 @@ const showRecordInfo = async () => {
                 
 
                 if (closestPointTimestamp) {
-                    pathway = "<b>" + closestPointTimestamp + "</b>";
-                        console.log(closestPointTimestamp)
+
+                    const closestPointTimestamp1 = new Date (Date.parse(closestPoint.Timestamp)).toString();
+                    pathway = "<b>" + closestPointTimestamp1 + "</b>";
+                        console.log(closestPointTimestamp1)
                 } else {
                     pathway =
                         "<b> No hay datos, por favor seleccione otro punto </b>";
