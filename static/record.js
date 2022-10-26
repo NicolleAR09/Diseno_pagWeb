@@ -101,7 +101,7 @@ const showRecordInfo = async () => {
                     ) {
                         if(item.Car == 1){
                             
-                            console.log(caropt);
+                            console.log("Option selected :" + caropt);
                             historic1.push([item.Longitud, item.Latitud]);
                             info1.push(item.Timestamp);
 
