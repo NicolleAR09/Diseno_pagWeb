@@ -120,13 +120,13 @@ const showRecordInfo = async () => {
         var marker = null;
 
         myMap.on('click', (e) =>{
-
-            myMap.bindPopup("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
-            
+                  
         if (marker !== null) {
             myMap.removeLayer(marker);
         }
         marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
+
+        myMap.bindPopup("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
         });
         
         const stime = document.getElementById("stime").value; //.value.split('T').join(' ');
