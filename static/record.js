@@ -128,8 +128,12 @@ const showRecordInfo = async () => {
 
         //myMap.bindPopup("Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng)
 
+        var popup = L.popup();
         function onMapClick(e) {
-            alert("You clicked the map at " + e.latlng);
+            popup
+            .setLatLng(e.latlng)
+            .setContent("You clicked the map at " + e.latlng.toString())
+            .openOn(myMap);
         }
         
         myMap.on('click', onMapClick);
