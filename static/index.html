@@ -118,11 +118,13 @@
                 </style>
                 <h1 id="tituloGPS">GPS coordinates</h1>
                 <div>
+
                     <h6>Choose a vehicle</h6>
-                    <select id="carNum">
+                    <select id="carNum" >
                         <option value="1"> Vehicle 1 </option>
                         <option value="2"> Vehicle 2 </option>
                     </select>
+
                     <table style="margin-left: auto;margin-right: auto" class="content-table" id="content-table">
                         <th>
                             <tr>
@@ -165,10 +167,12 @@
                         function table() {
                             const xhttp = new XMLHttpRequest();
                             xhttp.onload = function () {
-                                const jsn = { "database": { "Id": "", "Latitud": "", "Longitud": "", "Timestamp": "" } };
+                                const jsn = { "database": { "Id": "", "Latitud": "", "Longitud": "", "Timestamp": "", "Car": "" } };
                                 var data = this.responseText;
-                                data = JSON.parse(data)
-                                console.log(data.Latitud);
+                                data = JSON.parse(data);
+                                const caropt = document.getElementById("carNum").value;
+                                const carval = parseInt(caropt);
+                                console.log(carval);
                                 var datos = "";
 
                                 document.getElementById("lat").innerHTML = data.Latitud;
