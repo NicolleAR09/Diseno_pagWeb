@@ -136,12 +136,12 @@ app.get("/prueba", async(req, res) =>{
         const latid = parseFloat(req.query.latd);
         const longd = parseFloat(req.query.longd);
 
-        const points = `SELECT Timestamp FROM gpsdata 
+        const query = `SELECT Timestamp FROM gpsdata 
         WHERE Latitud BETWEEN ${latid - 0.002} AND ${latid + 0.002} 
         AND Longitud BETWEEN ${longd - 0.002} AND ${longd + 0.002} 
         AND Timestamp BETWEEN '${stime}' AND '${ftime}' ORDER BY Timestamp DESC LIMIT 6`;
 
-        connection.points(points, (err, result) => {
+        connection. query(query, (err, result) => {
             if(!err) {
                 console.log(result);
                 return res.send(result).status(200);
