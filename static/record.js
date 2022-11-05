@@ -233,10 +233,14 @@ const showRecordInfo = async () => {
                 }).then((response) =>{
                     response.json().then((json) => {
                         const points = json;
-                        console.log(points);
-                        
-                        return points;
-                        
+            
+                        const points1 = points[0];
+                        const points2 = points[1];
+                        const points3 = points[2];
+                        const points4 = points[3];
+                        const points5 = points[4];
+                        const points6 = points[5];
+                        return points1, points2, points3, points4, points5, points6;
                         
                     });
                 });
@@ -264,9 +268,8 @@ const showRecordInfo = async () => {
                 
                 // get the closest point's timestamp
                 try {
-                    //const closestPointTimestamp = closestPoint.Timestamp;
-                    const closestPointTimestamp = points;
-                    console.log(closestPointTimestamp);
+                    const closestPointTimestamp = closestPoint.Timestamp;
+                    console.log(points1);
 
                 if (closestPointTimestamp) {
 
