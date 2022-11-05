@@ -264,13 +264,13 @@ const showRecordInfo = async () => {
                 
                 // get the closest point's timestamp
                 try {
-                    const closestPointTimestamp = closestPoint.Timestamp;
-                
+                    //const closestPointTimestamp = closestPoint.Timestamp;
+                    const closestPointTimestamp = points;
 
                 if (closestPointTimestamp) {
 
                     const closestPointTimestamp1 = new Date (Date.parse(closestPoint.Timestamp)).toString();
-                    pathway = "<b>" + points + "</b>";
+                    pathway = "<b>" + closestPointTimestamp1 + "</b>";
                         //console.log(closestPointTimestamp1)
                 } else {
                     pathway =
