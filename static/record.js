@@ -162,10 +162,10 @@ const showRecordInfo = async () => {
                 myMap.removeLayer(polygon);
             }
             polygon = L.polygon([
-                [e.latlng.lat -0.001, e.latlng.lng -0.001],
-                [e.latlng.lat -0.001, e.latlng.lng +0.001],
-                [e.latlng.lat +0.001, e.latlng.lng +0.001],
-                [e.latlng.lat +0.001, e.latlng.lng -0.001],
+                [e.latlng.lat -0.005, e.latlng.lng -0.005],
+                [e.latlng.lat -0.005, e.latlng.lng +0.005],
+                [e.latlng.lat +0.005, e.latlng.lng +0.005],
+                [e.latlng.lat +0.005, e.latlng.lng -0.005],
             ]).addTo(myMap);
 
         
@@ -199,6 +199,9 @@ const showRecordInfo = async () => {
                         Math.pow(e.latlng.lat - item.Longitud, 2) +
                             Math.pow(e.latlng.lng - item.Latitud, 2)
                     );
+                    conole.log(Math.sqrt(
+                        Math.pow(e.latlng.lat - item.Longitud, 2) +
+                            Math.pow(e.latlng.lng - item.Latitud, 2)));
                 });
 
                 // find the minimum distance
