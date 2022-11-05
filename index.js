@@ -137,8 +137,8 @@ app.get("/prueba", async(req, res) =>{
         const longd = parseFloat(req.query.longd);
 
         const points = `SELECT Timestamp FROM gpsdata 
-        WHERE Latitud BETWEEN ${closestPoint.Longitud - 0.002} AND ${closestPoint.Longitud + 0.002} 
-        AND Longitud BETWEEN ${closestPoint.Latitud - 0.002} AND ${closestPoint.Latitud + 0.002} 
+        WHERE Latitud BETWEEN ${latid - 0.002} AND ${latid + 0.002} 
+        AND Longitud BETWEEN ${longd - 0.002} AND ${longd + 0.002} 
         AND Timestamp BETWEEN '${stime}' AND '${ftime}' ORDER BY Timestamp DESC LIMIT 6`;
 
         connection.points(points, (err, result) => {
