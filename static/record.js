@@ -225,7 +225,7 @@ const showRecordInfo = async () => {
 
 
                 
-                fetch(`/prueba?latd=${closestPoint.Longitud}&longd=${closestPoint.Latitud}&stime=${stime2}&ftime=${ftime2}`, {
+                fetch(`/prueba?latd=${closestPoint.Latitud}&longd=${closestPoint.Longitud}&stime=${stime2}&ftime=${ftime2}`, {
                     method: "GET",
                     headers: {
                         Accept: "application/json"
