@@ -162,10 +162,10 @@ const showRecordInfo = async () => {
                 myMap.removeLayer(polygon);
             }
             polygon = L.polygon([
-                [e.latlng.lat -0.005, e.latlng.lng -0.005],
-                [e.latlng.lat -0.005, e.latlng.lng +0.005],
-                [e.latlng.lat +0.005, e.latlng.lng +0.005],
-                [e.latlng.lat +0.005, e.latlng.lng -0.005],
+                [e.latlng.lat -0.002, e.latlng.lng -0.002],
+                [e.latlng.lat -0.002, e.latlng.lng +0.002],
+                [e.latlng.lat +0.002, e.latlng.lng +0.002],
+                [e.latlng.lat +0.002, e.latlng.lng -0.002],
             ]).addTo(myMap);
 
         
@@ -187,7 +187,7 @@ const showRecordInfo = async () => {
             }
         }).then((response) => {
             response.json().then((json) => {
-                const distances = json.map((item) => {
+                const distances = json.myMap((item) => {
                     // item has the form of
                     // {ID: 1173, Latitud: -74.837, Longitud: 11.0151, Timestamp: "2022-09-29T11:02:56.000Z"}
                     // we need to find the closest point to the current location by comparing each distance e.latlng.lat, e.latlng.lng with item.Latitud, item.Longitud and finding the minimum
@@ -199,10 +199,9 @@ const showRecordInfo = async () => {
                         Math.pow(e.latlng.lat - item.Longitud, 2) +
                             Math.pow(e.latlng.lng - item.Latitud, 2)
                     );
-                    conole.log(Math.sqrt(
-                        Math.pow(e.latlng.lat - item.Longitud, 2) +
-                            Math.pow(e.latlng.lng - item.Latitud, 2)));
+                    
                 });
+                console.log(distances);
 
                 // find the minimum distance
                 const minDistance = Math.min(...distances);
