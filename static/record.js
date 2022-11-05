@@ -29,7 +29,6 @@ const endDate = document.getElementById("ftime");
 
 
 //Definir que la fecha maxima por defecto sea la del dia de hoy
-console.log(startDate);
 startDate.max = currentDate;
 endDate.max = currentDate;
 
@@ -53,7 +52,6 @@ const showRecordInfo = async () => {
     // Se tienen que formatear porque por defecto traen la siguiente estructura, YYYY/MM/DDThh:mm:ss,
     // Entonces se elimina la T que separa la fecha y la hora, y se coloca un espacio, obteniendo
     // la siguiente estructura YYYY/MM/DD hh:mm:ss
-    console.log("Botton pushed");
     const stime = document.getElementById("stime").value; //.value.split('T').join(' ');
     const ftime = document.getElementById("ftime").value; //.value.split('T').join(' ');
 
@@ -103,7 +101,6 @@ const showRecordInfo = async () => {
                     ) {
                         if(item.Car == 1 && carval == 1){
                             
-                            console.log(carval);
                             historic1.push([item.Longitud, item.Latitud]);
                             info1.push(item.Timestamp);
 
@@ -111,7 +108,6 @@ const showRecordInfo = async () => {
                         
                         if(carval == 2){
                             
-                            console.log(carval);
                             if(item.Car == 2){
                                 historic2.push([item.Longitud, item.Latitud]);
                                 info2.push(item.Timestamp);
@@ -124,8 +120,6 @@ const showRecordInfo = async () => {
                 }
             }
 
-            console.log(historic1);
-            console.log(historic2);
             if (historic1 == 0 && carval == 1) {
                 alert("No hay datos, por favor seleccione otro intervalo");
             }
@@ -139,21 +133,16 @@ const showRecordInfo = async () => {
             const poly2 = L.polyline(historic2, { color: "blue" }).addTo(myMap);
             histPolyline.push(poly1);
             histPolyline.push(poly2);
-            console.log("Historic done");
-
-
-            
-
-            
 
         });
+
     } catch (e) {
         console.error(e);
     }
 
     //-------------------------Historic 2
     myMap.on("click", (e) => {
-        console.log(histPolyline);
+        //console.log(histPolyline);
 
         var marker = null;
 
@@ -220,7 +209,7 @@ const showRecordInfo = async () => {
 
                     const closestPointTimestamp1 = new Date (Date.parse(closestPoint.Timestamp)).toString();
                     pathway = "<b>" + closestPointTimestamp1 + "</b>";
-                        console.log(closestPointTimestamp1)
+                        //console.log(closestPointTimestamp1)
                 } else {
                     pathway =
                         "<b> No hay datos, por favor seleccione otro punto </b>";

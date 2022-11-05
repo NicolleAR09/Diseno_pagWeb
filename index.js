@@ -110,7 +110,7 @@ app.get("/pathg", async (req, res) => {
 
         const query = `SELECT * FROM gpsdata WHERE Latitud BETWEEN ${longd-5} AND ${
             longd + 5
-            } AND Longitud BETWEEN ${latid-5} AND ${latid + 5}`;
+            } AND Longitud BETWEEN ${latid-0.1} AND ${latid + 0.1}`;
     
             console.log(query);
             connection.query(query, (err, result) => {
