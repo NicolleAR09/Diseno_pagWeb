@@ -240,9 +240,10 @@ const showRecordInfo = async () => {
                         var i;
                         let points1 = [];
                         for(i=0;i<n;i++ ){
-                            points1[i] = new Date (Date.parse(points[i])).toString;
+                            console.log(points[i]);
+                            //points1[i] = new Date (Date.parse(points[i])).toString;
                         }
-                        console.log(points1);
+                        //console.log(points1);
                         
                     });
                 });
