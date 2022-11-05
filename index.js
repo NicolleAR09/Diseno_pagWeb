@@ -112,7 +112,6 @@ app.get("/pathg", async (req, res) => {
             WHERE Latitud BETWEEN ${longd-0.002} AND ${longd + 0.002} 
             AND Longitud BETWEEN ${latid-0.002} AND ${latid + 0.002}`;
     
-            console.log(query);
             connection.query(query, (err, result) => {
                 if (!err) {
                     console.log(result);
@@ -128,12 +127,32 @@ app.get("/pathg", async (req, res) => {
     }
 });
 
+//------------------------------------HISTORIC 2 PART 2
 /*
 app.get("/prueba", async(req, res) =>{
     try {
+        const stime = req.query.stime;
+        const ftime = req.query.ftime;
+        const latid = parseFloat(req.query.latd);
+        const longd = parseFloat(req.query.longd);
+
+        const points = `SELECT Timestamp FROM gpsdata 
+        WHERE Latitud BETWEEN ${closestPoint.Longitud -0.002} AND ${closestPoint.Longitud + 0.002} 
+        AND Longitud BETWEEN ${closestPoint.Latitud -0.002} AND ${closestPoint.Latitud + 0.002} 
+        AND Timestamp BETWEEN '${stime}' AND '${ftime}' ORDER BY Timestamp DESC LIMIT 6`;
+
+        connection.points(points, (err, result) => {
+            if(!err) {
+                console.log(result);
+                return res.send(result).status(200);
+            } else {
+                console.log(`Ha ocurrido el siguiente ${err}`);
+                return res.status(500);
+            }
+        });
         
-    } catch (error) {
-        
+    } catch (e) {
+        console.error(e);
     }
 });
 */

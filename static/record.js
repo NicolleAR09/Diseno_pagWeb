@@ -1,21 +1,3 @@
-const mysql = require("mysql");
-
-DBConfig = {
-    port: "3306",
-    host: "database-1.csdupfcdilij.us-east-1.rds.amazonaws.com",
-    user: "admin",
-    password: "123456789",
-    database: "gpsdata"
-};
-
-const connection = mysql.createConnection(DBConfig);
-connection.connect((error) => {
-    if (error) {
-        console.log(error);
-        connection.end();
-    }
-});
-
 var historic1 = new Array();
 var historic2 = new Array();
 
@@ -230,7 +212,6 @@ const showRecordInfo = async () => {
                     );
                     
                 });
-                console.log(distances);
 
                 // find the minimum distance
                 const minDistance = Math.min(...distances);
@@ -242,6 +223,21 @@ const showRecordInfo = async () => {
                 const closestPoint = json[minDistanceIndex];
                 console.log(closestPoint);
 
+
+                /*
+                fetch(`/prueba?latd=${closestPoint.Longitud}&longd=${closestPoint.Latitud}&stime=${stime2}&ftime=${ftime2}`, {
+                    method: "GET",
+                    headers: {
+                        Accept: "application/json"
+                    }
+                }).then((response) =>{
+                    response.json().then((json) => {
+                        const points = json.map(item)
+                        console.log();
+
+                });
+
+                */
                 /*
                 try {
                     
@@ -253,7 +249,7 @@ const showRecordInfo = async () => {
 
                     const ftime2 = new Date(ftime)
                         .toISOString();
-                    points = `SELECT Timestamp FROM gpsdata 
+                    const points = `SELECT Timestamp FROM gpsdata 
                     WHERE Latitud BETWEEN ${closestPoint.Longitud -0.002} AND ${closestPoint.Longitud + 0.002} 
                     AND Longitud BETWEEN ${closestPoint.Latitud -0.002} AND ${closestPoint.Latitud + 0.002} 
                     AND Timestamp BETWEEN '${stime2}' AND '${ftime2}' ORDER BY Timestamp DESC LIMIT 6`;
