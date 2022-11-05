@@ -158,7 +158,10 @@ const showRecordInfo = async () => {
 
             marker.bindPopup("You clicked the map at : " + e.latlng.lat + ", " + e.latlng.lng).openPopup();
 
-            var polygon = L.polygon([
+            if (polygon !== null) {
+                myMap.removeLayer(polygon);
+            }
+            polygon = L.polygon([
                 [e.latlng.lat -0.01, e.latlng.lng -0.01],
                 [e.latlng.lat -0.01, e.latlng.lng +0.01],
                 [e.latlng.lat +0.01, e.latlng.lng +0.01],
