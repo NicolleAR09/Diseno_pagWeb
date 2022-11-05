@@ -236,14 +236,14 @@ const showRecordInfo = async () => {
                         console.log(points);
                         const n = points.length;
                         console.log(n);
-                        /*
+                        
                         var i;
                         let points1 = [];
                         for(i=0;i<=n;i++ ){
                             points1[i] = new Date (Date.parse(points[i])).toString;
                         }
                         console.log(points1);
-                        */
+                        
                     });
                 });
 
