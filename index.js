@@ -108,10 +108,9 @@ app.get("/pathg", async (req, res) => {
         const latid = parseFloat(req.query.latd);
         const longd = parseFloat(req.query.longd);
 
-        //se debe hacer el cambio para que tome los valores de -10 y +10 
-        const query = `SELECT * FROM gpsdata WHERE Latitud BETWEEN ${longd} AND ${
-            longd + 10
-            } AND Longitud BETWEEN ${latid} AND ${latid + 10}`;
+        const query = `SELECT * FROM gpsdata WHERE Latitud BETWEEN ${longd-5} AND ${
+            longd + 5
+            } AND Longitud BETWEEN ${latid-5} AND ${latid + 5}`;
     
             console.log(query);
             connection.query(query, (err, result) => {
@@ -128,6 +127,17 @@ app.get("/pathg", async (req, res) => {
         console.error(e);
     }
 });
+
+/*
+app.get("/prueba", async(req, res) =>{
+    try {
+        
+    } catch (error) {
+        
+    }
+});
+*/
+
 //-----------------------------------------initializing server
 app.use(express.static(__dirname + "/static"));
 app.listen(8000, () =>

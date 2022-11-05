@@ -192,6 +192,9 @@ const showRecordInfo = async () => {
                     // {ID: 1173, Latitud: -74.837, Longitud: 11.0151, Timestamp: "2022-09-29T11:02:56.000Z"}
                     // we need to find the closest point to the current location by comparing each distance e.latlng.lat, e.latlng.lng with item.Latitud, item.Longitud and finding the minimum
 
+                    //hacer una consulta anidada en la que seleccione más horas en las que el vehículo
+                    //pasó por el mismo sitio, con el valor de latlng que tenemos buscar los otros que sean iguales
+                    //e imprimir las fechas 
                     return Math.sqrt(
                         Math.pow(e.latlng.lat - item.Longitud, 2) +
                             Math.pow(e.latlng.lng - item.Latitud, 2)
@@ -206,6 +209,7 @@ const showRecordInfo = async () => {
 
                 // get the closest point
                 const closestPoint = json[minDistanceIndex];
+                console.log(closestPoint);
 
                 // get the closest point's timestamp
                 try {
