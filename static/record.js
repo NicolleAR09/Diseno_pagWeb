@@ -234,16 +234,9 @@ const showRecordInfo = async () => {
                     response.json().then((json) => {
                         const points = json;
                         console.log(points);
-                        const n = points.length;
-                        console.log(n);
                         
-                        var i;
-                        let points1 = [];
-                        for(i=0;i<n;i++ ){
-                            //points1[i] = new Date (Date.parse(points[i])).toString;
-                            console.log(Date.parse(points[i]));
-                        }
-                        //console.log(points1);
+                        return points;
+                        
                         
                     });
                 });
@@ -277,7 +270,7 @@ const showRecordInfo = async () => {
                 if (closestPointTimestamp) {
 
                     const closestPointTimestamp1 = new Date (Date.parse(closestPoint.Timestamp)).toString();
-                    pathway = "<b>" + closestPointTimestamp1 + "</b>";
+                    pathway = "<b>" + points + "</b>";
                         //console.log(closestPointTimestamp1)
                 } else {
                     pathway =
