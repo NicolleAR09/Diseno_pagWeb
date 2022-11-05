@@ -1,3 +1,21 @@
+const mysql = require("mysql");
+
+DBConfig = {
+    port: "3306",
+    host: "database-1.csdupfcdilij.us-east-1.rds.amazonaws.com",
+    user: "admin",
+    password: "123456789",
+    database: "gpsdata"
+};
+
+const connection = mysql.createConnection(DBConfig);
+connection.connect((error) => {
+    if (error) {
+        console.log(error);
+        connection.end();
+    }
+});
+
 var historic1 = new Array();
 var historic2 = new Array();
 
@@ -99,10 +117,14 @@ const showRecordInfo = async () => {
                         item.Longitud !== undefined &&
                         item.Latitud !== undefined
                     ) {
-                        if(item.Car == 1 && carval == 1){
+                        if(carval == 1){
+
+                            if(item.Car == 1 ){
+
+                                historic1.push([item.Longitud, item.Latitud]);
+                                info1.push(item.Timestamp);
+                            }
                             
-                            historic1.push([item.Longitud, item.Latitud]);
-                            info1.push(item.Timestamp);
 
                         }
                         
@@ -120,12 +142,18 @@ const showRecordInfo = async () => {
                 }
             }
 
-            if (historic1 == 0 && carval == 1) {
-                alert("No hay datos, por favor seleccione otro intervalo");
+            if (carval == 1) {
+                if(historic1 == 0){
+                    alert("No hay datos, por favor seleccione otro intervalo");
+                }
+                
             }
 
-            if (historic2 == 0 && carval == 2) {
-                alert("No hay datos, por favor seleccione otro intervalo");
+            if (carval == 2) {
+                if(historic2 == 0){
+                    alert("No hay datos, por favor seleccione otro intervalo");
+                }
+                
             }
 
             // Se traza la polilinea
@@ -177,6 +205,7 @@ const showRecordInfo = async () => {
         const stime2 = new Date(stime)
             .toISOString();
 
+        console.log(stime2);
         const ftime2 = new Date(ftime)
             .toISOString();
 
@@ -212,6 +241,26 @@ const showRecordInfo = async () => {
                 // get the closest point
                 const closestPoint = json[minDistanceIndex];
                 console.log(closestPoint);
+
+                /*
+                try {
+                    
+                    const stime = document.getElementById("stime").value; //.value.split('T').join(' ');
+                    const ftime = document.getElementById("ftime").value; //.value.split('T').join(' ');
+
+                    const stime2 = new Date(stime)
+                        .toISOString();
+
+                    const ftime2 = new Date(ftime)
+                        .toISOString();
+                    points = `SELECT Timestamp FROM gpsdata 
+                    WHERE Latitud BETWEEN ${closestPoint.Longitud -0.002} AND ${closestPoint.Longitud + 0.002} 
+                    AND Longitud BETWEEN ${closestPoint.Latitud -0.002} AND ${closestPoint.Latitud + 0.002} 
+                    AND Timestamp BETWEEN '${stime2}' AND '${ftime2}' ORDER BY Timestamp DESC LIMIT 6`;
+                    console.log(points);
+                } catch (error) {
+                    console.log("error");
+                }*/
 
                 // get the closest point's timestamp
                 try {
