@@ -179,12 +179,14 @@
                                 var datos = "";
 
                                 if(carval == 1){
-                                    console.log(data.Car);
                                     if(data.Car == 1){
                                         document.getElementById("lat").innerHTML = data.Latitud;
                                         document.getElementById("lng").innerHTML = data.Longitud;
                                         document.getElementById("timestamp").innerHTML = data.Timestamp;
                                         marker.setLatLng([data.Longitud, data.Latitud]);
+
+                                        bounds = new L.LatLngBounds(data.Longitud, data.Latitud);
+                                        myMap.fitBounds(bounds);
 
                                         //poliline:
                                         var latlong = [Number(data.Longitud), Number(data.Latitud)];
@@ -203,6 +205,9 @@
                                         document.getElementById("lng").innerHTML = data.Longitud;
                                         document.getElementById("timestamp").innerHTML = data.Timestamp;
                                         marker.setLatLng([data.Longitud, data.Latitud]);
+
+                                        bounds = new L.LatLngBounds(data.Longitud, data.Latitud);
+                                        myMap.fitBounds(bounds);
 
                                         //poliline:
                                         var latlong = [Number(data.Longitud), Number(data.Latitud)];

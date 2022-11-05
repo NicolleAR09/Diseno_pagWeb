@@ -187,7 +187,7 @@ const showRecordInfo = async () => {
             }
         }).then((response) => {
             response.json().then((json) => {
-                const distances = json.myMap((item) => {
+                const distances = json.map((item) => {
                     // item has the form of
                     // {ID: 1173, Latitud: -74.837, Longitud: 11.0151, Timestamp: "2022-09-29T11:02:56.000Z"}
                     // we need to find the closest point to the current location by comparing each distance e.latlng.lat, e.latlng.lng with item.Latitud, item.Longitud and finding the minimum
