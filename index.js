@@ -114,7 +114,6 @@ app.get("/pathg", async (req, res) => {
     
             connection.query(query, (err, result) => {
                 if (!err) {
-                    console.log(result);
                     return res.send(result).status(200);
                 } else {
                     console.log(`Ha ocurrido el siguiente ${err}`);
