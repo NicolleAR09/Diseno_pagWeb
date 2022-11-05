@@ -86,6 +86,7 @@ const showRecordInfo = async () => {
         const historic2 =[];
         const caropt = document.getElementById("carNum").value;
         const carval = parseInt(caropt);
+        
         for (var poly of histPolyline) {
             myMap.removeLayer(poly);
         }
@@ -187,7 +188,6 @@ const showRecordInfo = async () => {
         const stime2 = new Date(stime)
             .toISOString();
 
-        console.log(stime2);
         const ftime2 = new Date(ftime)
             .toISOString();
 
@@ -232,7 +232,7 @@ const showRecordInfo = async () => {
                     }
                 }).then((response) =>{
                     response.json().then((json) => {
-                        const points = json.map(item)
+                        const points = json;
                         console.log(points);
 
                     });
