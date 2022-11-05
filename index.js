@@ -85,13 +85,10 @@ app.get("/record", async (req, res) => {
     const stime = req.query.stime;
     const ftime = req.query.ftime;
 
-    console.log(stime);
 
     const query = `SELECT * FROM gpsdata WHERE Timestamp BETWEEN '${stime}' AND '${ftime}'`;
-    console.log(query);
     connection.query(query, (err, result) => {
         if (!err) {
-            console.log(result);
             return res.send(result).status(200);
         } else {
             console.log(`Ha ocurrido el siguiente ${err}`);
