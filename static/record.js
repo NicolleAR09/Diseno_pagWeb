@@ -162,10 +162,10 @@ const showRecordInfo = async () => {
                 myMap.removeLayer(polygon);
             }
             polygon = L.polygon([
-                [e.latlng.lat -0.01, e.latlng.lng -0.01],
-                [e.latlng.lat -0.01, e.latlng.lng +0.01],
-                [e.latlng.lat +0.01, e.latlng.lng +0.01],
-                [e.latlng.lat +0.01, e.latlng.lng -0.01],
+                [e.latlng.lat -0.001, e.latlng.lng -0.001],
+                [e.latlng.lat -0.001, e.latlng.lng +0.001],
+                [e.latlng.lat +0.001, e.latlng.lng +0.001],
+                [e.latlng.lat +0.001, e.latlng.lng -0.001],
             ]).addTo(myMap);
 
         
