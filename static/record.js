@@ -145,6 +145,7 @@ const showRecordInfo = async () => {
         //console.log(histPolyline);
 
         var marker = null;
+        var polygon = null;
 
         myMap.on('click', (e) =>{
                   
@@ -156,6 +157,16 @@ const showRecordInfo = async () => {
             marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(myMap);
 
             marker.bindPopup("You clicked the map at : " + e.latlng.lat + ", " + e.latlng.lng).openPopup();
+
+            if (polygon !== null){
+                myMap.removeLayer(polygon);
+            }
+            var polygon = L.polygon([
+                [e.latlng.lat -0.1, e.latlng.lng -0.1],
+                [e.latlng.lat -0.1, e.latlng.lng +0.1],
+                [e.latlng.lat +0.1, e.latlng.lng +0.1],
+                [e.latlng.lat +0.1, e.latlng.lng -0.1],
+            ]).addTo(myMap);
 
         
         });
