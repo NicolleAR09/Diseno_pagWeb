@@ -224,7 +224,7 @@ const showRecordInfo = async () => {
                 console.log(closestPoint);
 
 
-                /*
+                
                 fetch(`/prueba?latd=${closestPoint.Longitud}&longd=${closestPoint.Latitud}&stime=${stime2}&ftime=${ftime2}`, {
                     method: "GET",
                     headers: {
@@ -233,11 +233,12 @@ const showRecordInfo = async () => {
                 }).then((response) =>{
                     response.json().then((json) => {
                         const points = json.map(item)
-                        console.log();
+                        console.log(points);
 
+                    });
                 });
 
-                */
+                
                 /*
                 try {
                     
@@ -257,7 +258,7 @@ const showRecordInfo = async () => {
                 } catch (error) {
                     console.log("error");
                 }*/
-
+                
                 // get the closest point's timestamp
                 try {
                     const closestPointTimestamp = closestPoint.Timestamp;
