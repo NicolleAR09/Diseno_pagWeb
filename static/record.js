@@ -266,7 +266,7 @@ const showRecordInfo = async () => {
                 try {
                     //const closestPointTimestamp = closestPoint.Timestamp;
                     const closestPointTimestamp = points;
-                    console.log(closestPointTimestamp1);
+                    console.log(closestPointTimestamp);
 
                 if (closestPointTimestamp) {
 
