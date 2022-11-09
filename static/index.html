@@ -188,7 +188,10 @@
 
                                         bounds = new L.LatLngBounds(data.Longitud, data.Latitud);
                                         myMap.fitBounds(bounds);
-
+                                        if(line2!== null){
+                                            myMap.removeLayer(line2);
+                                            
+                                        }
                                         //poliline:
                                         var latlong = [Number(data.Longitud), Number(data.Latitud)];
                                         //poly.push(latlong);
@@ -209,6 +212,44 @@
 
                                         bounds = new L.LatLngBounds(data.Longitud, data.Latitud);
                                         myMap.fitBounds(bounds);
+                                        if(line!== null){
+                                            myMap.removeLayer(line);
+                                            
+                                        }
+                                        //poliline:
+                                        var latlong = [Number(data.Longitud), Number(data.Latitud)];
+                                        //poly.push(latlong);
+                                        line2.addLatLng(latlong) 
+                                    }
+                                    
+
+                                }
+                                if(carval == 3){
+                                    if(data.Car == 1){
+                                        document.getElementById("lat").innerHTML = data.Latitud;
+                                        document.getElementById("lng").innerHTML = data.Longitud;
+                                        document.getElementById("timestamp").innerHTML = data.Timestamp;
+                                        marker.setLatLng([data.Longitud, data.Latitud]);
+
+                                        bounds = new L.LatLngBounds(data.Longitud, data.Latitud);
+                                        myMap.fitBounds(bounds);
+
+                                        //poliline:
+                                        var latlong = [Number(data.Longitud), Number(data.Latitud)];
+                                        //poly.push(latlong);
+                                        line.addLatLng(latlong)
+
+                                    }
+
+
+                                    if(data.Car == 2){
+                                        document.getElementById("lat").innerHTML = data.Latitud;
+                                        document.getElementById("lng").innerHTML = data.Longitud;
+                                        document.getElementById("timestamp").innerHTML = data.Timestamp;
+                                        marker.setLatLng([data.Longitud, data.Latitud]);
+
+                                        bounds = new L.LatLngBounds(data.Longitud, data.Latitud);
+                                        myMap.fitBounds(bounds);
 
                                         //poliline:
                                         var latlong = [Number(data.Longitud), Number(data.Latitud)];
@@ -218,6 +259,7 @@
                                     
 
                                 }
+                                
 
                                  //adding second car
 
