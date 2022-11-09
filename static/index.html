@@ -140,26 +140,7 @@
                 
                     
 
-                    <table style="margin-left: auto;margin-right: auto" class="content-table" id="content-table">
-                        <th>
-                            <tr>
-                                <td><b>Latitude</b></td>
-                                <td><b>Longitude</b></td>
-                                <td><b>Timestamp</b></td>
-                            </tr>
-                            <tr>
-                                <td id="lat"><b></b></td>
-                                <td id="lng"><b></b></td>
-                                <td id="timestamp"><b></b></td>
-                            </tr>
-                        </th>
-
-
-
-
-
-
-                    </table>
+                    
 
                 </div>
                 <!-- Divider-->
@@ -181,6 +162,27 @@
 
                                 if(carval == 1){
                                     if(data.Car == 1){
+
+                                        <table style="margin-left: auto;margin-right: auto" class="content-table" id="content-table">
+                                            <th>
+                                                <tr>
+                                                    <td><b>Latitude</b></td>
+                                                    <td><b>Longitude</b></td>
+                                                    <td><b>Timestamp</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="lat"><b></b></td>
+                                                    <td id="lng"><b></b></td>
+                                                    <td id="timestamp"><b></b></td>
+                                                </tr>
+                                            </th>
+
+
+
+
+
+
+                    </table>
                                         document.getElementById("lat").innerHTML = data.Latitud;
                                         document.getElementById("lng").innerHTML = data.Longitud;
                                         document.getElementById("timestamp").innerHTML = data.Timestamp;
