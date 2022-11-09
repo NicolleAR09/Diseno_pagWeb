@@ -120,6 +120,18 @@ const showRecordInfo = async () => {
                             
 
                         }
+                        if(carval == 3){
+                            
+                            if(item.Car == 3){
+                                historic1.push([item.Longitud, item.Latitud]);
+                                info1.push(item.Timestamp);
+                                historic2.push([item.Longitud, item.Latitud]);
+                                info2.push(item.Timestamp);
+                            }
+                            
+
+                        }
+
                         
                     }
                 }
