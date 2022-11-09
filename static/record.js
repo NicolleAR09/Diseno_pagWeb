@@ -240,7 +240,23 @@ const showRecordInfo = async () => {
                         const points4 = points[3];
                         const points5 = points[4];
                         const points6 = points[5];
-                        return points1, points2, points3, points4, points5, points6;
+                        try {
+                            const closestPointTimestamp = closestPoint.Timestamp;
+                    console.log(points1);
+
+                        if (closestPointTimestamp) {
+
+                            const closestPointTimestamp1 = new Date (Date.parse(closestPoint.Timestamp)).toString();
+                            pathway = "<b>" + closestPointTimestamp1 + "</b>";
+                                //console.log(closestPointTimestamp1)
+                        } else {
+                            pathway =
+                                "<b> No hay datos, por favor seleccione otro punto </b>";
+                        }
+                        } catch (error) {
+                            alert("No hay datos, por favor seleccione otro punto");
+                        }
+                        
                         
                     });
                 });
@@ -264,7 +280,7 @@ const showRecordInfo = async () => {
                     console.log(points);
                 } catch (error) {
                     console.log("error");
-                }*/
+                }
                 
                 // get the closest point's timestamp
                 try {
@@ -283,7 +299,7 @@ const showRecordInfo = async () => {
                 } catch (error) {
                     alert("No hay datos, por favor seleccione otro punto");
                 }
-                
+                */
 
                 document.getElementById("pathway").innerHTML = pathway;
             });
