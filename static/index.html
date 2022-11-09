@@ -182,7 +182,21 @@
                                         document.getElementById("lat").innerHTML = data.Latitud;
                                         document.getElementById("lng").innerHTML = data.Longitud;
                                         document.getElementById("timestamp").innerHTML = data.Timestamp;
-                                        marker1.setLatLng([data.Longitud, data.Latitud]);
+                                        var rmarker = L.icon({
+                                            iconUrl: 'redmarker.png',
+
+                                            iconSize:     [15, 55], // size of the icon
+                                            iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+                                            popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+                                        });
+
+                                        var marker1 = null;
+
+                                        if (marker1 !== null) {
+                                            myMap.removeLayer(marker1);
+                                        }
+
+                                        marker1 = L.marker([data.Longitud, data.Latitud], {icon : rmarker}).addTo(myMap);
 
                                         //poliline:
                                         var latlong = [Number(data.Longitud), Number(data.Latitud)];
@@ -216,6 +230,12 @@
                                         document.getElementById("lng").innerHTML = data.Longitud;
                                         document.getElementById("timestamp").innerHTML = data.Timestamp;
                                         //marker.setLatLng([data.Longitud, data.Latitud]);
+
+                                        var marker = null;
+
+                                        if (marker !== null) {
+                                            myMap.removeLayer(marker);
+                                        }
 
                                         marker = L.marker([data.Longitud, data.Latitud]).addTo(myMap);
 
