@@ -3,6 +3,7 @@ var historic2 = new Array();
 
 var info1 = new Array();
 var info2 = new Array();
+var pathway ;
 
 var histPolyline = new Array();
 
