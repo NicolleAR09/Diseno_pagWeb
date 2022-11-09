@@ -194,6 +194,7 @@
 
                                         if (marker1 !== null) {
                                             myMap.removeLayer(marker1);
+                                            var marker1 = L.marker([data.Longitud, data.Latitud], {icon : rmarker}).addTo(myMap);
                                         }
 
                                         
@@ -235,6 +236,7 @@
 
                                         if (marker !== null) {
                                             myMap.removeLayer(marker);
+                                            var marker = L.marker([data.Longitud, data.Latitud]).addTo(myMap);
                                         }
 
                                         
