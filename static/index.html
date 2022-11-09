@@ -186,8 +186,7 @@
                                         document.getElementById("timestamp").innerHTML = data.Timestamp;
                                         marker.setLatLng([data.Longitud, data.Latitud]);
 
-                                        bounds = new L.LatLngBounds(data.Longitud, data.Latitud);
-                                        myMap.fitBounds(bounds);
+                                        
 
                                         /*
                                         if(line2!== null){
@@ -199,6 +198,9 @@
                                         var latlong = [Number(data.Longitud), Number(data.Latitud)];
                                         //poly.push(latlong);
                                         line.addLatLng(latlong)
+
+                                        bounds = new L.LatLngBounds(data.Longitud, data.Latitud);
+                                        myMap.fitBounds(bounds);
 
                                     }
                                     
@@ -213,19 +215,21 @@
                                         document.getElementById("timestamp").innerHTML = data.Timestamp;
                                         marker.setLatLng([data.Longitud, data.Latitud]);
 
-                                        bounds = new L.LatLngBounds(data.Longitud, data.Latitud);
-                                        myMap.fitBounds(bounds);
+                                        
 
                                         /*
                                         if(line!== null){
                                             myMap.removeLayer(line);
                                             
-                                        }
+                                        }*/
                                         //poliline:
                                         var latlong = [Number(data.Longitud), Number(data.Latitud)];
                                         //poly.push(latlong);
                                         line2.addLatLng(latlong) 
-                                        */
+                                        
+
+                                        bounds = new L.LatLngBounds(data.Longitud, data.Latitud);
+                                        myMap.fitBounds(bounds);
                                     }
                                     
 

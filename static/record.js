@@ -236,32 +236,32 @@ const showRecordInfo = async () => {
                     response.json().then((json) => {
                         const points = json;
             
-                        const points1 = points[0];
-                        const points2 = points[1];
-                        const points3 = points[2];
-                        const points4 = points[3];
-                        const points5 = points[4];
-                        const points6 = points[5];
-                        try {
-                            const closestPointTimestamp = closestPoint.Timestamp;
-                    console.log(points1);
-
-                        if (closestPointTimestamp) {
-
-                            const closestPointTimestamp1 = new Date (Date.parse(closestPoint.Timestamp)).toString();
-                            pathway = "<b>" + closestPointTimestamp1 + "</b>";
-                                //console.log(closestPointTimestamp1)
-                            
-                        } else {
-                            pathway =
-                                "<b> No hay datos, por favor seleccione otro punto </b>";
-                        }
-                        } catch (error) {
-                            alert("No hay datos, por favor seleccione otro punto");
-                        }
+                        return points.slice(0,6);
+                        
+                        
+                        
                         
                         
                     });
+
+                    console.log(points);
+
+                    try {
+                        const closestPointTimestamp = closestPoint.Timestamp;
+                        
+
+                    if (closestPointTimestamp) {
+
+                        const closestPointTimestamp1 = new Date (Date.parse(closestPoint.Timestamp)).toString();
+                        pathway = "<b>" + closestPointTimestamp1 + "</b>";
+                            //console.log(closestPointTimestamp1)
+                    } else {
+                        pathway =
+                            "<b> No hay datos, por favor seleccione otro punto </b>";
+                    }
+                    } catch (error) {
+                        alert("No hay datos, por favor seleccione otro punto");
+                    }
                 });
 
                 
