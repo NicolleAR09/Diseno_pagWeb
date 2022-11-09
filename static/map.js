@@ -6,8 +6,16 @@ L.tileLayer(tilesProvider, {
     maxZoom: 18,
     attribution: "© OpenStreetMap"
 }).addTo(myMap);
+var rmarker = L.icon({
+    iconUrl: 'redmarker.png',
+
+    iconSize:     [38, 95], // size of the icon
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
 // Inicializacion del marker y la linea que dibuja la polylinea
 let marker = L.marker([0, 0]).addTo(myMap);
+let marker1 = L.marker([0, 0], {icon : rmarker}).addTo(myMap);
 const line = L.polyline([], { color: "red" }).addTo(myMap);
 const line2 = L.polyline([], { color: "blue" }).addTo(myMap); //adding second car 
 
