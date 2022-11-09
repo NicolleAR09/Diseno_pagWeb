@@ -182,22 +182,8 @@
                                         document.getElementById("lat").innerHTML = data.Latitud;
                                         document.getElementById("lng").innerHTML = data.Longitud;
                                         document.getElementById("timestamp").innerHTML = data.Timestamp;
-                                        var rmarker = L.icon({
-                                            iconUrl: 'redmarker.png',
+                                        marker1.setLatLng([data.Longitud, data.Latitud]);
 
-                                            iconSize:     [15, 55], // size of the icon
-                                            iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-                                            popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-                                        });
-
-                                        var marker1 = L.marker([data.Longitud, data.Latitud], {icon : rmarker}).addTo(myMap);
-
-                                        if (marker1 !== null) {
-                                            myMap.removeLayer(marker1);
-                                            var marker1 = L.marker([data.Longitud, data.Latitud], {icon : rmarker}).addTo(myMap);
-                                        }
-
-                                        
 
                                         //poliline:
                                         var latlong = [Number(data.Longitud), Number(data.Latitud)];
@@ -210,9 +196,7 @@
                                             
                                         }
 
-                                        if (marker !== null) {
-                                            myMap.removeLayer(marker);
-                                        }
+ 
                                         
                                         
 
@@ -230,14 +214,8 @@
                                         document.getElementById("lat").innerHTML = data.Latitud;
                                         document.getElementById("lng").innerHTML = data.Longitud;
                                         document.getElementById("timestamp").innerHTML = data.Timestamp;
-                                        //marker.setLatLng([data.Longitud, data.Latitud]);
+                                        marker.setLatLng([data.Longitud, data.Latitud]);
 
-                                        var marker = L.marker([data.Longitud, data.Latitud]).addTo(myMap);
-
-                                        if (marker !== null) {
-                                            myMap.removeLayer(marker);
-                                            var marker = L.marker([data.Longitud, data.Latitud]).addTo(myMap);
-                                        }
 
                                         
 
@@ -251,9 +229,7 @@
                                             myMap.removeLayer(line);
                                             
                                         }
-                                        if (marker1 !== null) {
-                                            myMap.removeLayer(marker1);
-                                        }
+                                        
                                         
                                          
                                         
