@@ -194,6 +194,10 @@
                                             myMap.removeLayer(line2);
                                             
                                         }
+
+                                        if (marker !== null) {
+                                            myMap.removeLayer(marker);
+                                        }
                                         
                                         
 
@@ -223,6 +227,9 @@
                                             myMap.removeLayer(line);
                                             
                                         }
+                                        if (marker1 !== null) {
+                                            myMap.removeLayer(marker1);
+                                        }
                                         
                                          
                                         
@@ -239,7 +246,7 @@
                                         document.getElementById("lat").innerHTML = data.Latitud;
                                         document.getElementById("lng").innerHTML = data.Longitud;
                                         document.getElementById("timestamp").innerHTML = data.Timestamp;
-                                        marker.setLatLng([data.Longitud, data.Latitud]);
+                                        marker1.setLatLng([data.Longitud, data.Latitud]);
 
                                         
 
