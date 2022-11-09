@@ -152,6 +152,11 @@
                                 <td id="lng"><b></b></td>
                                 <td id="timestamp"><b></b></td>
                             </tr>
+                            <tr>
+                                <td id="lat2"><b></b></td>
+                                <td id="lng2"><b></b></td>
+                                <td id="timestamp2"><b></b></td>
+                            </tr>
                         </th>
 
 
@@ -251,9 +256,9 @@
 
 
                                     if(data.Car == 2){
-                                        document.getElementById("lat").innerHTML = data.Latitud;
-                                        document.getElementById("lng").innerHTML = data.Longitud;
-                                        document.getElementById("timestamp").innerHTML = data.Timestamp;
+                                        document.getElementById("lat2").innerHTML = data.Latitud;
+                                        document.getElementById("lng2").innerHTML = data.Longitud;
+                                        document.getElementById("timestamp2").innerHTML = data.Timestamp;
                                         marker.setLatLng([data.Longitud, data.Latitud]);
 
                                         
