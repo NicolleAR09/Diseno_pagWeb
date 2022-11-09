@@ -186,18 +186,18 @@
                                         document.getElementById("timestamp").innerHTML = data.Timestamp;
                                         marker.setLatLng([data.Longitud, data.Latitud]);
 
-                                        
-
-                                        /*
-                                        if(line2!== null){
-                                            myMap.removeLayer(line2);
-                                            
-                                        }
-                                        */
                                         //poliline:
                                         var latlong = [Number(data.Longitud), Number(data.Latitud)];
                                         //poly.push(latlong);
                                         line.addLatLng(latlong)
+
+                                        
+                                        if(line2!== null){
+                                            myMap.removeLayer(line2);
+                                            
+                                        }
+                                        
+                                        
 
                                         bounds = new L.LatLngBounds(data.Longitud, data.Latitud);
                                         myMap.fitBounds(bounds);
@@ -215,17 +215,18 @@
                                         document.getElementById("timestamp").innerHTML = data.Timestamp;
                                         marker.setLatLng([data.Longitud, data.Latitud]);
 
-                                        
-
-                                        /*
-                                        if(line!== null){
-                                            myMap.removeLayer(line);
-                                            
-                                        }*/
                                         //poliline:
                                         var latlong = [Number(data.Longitud), Number(data.Latitud)];
                                         //poly.push(latlong);
-                                        line2.addLatLng(latlong) 
+                                        line2.addLatLng(latlong)
+
+                                        
+                                        if(line!== null){
+                                            myMap.removeLayer(line);
+                                            
+                                        }
+                                        
+                                         
                                         
 
                                         bounds = new L.LatLngBounds(data.Longitud, data.Latitud);
@@ -234,7 +235,7 @@
                                     
 
                                 }
-                                /*
+                                
                                 if(carval == 3){
                                     if(data.Car == 1){
                                         document.getElementById("lat").innerHTML = data.Latitud;
@@ -242,8 +243,7 @@
                                         document.getElementById("timestamp").innerHTML = data.Timestamp;
                                         marker.setLatLng([data.Longitud, data.Latitud]);
 
-                                        bounds = new L.LatLngBounds(data.Longitud, data.Latitud);
-                                        myMap.fitBounds(bounds);
+                                        
 
                                         //poliline:
                                         var latlong = [Number(data.Longitud), Number(data.Latitud)];
@@ -259,8 +259,7 @@
                                         document.getElementById("timestamp").innerHTML = data.Timestamp;
                                         marker.setLatLng([data.Longitud, data.Latitud]);
 
-                                        bounds = new L.LatLngBounds(data.Longitud, data.Latitud);
-                                        myMap.fitBounds(bounds);
+                                        
 
                                         //poliline:
                                         var latlong = [Number(data.Longitud), Number(data.Latitud)];
@@ -269,7 +268,7 @@
                                     }
                                     
 
-                                }*/
+                                }
                                 
 
                                  //adding second car
