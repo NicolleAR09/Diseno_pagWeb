@@ -251,7 +251,7 @@ const showRecordInfo = async () => {
                             const closestPointTimestamp1 = new Date (Date.parse(closestPoint.Timestamp)).toString();
                             pathway = "<b>" + closestPointTimestamp1 + "</b>";
                                 //console.log(closestPointTimestamp1)
-                            marker.bindPopup("You clicked the map at : " + closestPointTimestamp1).openPopup();
+                            
                         } else {
                             pathway =
                                 "<b> No hay datos, por favor seleccione otro punto </b>";
