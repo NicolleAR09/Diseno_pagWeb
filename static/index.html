@@ -190,13 +190,13 @@
                                             popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
                                         });
 
-                                        
+                                        var marker1 = L.marker([data.Longitud, data.Latitud], {icon : rmarker}).addTo(myMap);
 
                                         if (marker1 !== null) {
                                             myMap.removeLayer(marker1);
                                         }
 
-                                        var marker1 = L.marker([data.Longitud, data.Latitud], {icon : rmarker}).addTo(myMap);
+                                        
 
                                         //poliline:
                                         var latlong = [Number(data.Longitud), Number(data.Latitud)];
@@ -231,13 +231,13 @@
                                         document.getElementById("timestamp").innerHTML = data.Timestamp;
                                         //marker.setLatLng([data.Longitud, data.Latitud]);
 
-                                        
+                                        var marker = L.marker([data.Longitud, data.Latitud]).addTo(myMap);
 
                                         if (marker !== null) {
                                             myMap.removeLayer(marker);
                                         }
 
-                                        var marker = L.marker([data.Longitud, data.Latitud]).addTo(myMap);
+                                        
 
                                         //poliline:
                                         var latlong = [Number(data.Longitud), Number(data.Latitud)];
